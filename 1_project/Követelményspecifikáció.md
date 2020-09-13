@@ -1,25 +1,26 @@
 1. Jelenlegi helyzet
- - jelenlegi amőba játékokat előre meghatározott méretű pályakon játszák pl. 3X3, 4X4 
- - a két játékos között emiatt fennáll a döntetlen 
-
+ - Jelenlegi amőba játékokat előre meghatározott méretű pályakon játszák, pldául 3x3, 4x4, emiatt a két játékos között emiatt fennáll a döntetlen lehetősége.
+ - A mobilos amőba játékok nem rendelkeznek megfelelő oldalcsere mechanikával, emiatt fennáll a fairplay elvesztésének veszélye. 
+ - Véletlen hibák gyakran előfordulnak egy ezközös játékokkal.
 
 2. Vágyálom rendszer
-  - végtelen méretű pálya
-  - minden körbe van győztes
-  - esetlegesen az X és O felváltani más ikonokkal
-  - gyúzelmet hangüzenet is kíséri (ha lesz hang)
+  - Végtelen méretű pálya.
+  - Minden körbe van győztes.
+  - X és O felváltani tetszőleges ikonokkal.
+  - Győzelmet hangüzenet is kíséri.
+  - Háttérzene.
+  - Esztétikus, fiatalaknak szóló grafika.
 
 3. Jelenlegi üzleti folyamatok
-
+  - Maximum táblaméretű digitális játékok.
 4. Igényelt üzleti folyamatok
-
 5. Rendszerre vonatkozó szabályok:
-  - az UI megvalósítása JavaFX-el kell hogy történjen
-  - mentési fájl JSON formátumban
-  - (10 másodperces lépési időkorlát)
-  - mp3-as kiterjesztésű hangfájlok használataz (ha lesz hang)
-  - a szoftver megvalósítása Java programozási nyelvben kell hogy történjen
-  - Maven csomagkezelő használata
+  - A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
+  - Az UI megvalósítása JavaFX-el kell hogy történjen.
+  - Mentési fájl JSON formátumban.
+  - 10 másodperces lépési időkorlát.
+  - mp3-as kiterjesztésű hangfájlok kezelése.
+  - Maven csomagkezelő használata.
 
 6. Követelménylista
 
