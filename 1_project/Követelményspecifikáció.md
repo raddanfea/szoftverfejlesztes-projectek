@@ -13,6 +13,7 @@
 
 3. Jelenlegi üzleti folyamatok
   - Maximum táblaméretű digitális játékok.
+  - Döntetlen végkimenetel lehetőségének fenállása
 4. Igényelt üzleti folyamatok
   - Grafikus megjelenítés
   - Játékosok bevitele az adatbázisba
