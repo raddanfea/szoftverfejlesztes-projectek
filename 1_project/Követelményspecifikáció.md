@@ -1,5 +1,5 @@
 1. Jelenlegi helyzet
- - Jelenlegi amőba játékokat előre meghatározott méretű pályakon játszák, pldául 3x3, 4x4, emiatt a két játékos között emiatt fennáll a döntetlen lehetősége.
+ - Jelenlegi amőba játékokat előre meghatározott méretű pályakon játszák, például 3x3, 4x4, emiatt a két játékos között fennáll a döntetlen lehetősége.
  - A mobilos amőba játékok nem rendelkeznek megfelelő oldalcsere mechanikával, emiatt fennáll a fairplay elvesztésének veszélye. 
  - Véletlen hibák gyakran előfordulnak egy ezközös játékokkal.
 
@@ -23,5 +23,11 @@
   - Maven csomagkezelő használata.
 
 6. Követelménylista
-
+  - K01 Egyszerű, letisztult környezet
+  - K02 Győztes biztos léte, döntetlen kizárása
+  - K03 Játszmák alatt háttérzene
+  - K04 Győztest jelző hangüzenet
+  - K05 Döntetlen játékállás esetén bővülő pálya
+  - K06 Játékosok adatbázisban való eltárolása
 7. Fogalomszótár
+
