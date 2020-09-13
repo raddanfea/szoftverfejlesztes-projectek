@@ -1,7 +1,10 @@
 1. Jelenlegi helyzet
+ - jelenlegi amőba játékokat előre meghatározott méretű pályakon játszák pl. 3X3, 4X4 
+ - a két játékos között emiatt fennáll a döntetlen 
+
 
 2. Vágyálom rendszer
- - végtelen méretű pálya
+  - végtelen méretű pálya
   - minden körbe van győztes
   - esetlegesen az X és O felváltani más ikonokkal
   - gyúzelmet hangüzenet is kíséri (ha lesz hang)
