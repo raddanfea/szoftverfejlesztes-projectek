@@ -2,6 +2,11 @@
 
 2. Vágyálom rendszer
 
+ -végtelen méretű pálya
+ -minden körbe van győztes
+ -esetlegesen az X és O felváltani más ikonokkal
+ -gyúzelmet hangüzenet is kíséri (ha lesz hang)
+
 3. Jelenlegi üzleti folyamatok
 
 4. Igényelt üzleti folyamatok
