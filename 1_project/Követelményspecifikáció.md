@@ -30,4 +30,5 @@
   - K05 Döntetlen játékállás esetén bővülő pálya
   - K06 Játékosok adatbázisban való eltárolása
 7. Fogalomszótár
+  - Végtelen méretű pálya: Amennyiben a játékosok felhasználták az összes mezőt, de az állás döntetlen, újabb mezőkkel bővüljön a pálya.
 
