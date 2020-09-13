@@ -14,6 +14,9 @@
 3. Jelenlegi üzleti folyamatok
   - Maximum táblaméretű digitális játékok.
 4. Igényelt üzleti folyamatok
+  - Grafikus megjelenítés
+  - Játékosok bevitele az adatbázisba
+  - Győztes biztosítása
 5. Rendszerre vonatkozó szabályok:
   - A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
   - Az UI megvalósítása JavaFX-el kell hogy történjen.
@@ -21,14 +24,14 @@
   - 10 másodperces lépési időkorlát.
   - mp3-as kiterjesztésű hangfájlok kezelése.
   - Maven csomagkezelő használata.
+  - Képfájlok jpg/png formátumúak legyenek.
 
 6. Követelménylista
   - K01 Egyszerű, letisztult környezet
-  - K02 Győztes biztos léte, döntetlen kizárása
-  - K03 Játszmák alatt háttérzene
-  - K04 Győztest jelző hangüzenet
-  - K05 Döntetlen játékállás esetén bővülő pálya
-  - K06 Játékosok adatbázisban való eltárolása
+  - K02 Játszmák alatt háttérzene
+  - K03 Győztest jelző hangüzenet
+  - K04 Döntetlen játékállás esetén bővülő pálya
+  - K05 Játékosok adatbázisban való eltárolása
 7. Fogalomszótár
   - Végtelen méretű pálya: Amennyiben a játékosok felhasználták az összes mezőt, de az állás döntetlen, újabb mezőkkel bővüljön a pálya.
 
