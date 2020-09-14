@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 1. Jelenlegi helyzet
 # 2. A rendszer céljai és nem céljai
 # 3. A rendszerre vonatkozó külső megszorítások: pályázat, törvények, rendeletek, szabványok és ajánlások felsorolása
