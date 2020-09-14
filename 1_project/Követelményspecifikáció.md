@@ -5,7 +5,7 @@
 
 2. Vágyálom rendszer
   - Végtelen méretű pálya.
-  - Minden körbe van győztes.
+  - Minden játékmentben van győztes.
   - X és O felváltani tetszőleges ikonokkal.
   - Győzelmet hangüzenet is kíséri.
   - Háttérzene.
