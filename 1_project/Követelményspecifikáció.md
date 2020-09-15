@@ -24,9 +24,17 @@
   3.2.4.2 Ha a feltétel hamis => az első játékos következik <br/>
   3.3 Ha a pálya betelt és nincs győztes => a játék véget ér döntetlennel <br/>
 4. Igényelt üzleti folyamatok
-  - Grafikus megjelenítés
-  - Játékosok bevitele az adatbázisba
-  - Győztes biztosítása
+4.1 A szoftver véletlenszerűen választ valakit a játékosok közül hogy ki kezdjen <br/>
+4.2 A képernyőn megjelenik egy előre meghatározott méretű pálya <br/>
+4.2.1 Az első játékos választ egy mezőt => megérinti ott a képernyőt => a választott mezőn megjelenik a saját jele (o vagy x) <br/>
+4.2.2 A szoftver leellenőrzi, hogy van e az első játékosnak függőlegesen vagy vízszintesen vagy átlósan, megszakítás nélkül egymás után a nyeréshez szükséges mennyiségű jel (o vagy x) <br/>
+4.2.2.1 Ha a feltétel igaz => a játék véget ér => győzött az első játékos <br/>
+4.2.2.2 Ha a feltétel hamis => a második játékos következik <br/>
+4.2.3 A második játékos választ egy mezőt => megérinti ott a képernyőt => a választott mezőn megjelenik a saját jele (o vagy x) <br/>
+4.2.4 A szoftver leellenőrzi, hogy van e a második játékosnak függőlegesen vagy vízszintesen vagy átlósan, megszakítás nélkül egymás után a nyeréshez szükséges mennyiségű jel (o vagy x) <br/>
+4.2.4.1 Ha a feltétel igaz => a játék véget ér => győzött a második játékos <br/>
+4.2.4.2 Ha a feltétel hamis => az első játékos következik <br/>
+4.3 Ha a pálya (x) része betelt => pálya bővítése <br/>
 5. Rendszerre vonatkozó szabályok:
  - A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
  - Az UI megvalósításához xml-elt kell hogy használni.
