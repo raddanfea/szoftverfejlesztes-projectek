@@ -1,6 +1,6 @@
 1. Jelenlegi helyzet
  - Jelenlegi amőba játékokat előre meghatározott méretű pályakon játszák, például 3x3, 4x4, emiatt a két játékos között fennáll a döntetlen lehetősége.
- - A mobilos amőba játékok nem rendelkeznek megfelelő oldalcsere mechanikával, emiatt fennáll a fairplay elvesztésének veszélye. 
+ - A mobilos amőba játékok nem rendelkeznek megfelelő oldalcsere mechanikával, emiatt fennáll a fairplay elvesztésének veszélye.
  - Véletlen hibák gyakran előfordulnak egy ezközös játékokkal.
 
 2. Vágyálom rendszer
@@ -19,13 +19,13 @@
   - Játékosok bevitele az adatbázisba
   - Győztes biztosítása
 5. Rendszerre vonatkozó szabályok:
-  - A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
-  - Az UI megvalósítása JavaFX-el kell hogy történjen.
-  - Mentési fájl JSON formátumban.
-  - 10 másodperces lépési időkorlát.
-  - mp3-as kiterjesztésű hangfájlok kezelése.
-  - Maven csomagkezelő használata.
-  - Képfájlok jpg/png formátumúak legyenek.
+A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
+Az UI megvalósításához xml-elt kell hogy használni.
+Mentési fájl JSON formátumban.
+10 másodperces lépési időkorlát.
+mp3-as kiterjesztésű hangfájlok kezelése.
+Gradle fejlesztői projektautomatizációs eszköz használata.
+Képfájlok jpg/png formátumúak legyenek.
 
 6. Követelménylista
   - K01 Egyszerű, letisztult környezet
@@ -35,4 +35,3 @@
   - K05 Játékosok adatbázisban való eltárolása
 7. Fogalomszótár
   - Végtelen méretű pálya: Amennyiben a játékosok felhasználták az összes mezőt, de az állás döntetlen, újabb mezőkkel bővüljön a pálya.
-
