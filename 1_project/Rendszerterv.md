@@ -22,4 +22,10 @@ A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakö
    - Rendszerterv határideje: 2020.09.21.
    - Projekt elkészítésének határideje: 2020.10.05.
 # 3. Üzleti folyamatok modellje
+## 3.2 Üzleti szereplők
+A programot használó felhasználók.
+## 3.3 Üzleti folyamatok
+![Image of usecase](img/data.png)
+## 3.4 Üzleti entitások
+A játékban résztvevő játékosok.
 # 4. Fizikai környezet
