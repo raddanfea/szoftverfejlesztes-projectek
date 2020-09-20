@@ -25,6 +25,16 @@ játék adatait, azaz a lépések számát és az időt. A játékban jól elkü
 # 7. Használati esetek [Use cases]
 ![Image of usecase](img/data.png)
 # 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
+  - K01 Egyszerű, letisztult környezet
+   - A start gombra kattintva egy egyszerű, fehér hátterű négyzetháló generálódik, amelyen fekete X és O jelek fognak felváltva kirajzolódni
+  - K02 Játszmák alatt háttérzene
+   - A játék kezdetekor egy relaxáló hatású háttérzene fog ismétlődni
+  - K03 Győztest jelző hangüzenet
+   - A győztes nevének képernyőre írása után egy tapsoló hangüzenet fog lejátszódni
+  - K04 Döntetlen játékállás esetén bővülő pálya
+   - Amennyiben megtelik a pálya, de a játszmának még nincs győztese, a pálya egy új sorral és egy új oszloppal fog bővülni
+  - K05 Játékosok adatainak adatbázisban való eltárolása
+   - A programban lehetőség lesz a statisztikák megnézésére, hogy kinek hány alkalommal sikerült nyernie, ez a High Scores feliratú gomb megnyomásával érhető el 
 # 9. Képernyő tervek
 # 10. Forgatókönyvek
 Amikor felhasználók az alkalmazást megnyitva a kezdőképernyőn kiválasztják hogy 1v1 elleni játékot szertnének játszani, majd beírják a nevüket. A nevek alatti start gombra 
