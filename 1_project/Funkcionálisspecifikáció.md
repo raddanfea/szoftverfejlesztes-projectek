@@ -19,19 +19,17 @@ A játékosok először kiválaszthatják, hogy mely szimbólummal szeretnének 
 győztesen kerül ki, hangeffekttel jelezzük. Amennyiben már nincs több hely lépni a pályán, viszont egyik játékos sem került ki győztesen, a pálya keretein 
 kívül újabb mezők jelennek meg, amik körbeölelik a pályát, amit szintén hangeffekttel illetünk. Egy játékos győzelmekor a képernyőre írjuk a nevét és a 
 játék adatait, azaz a lépések számát és az időt. A játékban jól elkülöníthető szimbólumok lesznek.
-# 4. A rendszerre vonatkozó külső megszorítások: pályázat, törvények, rendeletek, szabványok és ajánlások felsorolása
-# 5. Jelenlegi üzleti folyamatok modellje
-# 6. Igényelt üzleti folyamatok modellje
-# 7. Követelménylista
-# 8. Használati esetek [Use cases]
+# [4. Jelenlegi üzleti folyamatok modellje](Követelményspecifikáció.md#3)
+# [5. Igényelt üzleti folyamatok modellje](Követelményspecifikáció.md#4)
+# [6. Követelmény lista](Követelményspecifikáció.md#6)
+# 7. Használati esetek [Use cases]
 ![Image of usecase](img/data.png)
-# 9. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
-# 10. Képernyő tervek
-# 11. Forgatókönyvek
+# 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
+# 9. Képernyő tervek
+# 10. Forgatókönyvek
 Amikor felhasználók az alkalmazást megnyitva a kezdőképernyőn kiválasztják hogy 1v1 elleni játékot szertnének játszani, majd beírják a nevüket. A nevek alatti start gombra 
 kattintva indul is a játék. Átkerülnek a játéktérre ami egy negyzetháló ami kezdetben 3X3-as, erre felváltva elhelyezik az X illetve az O jelet. Ha ez a játákmező megtelik 
 és nincs nyertes, akkor a játéktér bővül egy új sorral és oszloppal. Ez mindaddik ismétlődik míg az egyik játékosnak sikerül egy sorba, oszlopba vagy átlóba 3 azonos jelet 
 elhelyezni. Amint megvan a nyertesünk, megjelenik, hogy ki a nyertes. Ezek után kezdhetnek egy új játékot vagy a "High Scores" nevű gombra kattintva megnézhetik hogy össszesen
 kinek hány alkalommal sikerült nyerni. Ha pedig nem szeretnének többet játszani akkor az "Exit" gombra kattintva bezárhatják a játékot.
-# 12. Funkció – követelmény megfeleltetés
-# 13. Fogalomszótár
+# 11. Fogalomszótár
