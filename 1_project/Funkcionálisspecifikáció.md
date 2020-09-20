@@ -21,5 +21,10 @@ A játékosok először kiválaszthatják, hogy mely szimbólummal szeretnének 
 # 9. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
 # 10. Képernyő tervek
 # 11. Forgatókönyvek
+Amikor felhasználók az alkalmazást megnyitva a kezdőképernyőn kiválasztják hogy 1v1 elleni játékot szertnének játszani, majd beírják a nevüket. A nevek alatti start gombra 
+kattintva indul is a játék. Átkerülnek a játéktérre ami egy negyzetháló ami kezdetben 3X3-as, erre felváltva elhelyezik az X illetve az O jelet. Ha ez a játákmező megtelik 
+és nincs nyertes, akkor a játéktér bővül egy új sorral és oszloppal. Ez mindaddik ismétlődik míg az egyik játékosnak sikerül egy sorba, oszlopba vagy átlóba 3 azonos jelet 
+elhelyezni. Amint megvan a nyertesünk, megjelenik, hogy ki a nyertes. Ezek után kezdhetnek egy új játékot vagy a "High Scores" nevű gombra kattintva megnézhetik hogy össszesen
+kinek hány alkalommal sikerült nyerni. Ha pedig nem szeretnének többet játszani akkor az "Exit" gombra kattintva bezárhatják a játékot.
 # 12. Funkció – követelmény megfeleltetés
-# 13. 1Fogalomszótár
+# 13. Fogalomszótár
