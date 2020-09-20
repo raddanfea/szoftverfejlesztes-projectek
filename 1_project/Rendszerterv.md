@@ -9,5 +9,17 @@ Minden játék végén megjelenítünk statisztikai adatokat. Az adatokat játé
  - AI fejelsztése
 
 # 2. Projekt terv
+## 2.2 A projekt résztvevői:  
+A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakörben,
+   - Rádi Dániel (fejlesztő)
+   - Simion Tamás (fejlesztő)
+   - Nagy Kristián (fejlesztő)
+   - Puskás Máté (fejlesztő)
+## 2.3 Ütemterv:
+   - Projekt kezdete: 2020.09.07.
+   - Követelményspecifikáció határideje: 2020.09.14.
+   - Funkcionális specifikáció határideje: 2020.09.21.
+   - Rendszerterv határideje: 2020.09.21.
+   - Projekt elkészítésének határideje: 2020.10.05.
 # 3. Üzleti folyamatok modellje
 # 4. Fizikai környezet
