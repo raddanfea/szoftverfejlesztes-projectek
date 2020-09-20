@@ -9,9 +9,16 @@ Minden játék végén megjelenítünk statisztikai adatokat. Az adatokat játé
  - AI fejelsztése
 
 # 2. Jelenlegi helyzet
+A jelenleg elérhető amőba játék sok ember számára ismerős lehet, legtöbben papirra felrajzolva játszák 3X3-as pályán, létezik olyan
+változat is ami már elérhető mobilos applikációként is viszon ezek legtöbbje nem menti el a győzteseket és sok esteben előfordulnak benne 
+hibák. Az előre meghatározott pálya méretet nem mindenki szereti, főleg azok akik mindig nyerni akarnak, de ha be telik a játéktér akkor bizony nincs
+győztes. Felhasználói felületük kezelése sokak számára nem mindig egyértelmű, vagy épp túl bonyolult. 
 # 3. Vágyálomrendszer
   Egy olyan felhasználói felülettel ellátott szoftvert készítünk, amihez 2 játékos szükséges.
-A játékosok először kiválaszthatják, hogy mely szimbólummal szeretnének játszani, ezután felépítjük a pályát. Amint egy játékos a játék szabályai szerint győztesen kerül ki, hangeffekttel jelezzük. Amennyiben már nincs több hely lépni a pályán, viszont egyik játékos sem került ki győztesen, a pálya keretein kívül újabb mezők jelennek meg, amik körbeölelik a pályát, amit szintén hangeffekttel illetünk. Egy játékos győzelmekor a képernyőre írjuk a nevét és a játék adatait, azaz a lépések számát és az időt. A játékban jól elkülöníthető szimbólumok lesznek.
+A játékosok először kiválaszthatják, hogy mely szimbólummal szeretnének játszani, ezután felépítjük a pályát. Amint egy játékos a játék szabályai szerint 
+győztesen kerül ki, hangeffekttel jelezzük. Amennyiben már nincs több hely lépni a pályán, viszont egyik játékos sem került ki győztesen, a pálya keretein 
+kívül újabb mezők jelennek meg, amik körbeölelik a pályát, amit szintén hangeffekttel illetünk. Egy játékos győzelmekor a képernyőre írjuk a nevét és a 
+játék adatait, azaz a lépések számát és az időt. A játékban jól elkülöníthető szimbólumok lesznek.
 # 4. A rendszerre vonatkozó külső megszorítások: pályázat, törvények, rendeletek, szabványok és ajánlások felsorolása
 # 5. Jelenlegi üzleti folyamatok modellje
 # 6. Igényelt üzleti folyamatok modellje
