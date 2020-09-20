@@ -49,7 +49,7 @@
   - K02 Játszmák alatt háttérzene
   - K03 Győztest jelző hangüzenet
   - K04 Döntetlen játékállás esetén bővülő pálya
-  - K05 Játékosok adatbázisban való eltárolása
+  - K05 Játékosok adatainak JSON formátumú állományban való tárolása
 # 7. Fogalomszótár
   - Végtelen méretű pálya: Amennyiben a játékosok felhasználták az összes mezőt, de az állás döntetlen, újabb mezőkkel bővüljön a pálya.
   - Fairplay: sportszerűség
