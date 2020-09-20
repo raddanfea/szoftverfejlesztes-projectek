@@ -36,14 +36,15 @@ játék adatait, azaz a lépések számát és az időt. A játékban jól elkü
 - K05 Játékosok adatainak JSON formátumú állományban való eltárolása
   - A programban lehetőség lesz a statisztikák megnézésére, hogy kinek hány alkalommal sikerült nyernie, ez a High Scores feliratú gomb megnyomásával érhető el
 # 9. Képernyő tervek
-## 9.1 ![Image of UI prototype](img/prototype_menu.png)
+## 9.1 <br/> ![Image of UI prototype](img/prototype_menu.png)
 Az első lépernyőről egy gombnyomással elindíthatjuk a játékot vagy megnézhetjük, hogy ki hányszor nyert, illetve kiléphetünk a játékból ha már nincs időnk játszani. A jobb felső sarokban levő gombbal ki/be kapcsolhatjuk a hangot. Ezek a legalapvetőbb funkciók, amelyeket valaki a menüből el akarna érni.
-## 9.2 ![Image of UI prototype](img/prototype_prep.png)
+## 9.2 <br/> ![Image of UI prototype](img/prototype_prep.png)
 Amikor a menüből elindítjuk a játékot, ez a képernyő jelenik meg, ahol a játékosok a szövegmezőkben megadhatják a nevüket és a képre kattintva kiválaszthatnak egy képet a karakterüknek. Végül a "START" gombra nyomva elindítható a játék.
-## 9.3 ![Image of UI prototype](img/prototype_game.png)
+## 9.3 <br/> <img src="img/prototype_game.png" alt="drawing" width="357" height="628"/>
 A képernyő tetején a játékosok ikonja mellett látható a nevük. A jelenlegi játékos neve ki van emelve, ezzel jelezve, hogy ő következik. A képernyő közepén helyezkedik el a játékmező, amely mozgatható. A játék végén megnyílik a "High score" képernyő, ahol megtekinthetjük, hogy ki hányszor nyert.
-## 9.4 ![Image of UI prototype](img/prototype_scores.png)
+## 9.4 <br/> ![Image of UI prototype](img/prototype_scores.png)
 Ezen a képernyőn név alapján megnézhetjük, hogy ki hányszor nyert. A "BACK TO MENU" gombra menve visszaléphetünk a főmenübe.
+
 # 10. Forgatókönyvek
 Amikor felhasználók az alkalmazást megnyitva a kezdőképernyőn kiválasztják hogy 1v1 elleni játékot szertnének játszani, majd beírják a nevüket. A nevek alatti start gombra
 kattintva indul is a játék. Átkerülnek a játéktérre ami egy négyzetháló ami kezdetben 3X3-as, erre felváltva elhelyezik az X illetve az O jelet. Ha ez a játákmező megtelik
