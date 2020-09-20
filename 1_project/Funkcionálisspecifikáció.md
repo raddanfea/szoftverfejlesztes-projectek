@@ -33,7 +33,7 @@ játék adatait, azaz a lépések számát és az időt. A játékban jól elkü
   - A győztes nevének képernyőre írása után egy tapsoló hangüzenet fog lejátszódni
 - K04 Döntetlen játékállás esetén bővülő pálya
   - Amennyiben megtelik a pálya, de a játszmának még nincs győztese, a pálya egy új sorral és egy új oszloppal fog bővülni
-- K05 Játékosok adatainak adatbázisban való eltárolása
+- K05 Játékosok adatainak JSON formátumú állományban való eltárolása
   - A programban lehetőség lesz a statisztikák megnézésére, hogy kinek hány alkalommal sikerült nyernie, ez a High Scores feliratú gomb megnyomásával érhető el 
 # 9. Képernyő tervek
 # 10. Forgatókönyvek
