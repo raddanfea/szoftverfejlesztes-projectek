@@ -37,7 +37,7 @@ Az operációs rendszerek közül az androidot választottuk, hogy így több fe
 A rendelkezésünkre álló szoftverek közül csapatunk az Android Studio nevű IDE-t fogja használni a fejlesztéshez, amely a Gradle fejlesztői projektautomatizációs eszközt használja. Itt a UI-t is meg tudjuk tervezni, amelyel párhuzamosan generálja belőle az xml fájlt.  <br/>
 Az Android Studio 2 programozási nyelvben is lehetővé teszi a fejlesztést:
 - Java
-- Kotlin
+- Kotlin <br/>
 Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk használni.
 # 5. Funkcionális terv
 A megalkotott mobil platformon elérhető játékot minden olyan felhasználó eléri aki renderkezik, android operációs rendszerű
