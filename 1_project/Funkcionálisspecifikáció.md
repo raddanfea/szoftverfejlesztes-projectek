@@ -19,7 +19,7 @@ A játékosok először kiválaszthatják, hogy mely szimbólummal szeretnének 
 győztesen kerül ki, hangeffekttel jelezzük. Amennyiben már nincs több hely lépni a pályán, viszont egyik játékos sem került ki győztesen, a pálya keretein
 kívül újabb mezők jelennek meg, amik körbeölelik a pályát, amit szintén hangeffekttel illetünk. Egy játékos győzelmekor a képernyőre írjuk a nevét és a
 játék adatait, azaz a lépések számát és az időt. A játékban jól elkülöníthető szimbólumok lesznek.
-#[4. Jelenlegi üzleti folyamatok modellje](Követelményspecifikáció.md#3)
+# [4. Jelenlegi üzleti folyamatok modellje](Követelményspecifikáció.md#3)
 4.1 Játék indítása.\
 4.2 Játékmezők elfogynak.\
 4.3 Opcionális stretégia esetén minden esetben döntetlen az eredmény.
