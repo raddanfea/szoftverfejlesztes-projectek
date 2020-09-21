@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void openNameScreen() {
-    Intent target = new Intent(this, NameScreen.class);
-    startActivity(target);
+    Intent target1 = new Intent(this, NameScreen.class);
+    startActivity(target1);
   }
 
 }
