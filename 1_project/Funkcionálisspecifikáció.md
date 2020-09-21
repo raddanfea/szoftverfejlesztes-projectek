@@ -20,7 +20,11 @@ győztesen kerül ki, hangeffekttel jelezzük. Amennyiben már nincs több hely 
 kívül újabb mezők jelennek meg, amik körbeölelik a pályát, amit szintén hangeffekttel illetünk. Egy játékos győzelmekor a képernyőre írjuk a nevét és a
 játék adatait, azaz a lépések számát és az időt. A játékban jól elkülöníthető szimbólumok lesznek.
 # [4. Jelenlegi üzleti folyamatok modellje](Követelményspecifikáció.md#3)
+4.1 Játék indítása.
+4.2 Játékmezők elfogynak.
+4.3 Opcionális stretégia esetén minden esetben döntetlen az eredmény.
 # [5. Igényelt üzleti folyamatok modellje](Követelményspecifikáció.md#4)
+Ábra megtalálható a 7. pontban, a használati esetekben.
 # [6. Követelmény lista](Követelményspecifikáció.md#6)
 # 7. Használati esetek [Use cases]
 ![Image of usecase](img/data.png)
