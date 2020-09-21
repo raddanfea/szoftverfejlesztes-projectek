@@ -29,3 +29,8 @@ A programot használó felhasználók.
 ## 3.4 Üzleti entitások
 A játékban résztvevő játékosok.
 # 4. Fizikai környezet
+# 5. Funkcionális terv
+A megalkotott mobil platformon elérhető játékot minden olyan felhasználó eléri aki renderkezik, android operációs rendszerű
+készülékkel, legyen az telefon vagy akár táblagép. Megjelenésben egy olyan felületet kap amin mindenki számára egyértelmű gombok
+és üzenetek lesznek ezzel is megkönnyítve akár a kisiskolások vagy akár az idősek dolgát akik nem értenek annyira a mobil platformos
+technológiához.
