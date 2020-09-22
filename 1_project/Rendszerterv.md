@@ -44,7 +44,9 @@ A megalkotott mobil platformon elérhető játékot minden olyan felhasználó e
 készülékkel, legyen az telefon vagy akár táblagép. Megjelenésben egy olyan felületet kap amin mindenki számára egyértelmű gombok
 és üzenetek lesznek ezzel is megkönnyítve akár a kisiskolások vagy akár az idősek dolgát akik nem értenek annyira a mobil platformos
 technológiához.
-# 6. Testterv
+# 6. Implementációs  terv:
+![Image of implementation](img/implementacios_terv.png)
+# 7. Testterv
 Tesztelés során több részét is vizsgáljuk majd a programnak.
 - megfelőlen jelenik-e meg, nem fedik egymás a megjelenő gombok/szövegek
 - ha megtelt a játéktér ellenőrizze hogy van-e győztes
