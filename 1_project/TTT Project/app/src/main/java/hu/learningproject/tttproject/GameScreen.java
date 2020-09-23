@@ -68,8 +68,8 @@ public class GameScreen extends AppCompatActivity {
                         startY = _y;
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        origoX += (_x - startX); // magic number
-                        origoY += (_y - startY);
+                        origoX += _x - startX; // magic number
+                        origoY += _y - startY;
                         startX = _x;
                         startY = _y;
                     

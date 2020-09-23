@@ -16,6 +16,8 @@ public class MyDrawable{
     private int bitmapWidht;
     private int bitmapHeight;
     private Bitmap.Config bitmapConfiguration = Bitmap.Config.ARGB_8888;
+    
+    private int rectPadding = 4;
 
     public MyDrawable(ImageView imageView, int width, int height) {
         // Set up color and text size
@@ -62,17 +64,11 @@ public class MyDrawable{
     }
 
     public void drawRect(int x, int y, int w, int h) {
-        canv.drawRect(x+4, y+4, w-4, h-4, paint);
+        canv.drawRect(x+rectPadding, y+rectPadding, w-rectPadding, h-rectPadding, paint);
     }
 
     public void drawGid(int xOffset, int yOffset, int zoom, int matrixWidth, int matrixHeight) {
-        Log.d("asd", "grid...");
-//    for(int i = xOffset%zoom; i <= bitmapWidht; i += zoom) {
-//      drawLine(i, 0, i, bitmapHeight);
-//    }
-//    for(int j = yOffset%zoom; j <= bitmapHeight; j += zoom) {
-//      drawLine(0, j, bitmapWidht, j);
-//    }
+
         setUpPaintForRect();
         for(int i = (xOffset%zoom)-zoom; i <= bitmapWidht; i += zoom) {
             if ((i > xOffset) && (i <= xOffset + (matrixWidth * zoom))) {
