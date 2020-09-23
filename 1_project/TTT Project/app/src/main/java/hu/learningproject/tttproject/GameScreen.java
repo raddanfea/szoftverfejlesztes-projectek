@@ -3,7 +3,6 @@ package hu.learningproject.tttproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import hu.learningproject.tttproject.view.MyDrawable;
+import hu.learningproject.tttproject.view.MyImageView;
+
 public class GameScreen extends AppCompatActivity {
 
     private MyDrawable mydrawing;
+    private MyImageView image;
 
     int startX, startY, origoX, origoY;
 
@@ -33,51 +36,59 @@ public class GameScreen extends AppCompatActivity {
 
         name1.setText(player1name);
         name2.setText(player2name);
-
-
-    final ImageView image = findViewById(R.id.imV);
-    mydrawing = new MyDrawable(image);
-
-    startX = 0;
-    startY = 0;
-    origoX = 0;
-    origoY = 0;
-
-        image.setOnTouchListener(new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-
-            int _x = (int)event.getX();
-            int _y = (int)event.getY();
-
-            Log.d("asd", "touched at: " + _x + ", " + _y);
-
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    Log.d("asd", "start");
-                    startX = _x;
-                    startY = _y;
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    origoX += (_x - startX)/2.63; // magic number
-                    origoY += (_y - startY)/2.63;
-                    startX = _x;
-                    startY = _y;
-
-                    mydrawing.fillBackground(Color.rgb(50, 50, 50));
-                    mydrawing.drawGid(origoX, origoY, 80);
-                    break;
-                case MotionEvent.ACTION_UP:
-
-                    break;
+    
+        startX = 0;
+        startY = 0;
+        origoX = 0;
+        origoY = 0;
+        
+        image = (MyImageView) findViewById(R.id.imV);
+        mydrawing = new MyDrawable(image, 10, 100);
+        
+        image.setOnImageViewSizeChanged(new MyImageView.OnImageViewSizeChanged() {
+            @Override
+            public void invoke(ImageView v, int w, int h) {
+                mydrawing.resize(w, h);
+                drawGrid(origoX, origoY);
             }
+        });
+        image.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+            
+                int _x = (int)event.getX();
+                int _y = (int)event.getY();
+            
+                Log.d("image_onTouch", "touched at: " + _x + ", " + _y);
+                Log.d("image_onTouch", "origo pos: " + origoX + ", " + origoY);
+            
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        startX = _x;
+                        startY = _y;
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        origoX += (_x - startX); // magic number
+                        origoY += (_y - startY);
+                        startX = _x;
+                        startY = _y;
+                    
+                        drawGrid(origoX, origoY);
+                    
+                        break;
+                }
+            
+                image.invalidate(); // without this the drawing wont show
+                return true;
+            }
+        });
 
-            image.invalidate();
-            return true;
-        }
-    });
-
-}
+    }
+    
+    private void drawGrid(int x, int y) {
+        mydrawing.fillBackground(Color.rgb(50, 50, 50));
+        mydrawing.drawGid(x, y, 200, 5, 7);
+    }
 
 
 }
