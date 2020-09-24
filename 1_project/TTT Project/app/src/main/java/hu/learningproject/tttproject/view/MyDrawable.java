@@ -1,10 +1,16 @@
 package hu.learningproject.tttproject.view;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.ImageView;
+
+import androidx.core.content.res.ResourcesCompat;
+
+import hu.learningproject.tttproject.R;
 
 public class MyDrawable{
 
@@ -17,9 +23,12 @@ public class MyDrawable{
     private int bitmapHeight;
     private Bitmap.Config bitmapConfiguration = Bitmap.Config.ARGB_8888;
     
+    private Drawable xSign;
+    private Drawable oSign;
+    
     private int rectPadding = 4;
 
-    public MyDrawable(ImageView imageView, int width, int height) {
+    public MyDrawable(Context context, ImageView imageView, int width, int height) {
         // Set up color and text size
         paint = new Paint();
         paint.setARGB(255, 230, 230, 230);
@@ -28,6 +37,10 @@ public class MyDrawable{
         bitmapHeight = height;
         
         Log.d("image", "imageView size: " + width + ", " + height);
+        
+        
+        xSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.test_x, null);
+        oSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.test_o, null);
         
         iv = imageView;
         recreateBitmap();
@@ -67,14 +80,34 @@ public class MyDrawable{
         canv.drawRect(x+rectPadding, y+rectPadding, w-rectPadding, h-rectPadding, paint);
     }
 
-    public void drawGid(int xOffset, int yOffset, int zoom, int matrixWidth, int matrixHeight) {
+    public void drawGid(int xOffset, int yOffset, int zoom, int[][] matrix) {
 
+        int matrixWidth = matrix.length;
+        int matrixHeight = matrix[0].length;
+        
         setUpPaintForRect();
         for(int i = (xOffset%zoom)-zoom; i <= bitmapWidht; i += zoom) {
-            if ((i > xOffset) && (i <= xOffset + (matrixWidth * zoom))) {
+            if ((i >= xOffset) && (i < xOffset + (matrixWidth * zoom))) {
                 for(int j = (yOffset%zoom)-zoom; j <= bitmapHeight; j += zoom) {
-                    if ((j > yOffset) && (j <= yOffset + (matrixHeight * zoom)))
+                    if ((j >= yOffset) && (j < yOffset + (matrixHeight * zoom))) {
                         drawRect(i, j, i+zoom, j+zoom);
+                        
+                        int posX = (i - xOffset)/zoom;
+                        int posY = (j - yOffset)/zoom;
+                        
+                        if((posX >= 0) && (posY >= 0)){
+                            switch ( matrix[posX][posY] ) {
+                                case 1:
+                                    xSign.setBounds(i, j, i + zoom, j + zoom);
+                                    xSign.draw(canv);
+                                    break;
+                                case 2:
+                                    oSign.setBounds(i, j, i + zoom, j + zoom);
+                                    oSign.draw(canv);
+                                    break;
+                            }
+                        }
+                    }
                 }
             }
             

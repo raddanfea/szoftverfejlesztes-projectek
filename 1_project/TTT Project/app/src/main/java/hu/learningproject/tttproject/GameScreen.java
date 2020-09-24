@@ -19,7 +19,10 @@ public class GameScreen extends AppCompatActivity {
     private MyDrawable mydrawing;
     private MyImageView image;
 
-    int startX, startY, origoX, origoY;
+    private int startX, startY, origoX, origoY;
+    
+    // just for testing
+    int[][] testGrid;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -41,15 +44,20 @@ public class GameScreen extends AppCompatActivity {
         startY = 0;
         origoX = 0;
         origoY = 0;
+    
+        testGrid = new int[5][7];
+        
+        testGrid[0][2] = 2;
+        testGrid[4][4] = 1;
         
         image = (MyImageView) findViewById(R.id.imV);
-        mydrawing = new MyDrawable(image, 10, 100);
+        mydrawing = new MyDrawable(getApplicationContext(), image, 10, 100);
         
         image.setOnImageViewSizeChanged(new MyImageView.OnImageViewSizeChanged() {
             @Override
             public void invoke(ImageView v, int w, int h) {
                 mydrawing.resize(w, h);
-                drawGrid(origoX, origoY);
+                drawGrid(testGrid, origoX, origoY);
             }
         });
         image.setOnTouchListener(new View.OnTouchListener() {
@@ -73,7 +81,7 @@ public class GameScreen extends AppCompatActivity {
                         startX = _x;
                         startY = _y;
                     
-                        drawGrid(origoX, origoY);
+                        drawGrid(testGrid, origoX, origoY);
                     
                         break;
                 }
@@ -85,9 +93,9 @@ public class GameScreen extends AppCompatActivity {
 
     }
     
-    private void drawGrid(int x, int y) {
+    private void drawGrid(int[][] grid, int x, int y) {
         mydrawing.fillBackground(Color.rgb(50, 50, 50));
-        mydrawing.drawGid(x, y, 200, 5, 7);
+        mydrawing.drawGid(x, y, 200, grid);
     }
 
 
