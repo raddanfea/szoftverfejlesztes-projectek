@@ -38,7 +38,6 @@ public class MyDrawable{
         
         Log.d("image", "imageView size: " + width + ", " + height);
         
-        
         xSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.test_x, null);
         oSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.test_o, null);
         
@@ -80,7 +79,7 @@ public class MyDrawable{
         canv.drawRect(x+rectPadding, y+rectPadding, w-rectPadding, h-rectPadding, paint);
     }
 
-    public void drawGid(int xOffset, int yOffset, int zoom, int[][] matrix) {
+    public void drawGid(int xOffset, int yOffset, int zoom, int[][] matrix, int selectedRectX, int selectedRectY) {
 
         int matrixWidth = matrix.length;
         int matrixHeight = matrix[0].length;
@@ -90,10 +89,16 @@ public class MyDrawable{
             if ((i >= xOffset) && (i < xOffset + (matrixWidth * zoom))) {
                 for(int j = (yOffset%zoom)-zoom; j <= bitmapHeight; j += zoom) {
                     if ((j >= yOffset) && (j < yOffset + (matrixHeight * zoom))) {
-                        drawRect(i, j, i+zoom, j+zoom);
-                        
                         int posX = (i - xOffset)/zoom;
                         int posY = (j - yOffset)/zoom;
+                        
+                        if(((selectedRectX > -1) && (selectedRectY > -1)) && ((selectedRectX == posX) && (selectedRectY == posY))) {
+                            paint.setARGB(255, 200, 200, 200);
+                            drawRect(i, j, i+zoom, j+zoom);
+                            paint.setARGB(255, 230, 230, 230);
+                        } else {
+                            drawRect(i, j, i+zoom, j+zoom);
+                        }
                         
                         if((posX >= 0) && (posY >= 0)){
                             switch ( matrix[posX][posY] ) {
