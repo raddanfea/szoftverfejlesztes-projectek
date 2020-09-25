@@ -1,4 +1,4 @@
-package hu.learningproject.tttproject;
+package hu.learningproject.tttproject.model;
 
 public class GameData {
     public byte[][] currentMap;

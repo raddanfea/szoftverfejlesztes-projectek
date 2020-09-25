@@ -1,9 +1,9 @@
-package hu.learningproject.tttproject;
+package hu.learningproject.tttproject.model;
 
 public class GameLogic {
 
 
-    //main function to provide help for testers and later integration
+    // original main function to provide example for testers and later integration
     /*
     public static void main(String []args){
 
