@@ -12,6 +12,7 @@ import android.widget.EditText;
 public class NameScreen extends AppCompatActivity {
 
     private Button game_button;
+    private Button back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,14 @@ public class NameScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openGameScreen();
+            }
+        });
+
+        back_button = (Button) findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backScreen();
             }
         });
     }
@@ -38,5 +47,10 @@ public class NameScreen extends AppCompatActivity {
         target2.putExtra("p1n",player1_name);
         target2.putExtra("p2n",player2_name);
         startActivity(target2);
+    }
+
+    public void backScreen() {
+        finish();
+        System.exit(0);
     }
 }
