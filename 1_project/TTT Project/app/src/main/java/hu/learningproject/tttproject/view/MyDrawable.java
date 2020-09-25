@@ -13,12 +13,12 @@ import androidx.core.content.res.ResourcesCompat;
 import hu.learningproject.tttproject.R;
 
 public class MyDrawable{
-
+    
     private final Paint paint;
     private Bitmap bm;
     private Canvas canv;
     private ImageView iv;
-
+    
     private int bitmapWidht;
     private int bitmapHeight;
     private Bitmap.Config bitmapConfiguration = Bitmap.Config.ARGB_8888;
@@ -27,12 +27,12 @@ public class MyDrawable{
     private Drawable oSign;
     
     private int rectPadding = 4;
-
+    
     public MyDrawable(Context context, ImageView imageView, int width, int height) {
         // Set up color and text size
         paint = new Paint();
         paint.setARGB(255, 230, 230, 230);
-
+        
         bitmapWidht = width;
         bitmapHeight = height;
         
@@ -56,31 +56,31 @@ public class MyDrawable{
         bitmapHeight = h;
         recreateBitmap();
     }
-
+    
     public void setUpPaintForStroke(int w) {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(w);
         paint.setAntiAlias(true);
     }
-
+    
     public void setUpPaintForRect() {
         paint.setStyle(Paint.Style.FILL);
     }
-
+    
     public void fillBackground(int color) {
         canv.drawColor(color);
     }
-
+    
     public void drawLine(int x, int y, int w, int h) {
         canv.drawLine(x, y, w, h, paint);
     }
-
+    
     public void drawRect(int x, int y, int w, int h) {
         canv.drawRect(x+rectPadding, y+rectPadding, w-rectPadding, h-rectPadding, paint);
     }
-
-    public void drawGid(int xOffset, int yOffset, int zoom, int[][] matrix, int selectedRectX, int selectedRectY) {
-
+    
+    public void drawGid(int xOffset, int yOffset, int zoom, byte[][] matrix, int selectedRectX, int selectedRectY) {
+        
         int matrixWidth = matrix.length;
         int matrixHeight = matrix[0].length;
         
@@ -119,6 +119,5 @@ public class MyDrawable{
         }
         
     }
-
+    
 }
-
