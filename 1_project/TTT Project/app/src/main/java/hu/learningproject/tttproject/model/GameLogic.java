@@ -30,7 +30,7 @@ public class GameLogic {
     }
 
     // calculate the matrix changes from input. needs changed coordinates and GameData
-    private static byte[][] GetNextStep(int x, int y,int t,int s,byte[][] currentMap){
+    public static byte[][] GetNextStep(int x, int y,int t,int s, byte[][] currentMap){
 
         byte player = 1;
         if(t%2 == 0){
@@ -56,7 +56,8 @@ public class GameLogic {
 
     }
 
-    // print array for testing later <3
+    // print array for testing <3
+    /*
     public static void print(final byte[][] array) {
         for (int l = 0; l < array.length; l++) {
             for (int j = 0; j < array[l].length; j++) {
@@ -64,5 +65,5 @@ public class GameLogic {
             }
             System.out.println();
         }
-    }
+    }*/
 }
