@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".HighScores">
 
@@ -11,26 +12,26 @@
         android:id="@+id/highscores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:text="High Scores"
-        android:textSize="60sp"
-        android:layout_gravity="center"/>
+        android:textSize="60sp" />
 
     <TextView
         android:id="@+id/res"
         android:layout_width="291dp"
         android:layout_height="400dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
     <Button
         android:id="@+id/back_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:text="Back" />
 
 </LinearLayout>

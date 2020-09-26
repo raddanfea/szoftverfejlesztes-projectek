@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -11,38 +12,38 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="132dp"
         android:text="Wellcome To Endless Sudoku"
         android:textAlignment="center"
-        android:textSize="36sp"
-        android:layout_gravity="center"/>
+        android:textSize="36sp" />
 
     <Button
         android:id="@+id/play_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="55dp"
         android:text="Player vs Player"
-        android:textSize="18sp"
-        android:layout_gravity="center"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/highscores_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="32dp"
         android:text="High Scores"
-        android:textSize="18sp"
-        android:layout_gravity="center"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/exit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="32dp"
         android:text="Exit"
-        android:textSize="18sp"
-        android:layout_gravity="center"/>
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/mute_button"
