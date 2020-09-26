@@ -4,19 +4,27 @@ import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 
 public class NameScreen extends AppCompatActivity {
 
     private Button game_button;
     private Button back_button;
     private EditText player1name, player2name;
+    private ImageView imageView, imageView2;
+    private static final int PICK_IMAGE = 100;
+    private Uri imageUri;
+    private boolean firstPicSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,22 @@ public class NameScreen extends AppCompatActivity {
             }
         });
 
+        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imagePicker();
+            }
+        });
+
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imagePicker();
+            }
+        });
+
 
     }
 
@@ -63,6 +87,13 @@ public class NameScreen extends AppCompatActivity {
         finish();
         System.exit(0);
     }
+
+
+    public void imagePicker() {
+        Intent galery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(galery, PICK_IMAGE);
+    }
+
 
     //start button inactiv until names are not typed
     private TextWatcher loginTextWatcher = new TextWatcher() {
@@ -84,4 +115,18 @@ public class NameScreen extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            if(!firstPicSelected) {
+                imageView.setImageURI(imageUri);
+                firstPicSelected = true;
+            }
+            else
+                imageView2.setImageURI(imageUri);
+        }
+    }
 }
