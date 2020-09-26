@@ -101,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
 
 
   @Override
+  protected void onPause() {
+    super.onPause();
+    playSound.stop();
+  }
+
+  @Override
   protected void onResume() {
     super.onResume();
     playSound.stop();
