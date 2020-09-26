@@ -5,19 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class NameScreen extends AppCompatActivity {
 
     private Button game_button;
     private Button back_button;
+    private EditText player1name, player2name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_screen);
+
+        player1name = (EditText) findViewById(R.id.p1name);
+        player2name = (EditText) findViewById(R.id.p2name);
+
+        player1name.addTextChangedListener(loginTextWatcher);
+        player2name.addTextChangedListener(loginTextWatcher);
 
         game_button = (Button) findViewById(R.id.start_game);
         game_button.setOnClickListener(new View.OnClickListener() {
@@ -34,13 +44,13 @@ public class NameScreen extends AppCompatActivity {
                 backScreen();
             }
         });
+
+
     }
 
     public void openGameScreen() {
 
-        EditText player1name = (EditText) findViewById(R.id.p1name);
         String player1_name = player1name.getText().toString();
-        EditText player2name = (EditText) findViewById(R.id.p2name);
         String player2_name = player2name.getText().toString();
 
         Intent target2 = new Intent( this, GameScreen.class);
@@ -53,4 +63,25 @@ public class NameScreen extends AppCompatActivity {
         finish();
         System.exit(0);
     }
+
+    //start button inactiv until names are not typed
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String name1 = player1name.getText().toString().trim();
+            String name2 = player2name.getText().toString().trim();
+
+            game_button.setEnabled(!name1.isEmpty() && !name2.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 }
