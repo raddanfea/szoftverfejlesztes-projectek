@@ -11,8 +11,7 @@ import hu.learningproject.tttproject.R;
 
 public class PlaySound {
 
-
-    public final void Play(Context cont, String name, Boolean loop){
+     public final void Play(Context cont, String name, Boolean loop){
 
         Uri myUri = Uri.parse("android.resource://hu.learningproject.tttproject/" + R.raw.test);
 
