@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import hu.learningproject.tttproject.model.GameData;
 import hu.learningproject.tttproject.model.GameLogic;
@@ -23,6 +25,9 @@ public class GameScreen extends AppCompatActivity {
     
     private MyDrawable mydrawing;
     private MyImageView image;
+    private long BackPressedTime;
+    private Toast backToast;
+    public Button backbutton;
     
     private int zoom = 200;
     private int startX, startY, origoX, origoY, tempX, tempY, selectedX, selectedY;
@@ -45,6 +50,14 @@ public class GameScreen extends AppCompatActivity {
         
         name1.setText(player1name);
         name2.setText(player2name);
+
+        backbutton = (Button) findViewById(R.id.back_B);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         
         startX = 0;
         startY = 0;
@@ -138,5 +151,20 @@ public class GameScreen extends AppCompatActivity {
             indexes[1] = -1;
         return indexes;
     }
-    
+
+    //2 mp alatt "x megnyomva a back gonbot vissza leounk az elozo oldalra, ezzel elkerulve a veletlen vissza lepest jatek kozbe
+    @Override
+    public void onBackPressed() {
+
+        if (BackPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();;
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press Back again to exit", Toast.LENGTH_LONG);
+            backToast.show();
+        }
+
+        BackPressedTime = System.currentTimeMillis();
+    }
 }
