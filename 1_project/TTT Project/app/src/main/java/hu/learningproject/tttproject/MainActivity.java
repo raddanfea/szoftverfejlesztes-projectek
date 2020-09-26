@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     PlaySound playSound = new PlaySound();
 
-    playSound.Play(this,"test");
+    playSound.Play(this,"test",true);
 
   }
 

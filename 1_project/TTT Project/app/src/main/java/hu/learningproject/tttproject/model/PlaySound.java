@@ -12,12 +12,12 @@ import hu.learningproject.tttproject.R;
 public class PlaySound {
 
 
-    public final void Play(Context cont, String name){
+    public final void Play(Context cont, String name, Boolean loop){
 
         Uri myUri = Uri.parse("android.resource://hu.learningproject.tttproject/" + R.raw.test);
 
         final MediaPlayer mp = MediaPlayer.create(cont, myUri);
-        mp.setLooping(true);
+        mp.setLooping(loop);
         mp.start();
 
         new Handler().postDelayed(new Runnable() {
