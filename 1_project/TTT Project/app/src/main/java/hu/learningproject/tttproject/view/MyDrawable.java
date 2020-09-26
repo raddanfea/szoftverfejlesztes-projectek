@@ -38,8 +38,8 @@ public class MyDrawable{
         
         Log.d("image", "imageView size: " + width + ", " + height);
         
-        xSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.test_x, null);
-        oSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.test_o, null);
+        xSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.x_sign, null);
+        oSign = ResourcesCompat.getDrawable(context.getResources(), R.drawable.o_sign, null);
         
         iv = imageView;
         recreateBitmap();

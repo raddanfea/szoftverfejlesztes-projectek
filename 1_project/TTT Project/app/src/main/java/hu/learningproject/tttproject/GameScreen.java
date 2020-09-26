@@ -32,6 +32,7 @@ public class GameScreen extends AppCompatActivity {
     private int zoom = 200;
     private int startX, startY, origoX, origoY, tempX, tempY, selectedX, selectedY;
     private long touchStartTime;
+    private final int UNSELECTED = -1;
     
     private GameData gameData;
     
@@ -65,8 +66,8 @@ public class GameScreen extends AppCompatActivity {
         origoY = 0;
         tempX = 0;
         tempY = 0;
-        selectedX = -1; // -1 = nothing is selected
-        selectedY = -1;
+        selectedX = UNSELECTED;
+        selectedY = UNSELECTED;
         
         gameData = new GameData();
         gameData.currentMap = new byte[gameData.defaultSize][gameData.defaultSize];
@@ -119,7 +120,14 @@ public class GameScreen extends AppCompatActivity {
                             // check if selected tile is empty
                             if(GameLogic.isValidPos(selectedX, selectedY, gameData.currentMap)) {
                                 // pass the calculated indexes (selectedX, selectedY) to the game
+                                int prevLength = gameData.currentMap.length;
                                 gameData.currentMap = GameLogic.GetNextStep(selectedX, selectedY, gameData.turn++, gameData.currentMap.length, gameData.currentMap);
+                                if(gameData.currentMap.length > prevLength) {
+                                    origoX -= zoom;
+                                    origoY -= zoom;
+                                    selectedX++;
+                                    selectedY++;
+                                }
                                 drawGrid(gameData.currentMap);
                             }
                             
@@ -143,12 +151,12 @@ public class GameScreen extends AppCompatActivity {
         int[] indexes = new int[2];
         //calc x
         indexes[0] = (x - origoX)/zoom;
-        if((indexes[0] < 0) || (indexes[0] >= gameData.currentMap.length))
-            indexes[0] = -1;
+        if((x < origoX) || (indexes[0] >= gameData.currentMap.length))
+            indexes[0] = UNSELECTED;
         //calc y
         indexes[1] = (y - origoY)/zoom;
-        if((indexes[1] < 0) || (indexes[1] >= gameData.currentMap[0].length))
-            indexes[1] = -1;
+        if((y < origoY) || (indexes[1] >= gameData.currentMap[0].length))
+            indexes[1] = UNSELECTED;
         return indexes;
     }
 
