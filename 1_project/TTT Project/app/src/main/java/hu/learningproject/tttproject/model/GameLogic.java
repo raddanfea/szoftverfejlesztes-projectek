@@ -20,6 +20,7 @@ public class GameLogic {
 
     }*/
 
+    //boolean to determine a valid map placement
     public static boolean isValidPos(int x, int y, byte[][] map){
         return map[x][y] == 0;
     }
@@ -54,6 +55,64 @@ public class GameLogic {
 
         return currentMap;
 
+    }
+
+    /* Function to find win condition.
+    * Gets x and y coordinates, turn number and current map.
+    * Should be called before getNextStep and after isValidPos!
+    * returns True or False currently. */
+
+    public static boolean isWinner(int x, int y, int t, byte[][] currentMap) {
+
+        byte player = 1;
+        if(t%2 == 0){
+            player = 2;
+        }
+
+        byte winhas = 1;
+        byte wincon = 5;
+
+        for(int jfl = 1; jfl < wincon; jfl++)
+            try {
+                if(currentMap[x-jfl][y-jfl] == player){
+                    System.out.println("WIN++");
+                    winhas += 1;
+                }
+                else{break;}}
+            catch (Exception e){break;}
+
+        for(int jfl = 1; jfl < wincon; jfl++)
+            try {
+                if(currentMap[x+jfl][y+jfl] == player){
+                    winhas += 1;
+                }
+                else{break;}}
+            catch (Exception e){break;}
+        //System.out.println("has win: " + winhas);
+
+        if(winhas < 5){
+
+            winhas = 1;
+
+            for(int jfl = 1; jfl < wincon; jfl++)
+                try {
+                    if(currentMap[x+jfl][y-jfl] == player){
+                        winhas += 1;
+                    }
+                    else{break;}}
+                catch (Exception e){break;}
+
+            for(int jfl = 1; jfl < wincon; jfl++)
+                try {
+                    if(currentMap[x-jfl][y+jfl] == player){
+                        winhas += 1;
+                    }
+                    else{break;}}
+                catch (Exception e){break;}
+        }
+
+        //System.out.println("has win: " + winhas);
+        return winhas > 4;
     }
 
     // print array for testing <3
