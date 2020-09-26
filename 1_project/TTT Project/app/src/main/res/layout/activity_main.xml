@@ -8,6 +8,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Switch
+        android:id="@+id/muteswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="15dp"
+        android:thumb="@drawable/tumb"/>
+
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -45,12 +55,6 @@
         android:text="Exit"
         android:textSize="18sp" />
 
-    <Switch
-        android:id="@+id/muteswitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:thumb="@drawable/tumb"/>
+
 
 </LinearLayout>
