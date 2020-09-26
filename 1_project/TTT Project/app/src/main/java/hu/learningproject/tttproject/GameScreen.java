@@ -152,7 +152,7 @@ public class GameScreen extends AppCompatActivity {
         return indexes;
     }
 
-    //2 mp alatt "x megnyomva a back gonbot vissza leounk az elozo oldalra, ezzel elkerulve a veletlen vissza lepest jatek kozbe
+    //2 mp alatt "x megnyomva a back gombot vissza leounk az elozo oldalra, ezzel elkerulve a veletlen vissza lepest jatek kozbe
     @Override
     public void onBackPressed() {
 
@@ -161,7 +161,7 @@ public class GameScreen extends AppCompatActivity {
             super.onBackPressed();
             return;
         } else {
-            backToast = Toast.makeText(getBaseContext(), "Press Back again to exit", Toast.LENGTH_LONG);
+            backToast = Toast.makeText(getBaseContext(), "Press EXIT again to close the program", Toast.LENGTH_LONG);
             backToast.show();
         }
 
