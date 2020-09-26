@@ -11,7 +11,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.io.IOException;
 
@@ -42,11 +45,25 @@ public class MainActivity extends AppCompatActivity {
         onBackPressed();
       }
     });
+
     high_scores_button = (Button) findViewById(R.id.highscores_button);
     high_scores_button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         openHighScores();
+      }
+    });
+
+    final Switch mute = (Switch) findViewById(R.id.muteswitch);
+
+    mute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if (mute.isChecked() == true){
+          //mute music
+        } else {
+          //continue to play the music
+        }
       }
     });
 
@@ -77,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
     } else {
       backToast = Toast.makeText(getBaseContext(), "Press EXIT to close the game", Toast.LENGTH_LONG);
       backToast.show();
+      finish();
+      System.exit(0);
     }
 
     BackPressedTime = System.currentTimeMillis();

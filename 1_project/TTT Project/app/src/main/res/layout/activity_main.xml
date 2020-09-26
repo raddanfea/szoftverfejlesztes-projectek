@@ -45,7 +45,8 @@
         android:text="Exit"
         android:textSize="18sp" />
 
-    <androidx.appcompat.widget.SwitchCompat
+    <Switch
+        android:id="@+id/muteswitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
