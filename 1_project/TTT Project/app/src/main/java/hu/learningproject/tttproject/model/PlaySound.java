@@ -4,15 +4,13 @@ package hu.learningproject.tttproject.model;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Handler;
-
 import java.lang.reflect.Field;
-
-import hu.learningproject.tttproject.MainActivity;
 import hu.learningproject.tttproject.R;
 
 
 /*
-A class to call for sounds using filename. Takes a bool to enable looping.
+A class to call for sounds using filename, such as "test".
+Takes a bool to enable looping.
 WARNING, LOOP CANNOT BE STOPPED!
 */
 public class PlaySound {
