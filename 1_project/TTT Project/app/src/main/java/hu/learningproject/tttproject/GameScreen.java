@@ -161,7 +161,7 @@ public class GameScreen extends AppCompatActivity {
             super.onBackPressed();
             return;
         } else {
-            backToast = Toast.makeText(getBaseContext(), "Press EXIT again to close the program", Toast.LENGTH_LONG);
+            backToast = Toast.makeText(getBaseContext(), "Press BACK to exit", Toast.LENGTH_LONG);
             backToast.show();
         }
 

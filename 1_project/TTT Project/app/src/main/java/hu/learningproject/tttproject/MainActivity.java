@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
       super.onBackPressed();
       return;
     } else {
-      backToast = Toast.makeText(getBaseContext(), "Press Back again to exit", Toast.LENGTH_LONG);
+      backToast = Toast.makeText(getBaseContext(), "Press EXIT to close the game", Toast.LENGTH_LONG);
       backToast.show();
     }
 
