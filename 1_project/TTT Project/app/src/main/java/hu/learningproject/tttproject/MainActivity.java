@@ -99,4 +99,16 @@ public class MainActivity extends AppCompatActivity {
     BackPressedTime = System.currentTimeMillis();
   }
 
+  @Override
+  protected void onPause() {
+    super.onPause();
+    playSound.stop();
+  }
+  @Override
+  protected void onResume() {
+    super.onResume();
+    playSound.stop();
+    playSound.play(this, "bgm_slow_low", true);
+  }
+
 }
