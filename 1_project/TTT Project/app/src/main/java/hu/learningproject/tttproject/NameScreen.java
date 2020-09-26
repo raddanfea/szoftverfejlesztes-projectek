@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import hu.learningproject.tttproject.model.PlaySound;
+
 
 public class NameScreen extends AppCompatActivity {
 
@@ -25,6 +27,8 @@ public class NameScreen extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     private Uri imageUri;
     private boolean firstPicSelected = false;
+    PlaySound playSound = new PlaySound();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,8 @@ public class NameScreen extends AppCompatActivity {
                 imagePicker();
             }
         });
+
+        playSound.play(this,"bgm_slow_low",true);
 
 
     }
