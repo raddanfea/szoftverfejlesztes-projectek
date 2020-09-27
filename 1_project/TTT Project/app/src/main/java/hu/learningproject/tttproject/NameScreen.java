@@ -25,7 +25,7 @@ public class NameScreen extends AppCompatActivity {
     private EditText player1name, player2name;
     private ImageView imageView, imageView2;
     private static final int PICK_IMAGE = 100;
-    private Uri imageUri;
+    private Uri imageUri, imgUri, imgUri2;
     private boolean firstPicSelected = false;
     PlaySound playSound = new PlaySound();
 
@@ -86,6 +86,8 @@ public class NameScreen extends AppCompatActivity {
         Intent target2 = new Intent( this, GameScreen.class);
         target2.putExtra("p1n",player1_name);
         target2.putExtra("p2n",player2_name);
+        target2.putExtra("image", imgUri.toString());
+        target2.putExtra("image2", imgUri2.toString());
         startActivity(target2);
     }
 
@@ -129,10 +131,14 @@ public class NameScreen extends AppCompatActivity {
             imageUri = data.getData();
             if(!firstPicSelected) {
                 imageView.setImageURI(imageUri);
+                imgUri = imageUri;
                 firstPicSelected = true;
             }
-            else
+            else {
                 imageView2.setImageURI(imageUri);
+                imgUri2 = imageUri;
+                firstPicSelected = false;
+            }
         }
     }
 }

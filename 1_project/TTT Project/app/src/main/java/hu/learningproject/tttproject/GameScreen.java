@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -35,7 +36,16 @@ public class GameScreen extends AppCompatActivity {
     private final int UNSELECTED = -1;
     
     private GameData gameData;
-    
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ImageView imageView3 = findViewById(R.id.imageView3);
+        ImageView imageView4 = findViewById(R.id.imageView4);
+        imageView3.setImageURI(Uri.parse(getIntent().getStringExtra("image")));
+        imageView4.setImageURI(Uri.parse(getIntent().getStringExtra("image2")));
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
