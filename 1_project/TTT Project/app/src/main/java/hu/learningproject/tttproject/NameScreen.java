@@ -27,6 +27,7 @@ public class NameScreen extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     private Uri imageUri, imgUri, imgUri2;
     private boolean firstPicSelected = false;
+    private boolean secondPicSelected = false;
     PlaySound playSound = new PlaySound();
 
 
@@ -62,6 +63,8 @@ public class NameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imagePicker();
+                firstPicSelected = true;
+                secondPicSelected = false;
             }
         });
 
@@ -70,6 +73,8 @@ public class NameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imagePicker();
+                secondPicSelected = true;
+                firstPicSelected = false;
             }
         });
 
@@ -134,15 +139,13 @@ public class NameScreen extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
-            if(!firstPicSelected) {
+            if(firstPicSelected && !secondPicSelected) {
                 imageView.setImageURI(imageUri);
                 imgUri = imageUri;
-                firstPicSelected = true;
             }
-            else {
+            else if (!firstPicSelected && secondPicSelected) {
                 imageView2.setImageURI(imageUri);
                 imgUri2 = imageUri;
-                firstPicSelected = false;
             }
         }
     }
