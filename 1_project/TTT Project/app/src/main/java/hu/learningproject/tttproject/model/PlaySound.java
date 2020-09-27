@@ -32,12 +32,17 @@ public class PlaySound {
         mp.setLooping(loop);
         mp.start();
 
-        handler.postDelayed(runnable,mp.getDuration()-80);
-    }
+        if (loop){
+            handler.postDelayed(runnable,mp.getDuration()-80);
+        }
+     }
 
-    public final void stop(){
+    public final void stop(boolean loop){
          mp.release();
-    }
+         if(loop){
+             handler.removeCallbacks(runnable);
+         }
+     }
 
 
     private static int getResId(String resName, Class<?> c) {

@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
   private void switchSound(){
     if(sound){
-      playSound.stop();
+      playSound.stop(true);
       sound = false;
     }else{
       playSound.play(this,"bgm_slow_low",true);
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     BackPressedTime = System.currentTimeMillis();
   }
 
-
+  /*
   @Override
   protected void onPause() {
     super.onPause();
@@ -112,5 +112,6 @@ public class MainActivity extends AppCompatActivity {
     playSound.stop();
     playSound.play(this, "bgm_slow_low", true);
   }
+   */
 
 }

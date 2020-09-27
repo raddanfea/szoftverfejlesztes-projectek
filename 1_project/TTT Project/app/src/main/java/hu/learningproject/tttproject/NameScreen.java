@@ -28,7 +28,6 @@ public class NameScreen extends AppCompatActivity {
     private Uri imageUri, imgUri, imgUri2;
     private boolean firstPicSelected = false;
     private boolean secondPicSelected = false;
-    PlaySound playSound = new PlaySound();
 
 
     @Override
@@ -78,7 +77,6 @@ public class NameScreen extends AppCompatActivity {
             }
         });
 
-        playSound.play(this,"bgm_slow_low",true);
 
 
     }
