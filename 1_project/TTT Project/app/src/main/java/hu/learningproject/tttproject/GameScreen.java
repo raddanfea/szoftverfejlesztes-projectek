@@ -3,15 +3,21 @@ package hu.learningproject.tttproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +43,39 @@ public class GameScreen extends AppCompatActivity {
     private long touchStartTime;
     private final int UNSELECTED = -1;
     private GameData gameData;
+    
+    public void showPopup() {
+        // inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+            getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_layout, null);
+    
+        // create the popup window
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = false; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.showAtLocation(findViewById(R.id.constraintLayout), Gravity.CENTER, 0, 0);
+    
+        TextView congratText = popupView.findViewById(R.id.congratTextView);
+        congratText.setText((gameData.winner == 1 ? gameData.p1 : gameData.p2) + " won!");
+
+        Button stayButton = popupView.findViewById(R.id.stayButton);
+        stayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+        Button endButton = popupView.findViewById(R.id.endButton);
+        endButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
     @Override
     protected void onStart() {
@@ -139,10 +178,10 @@ public class GameScreen extends AppCompatActivity {
                             return true;
                         
                         long touchEndTime = System.nanoTime();
-                        Log.d("max", "x - startX = " + (_x - startX));
+                        //Log.d("max", "x - startX = " + (_x - startX));
                         // if released under 300ms then ...
                         if(((touchEndTime - touchStartTime)/1000000 <= 300) && ((selectedX != -1) && (selectedY != -1)) && (max(abs(_x - startX),abs(_y - startY)) < zoom/4)) {
-                            Log.d("press", "released under 300ms");
+                            //Log.d("press", "released under 300ms");
                             // check if selected tile is empty
                             if(GameLogic.isValidPos(selectedX, selectedY, gameData.currentMap)) {
                                 if (firstPlayersTurn) {
@@ -157,8 +196,8 @@ public class GameScreen extends AppCompatActivity {
                                 int prevLength = gameData.currentMap.length;
                                 if(GameLogic.isWinner(selectedX, selectedY, gameData.turn, gameData.currentMap)) {
                                     gameData.winner = (byte)(gameData.turn%2 == 0 ? 2 : 1);
-                                    Log.d("win", "the winner is: " + gameData.winner);
-                                    Toast.makeText(getApplicationContext(), "The winner is: " + (gameData.winner == 1 ? gameData.p1 : gameData.p2), Toast.LENGTH_LONG).show();
+                                    showPopup();
+                                    //Toast.makeText(getApplicationContext(), "The winner is: " + (gameData.winner == 1 ? gameData.p1 : gameData.p2), Toast.LENGTH_LONG).show();
                                 }
                                 gameData.currentMap = GameLogic.GetNextStep(selectedX, selectedY, gameData.turn, gameData.currentMap.length, gameData.currentMap);
                                 
