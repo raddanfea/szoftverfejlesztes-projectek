@@ -43,8 +43,10 @@ public class GameScreen extends AppCompatActivity {
         super.onStart();
         ImageView imageView3 = findViewById(R.id.imageView3);
         ImageView imageView4 = findViewById(R.id.imageView4);
-        if(getIntent().hasExtra("image") && getIntent().hasExtra("image2")) {
+        if(getIntent().hasExtra("image")) {
             imageView3.setImageURI(Uri.parse(getIntent().getStringExtra("image")));
+        }
+        if(getIntent().hasExtra("image2")) {
             imageView4.setImageURI(Uri.parse(getIntent().getStringExtra("image2")));
         }
     }
