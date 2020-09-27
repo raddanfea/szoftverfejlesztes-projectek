@@ -93,6 +93,7 @@ public class NameScreen extends AppCompatActivity {
         catch (NullPointerException e) {
             startActivity(target2);
         }
+        startActivity(target2);
     }
 
     public void backScreen() {
