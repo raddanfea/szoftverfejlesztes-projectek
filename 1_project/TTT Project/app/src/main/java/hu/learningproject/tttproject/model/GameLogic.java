@@ -111,9 +111,53 @@ public class GameLogic {
                 catch (Exception e){break;}
         }
 
+        if(winhas < 5){
+
+            winhas = 1;
+
+            for(int jfl = 1; jfl < wincon; jfl++)
+                try {
+                    if(currentMap[x][y+jfl] == player){
+                        winhas += 1;
+                    }
+                    else{break;}}
+                catch (Exception e){break;}
+
+            for(int jfl = 1; jfl < wincon; jfl++)
+                try {
+                    if(currentMap[x][y-jfl] == player){
+                        winhas += 1;
+                    }
+                    else{break;}}
+                catch (Exception e){break;}
+        }
+
+        if(winhas < 5){
+
+            winhas = 1;
+
+            for(int jfl = 1; jfl < wincon; jfl++)
+                try {
+                    if(currentMap[x+jfl][y] == player){
+                        winhas += 1;
+                    }
+                    else{break;}}
+                catch (Exception e){break;}
+
+            for(int jfl = 1; jfl < wincon; jfl++)
+                try {
+                    if(currentMap[x-jfl][y] == player){
+                        winhas += 1;
+                    }
+                    else{break;}}
+                catch (Exception e){break;}
+        }
+
         //System.out.println("has win: " + winhas);
         return winhas > 4;
     }
+
+
 
     // print array for testing <3
     /*
