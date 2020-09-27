@@ -37,11 +37,13 @@ public class PlaySound {
         }
      }
 
+     //stops currently running audio. Use true to kill loop safely!
     public final void stop(boolean loop){
+        if(loop){
+            handler.removeCallbacks(runnable);
+        }
          mp.release();
-         if(loop){
-             handler.removeCallbacks(runnable);
-         }
+
      }
 
 
