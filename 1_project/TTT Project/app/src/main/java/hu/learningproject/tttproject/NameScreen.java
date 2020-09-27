@@ -86,9 +86,13 @@ public class NameScreen extends AppCompatActivity {
         Intent target2 = new Intent( this, GameScreen.class);
         target2.putExtra("p1n",player1_name);
         target2.putExtra("p2n",player2_name);
-        target2.putExtra("image", imgUri.toString());
-        target2.putExtra("image2", imgUri2.toString());
-        startActivity(target2);
+        try {
+            target2.putExtra("image", imgUri.toString());
+            target2.putExtra("image2", imgUri2.toString());
+        }
+        catch (NullPointerException e) {
+            startActivity(target2);
+        }
     }
 
     public void backScreen() {

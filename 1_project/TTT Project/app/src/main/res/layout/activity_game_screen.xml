@@ -32,8 +32,7 @@
         android:layout_marginTop="32dp"
         android:layout_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorAccent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView1"
@@ -44,8 +43,9 @@
         android:layout_weight="1"
         android:text="p1name"
         android:textAlignment="center"
+        android:textColor="#D8C0C0"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -58,7 +58,9 @@
         android:layout_weight="1"
         android:text="p2name"
         android:textAlignment="center"
+        android:textColor="#D8C0C0"
         android:textSize="18sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
@@ -71,8 +73,7 @@
         android:layout_marginEnd="16dp"
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorPrimary" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/back_B"

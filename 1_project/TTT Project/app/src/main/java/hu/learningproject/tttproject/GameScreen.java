@@ -43,8 +43,10 @@ public class GameScreen extends AppCompatActivity {
         super.onStart();
         ImageView imageView3 = findViewById(R.id.imageView3);
         ImageView imageView4 = findViewById(R.id.imageView4);
-        imageView3.setImageURI(Uri.parse(getIntent().getStringExtra("image")));
-        imageView4.setImageURI(Uri.parse(getIntent().getStringExtra("image2")));
+        if(getIntent().hasExtra("image") && getIntent().hasExtra("image2")) {
+            imageView3.setImageURI(Uri.parse(getIntent().getStringExtra("image")));
+            imageView4.setImageURI(Uri.parse(getIntent().getStringExtra("image2")));
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
