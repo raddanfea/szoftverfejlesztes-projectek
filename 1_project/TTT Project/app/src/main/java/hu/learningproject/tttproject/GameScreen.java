@@ -60,12 +60,13 @@ public class GameScreen extends AppCompatActivity {
 
         final TextView name1 = (TextView) findViewById(R.id.textView1);
         final TextView name2 = (TextView) findViewById(R.id.textView2);
+    
+        gameData = new GameData();
+        gameData.p1 = getIntent().getStringExtra("p1n");
+        gameData.p2 = getIntent().getStringExtra("p2n");
 
-        String player1name = getIntent().getStringExtra("p1n");
-        String player2name = getIntent().getStringExtra("p2n");
-
-        name1.setText(player1name);
-        name2.setText(player2name);
+        name1.setText(gameData.p1);
+        name2.setText(gameData.p2);
 
         name1.setBackgroundColor(Color.parseColor("#E6DB0E"));
         name1.setTypeface(Typeface.DEFAULT_BOLD);
@@ -89,8 +90,9 @@ public class GameScreen extends AppCompatActivity {
         tempY = 0;
         selectedX = UNSELECTED;
         selectedY = UNSELECTED;
+        gameData.winner = 0;
+        gameData.turn = 1;
         
-        gameData = new GameData();
         gameData.currentMap = new byte[gameData.defaultSize][gameData.defaultSize];
         
         image = (MyImageView) findViewById(R.id.imV);
@@ -133,14 +135,9 @@ public class GameScreen extends AppCompatActivity {
                         drawGrid(gameData.currentMap);
                         break;
                     case MotionEvent.ACTION_UP:
-                        if (firstPlayersTurn) {
-                            highlightPlayer(name1, name2);
-                            firstPlayersTurn = false;
-                        }
-                        else {
-                            highlightPlayer(name2, name1);
-                            firstPlayersTurn = true;
-                        }
+                        if(gameData.winner != 0)
+                            return true;
+                        
                         long touchEndTime = System.nanoTime();
                         Log.d("max", "x - startX = " + (_x - startX));
                         // if released under 300ms then ...
@@ -148,9 +145,23 @@ public class GameScreen extends AppCompatActivity {
                             Log.d("press", "released under 300ms");
                             // check if selected tile is empty
                             if(GameLogic.isValidPos(selectedX, selectedY, gameData.currentMap)) {
+                                if (firstPlayersTurn) {
+                                    highlightPlayer(name1, name2);
+                                    firstPlayersTurn = false;
+                                }
+                                else {
+                                    highlightPlayer(name2, name1);
+                                    firstPlayersTurn = true;
+                                }
                                 // pass the calculated indexes (selectedX, selectedY) to the game
                                 int prevLength = gameData.currentMap.length;
-                                gameData.currentMap = GameLogic.GetNextStep(selectedX, selectedY, gameData.turn++, gameData.currentMap.length, gameData.currentMap);
+                                gameData.currentMap = GameLogic.GetNextStep(selectedX, selectedY, gameData.turn, gameData.currentMap.length, gameData.currentMap);
+                                if(GameLogic.isWinner(selectedX, selectedY, gameData.turn, gameData.currentMap)) {
+                                    gameData.winner = (byte)(gameData.turn%2 == 0 ? 2 : 1);
+                                    Log.d("win", "the winner is: " + gameData.winner);
+                                    Toast.makeText(getApplicationContext(), "The winner is: " + (gameData.winner == 1 ? gameData.p1 : gameData.p2), Toast.LENGTH_LONG).show();
+                                }
+                                
                                 if(gameData.currentMap.length > prevLength) {
                                     origoX -= zoom;
                                     origoY -= zoom;
@@ -158,6 +169,7 @@ public class GameScreen extends AppCompatActivity {
                                     selectedY++;
                                 }
                                 drawGrid(gameData.currentMap);
+                                gameData.turn++;
                             }
                             
                         }
