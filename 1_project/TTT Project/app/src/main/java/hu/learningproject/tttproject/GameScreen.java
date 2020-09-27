@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,12 +30,12 @@ public class GameScreen extends AppCompatActivity {
     private long BackPressedTime;
     private Toast backToast;
     public Button backbutton;
+    public boolean firstPlayersTurn = false;
     
     private int zoom = 200;
     private int startX, startY, origoX, origoY, tempX, tempY, selectedX, selectedY;
     private long touchStartTime;
     private final int UNSELECTED = -1;
-    
     private GameData gameData;
 
     @Override
@@ -52,15 +53,21 @@ public class GameScreen extends AppCompatActivity {
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
-        
-        TextView name1 = (TextView) findViewById(R.id.textView1);
-        TextView name2 = (TextView) findViewById(R.id.textView2);
-        
+
+        final TextView name1 = (TextView) findViewById(R.id.textView1);
+        final TextView name2 = (TextView) findViewById(R.id.textView2);
+
         String player1name = getIntent().getStringExtra("p1n");
         String player2name = getIntent().getStringExtra("p2n");
-        
+
         name1.setText(player1name);
         name2.setText(player2name);
+
+        name1.setBackgroundColor(Color.parseColor("#E6DB0E"));
+        name1.setTypeface(Typeface.DEFAULT_BOLD);
+        name1.setTextColor(Color.parseColor("#FFFFFF"));
+        name2.setTypeface(Typeface.DEFAULT);
+        name1.setTextSize(24);
 
         backbutton = (Button) findViewById(R.id.back_B);
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +102,7 @@ public class GameScreen extends AppCompatActivity {
         image.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                
+
                 int _x = (int)event.getX();
                 int _y = (int)event.getY();
                 
@@ -122,6 +129,14 @@ public class GameScreen extends AppCompatActivity {
                         drawGrid(gameData.currentMap);
                         break;
                     case MotionEvent.ACTION_UP:
+                        if (firstPlayersTurn) {
+                            highlightPlayer(name1, name2);
+                            firstPlayersTurn = false;
+                        }
+                        else {
+                            highlightPlayer(name2, name1);
+                            firstPlayersTurn = true;
+                        }
                         long touchEndTime = System.nanoTime();
                         Log.d("max", "x - startX = " + (_x - startX));
                         // if released under 300ms then ...
@@ -155,6 +170,17 @@ public class GameScreen extends AppCompatActivity {
     private void drawGrid(byte[][] grid) {
         mydrawing.fillBackground(Color.rgb(50, 50, 50));
         mydrawing.drawGid(origoX, origoY, zoom, grid, selectedX, selectedY);
+    }
+
+    private void highlightPlayer (TextView name1, TextView name2) {
+        name1.setBackgroundColor(Color.parseColor("#E6DB0E"));
+        name1.setTextColor(Color.parseColor("#FFFFFF"));
+        name2.setTextColor(Color.parseColor("#D8C0C0"));
+        name1.setTypeface(Typeface.DEFAULT_BOLD);
+        name2.setBackgroundResource(0);
+        name2.setTypeface(Typeface.DEFAULT);
+        name1.setTextSize(24);
+        name2.setTextSize(18);
     }
     
     private int[] calcGridIndexFromTouch(int x, int y) {
