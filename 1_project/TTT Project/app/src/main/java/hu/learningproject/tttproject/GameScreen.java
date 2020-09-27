@@ -155,12 +155,12 @@ public class GameScreen extends AppCompatActivity {
                                 }
                                 // pass the calculated indexes (selectedX, selectedY) to the game
                                 int prevLength = gameData.currentMap.length;
-                                gameData.currentMap = GameLogic.GetNextStep(selectedX, selectedY, gameData.turn, gameData.currentMap.length, gameData.currentMap);
                                 if(GameLogic.isWinner(selectedX, selectedY, gameData.turn, gameData.currentMap)) {
                                     gameData.winner = (byte)(gameData.turn%2 == 0 ? 2 : 1);
                                     Log.d("win", "the winner is: " + gameData.winner);
                                     Toast.makeText(getApplicationContext(), "The winner is: " + (gameData.winner == 1 ? gameData.p1 : gameData.p2), Toast.LENGTH_LONG).show();
                                 }
+                                gameData.currentMap = GameLogic.GetNextStep(selectedX, selectedY, gameData.turn, gameData.currentMap.length, gameData.currentMap);
                                 
                                 if(gameData.currentMap.length > prevLength) {
                                     origoX -= zoom;
