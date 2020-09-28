@@ -21,3 +21,8 @@
 | Puskás Máté | 00:19 | Egyik játékosnak sincs profilképe | sikeres |
 | Puskás Máté | 00:24 | Lépni következő játékos kiemelése | sikeres |
 | Puskás Máté | 00:25 | Nem lépni következő játékos esetén kiemelés kimaradása | sikeres |
+| Nagy Kristián | Sept. 23 | Megadott méretű rács kirajzolása | sikeres |
+| Nagy Kristián | Sept. 24 | Kör és x kirajzolása a rácsra az adatmátrix szerint | sikeres |
+| Nagy Kristián | Sept. 25 | Kijelölt mező vizuális kiemelése | sikeres |
+| Nagy Kristián | Sept. 27 | Játéklogika összekapcsolása a megjelenítéssel | sikeres |
+| Nagy Kristián | Sept. 27 | Nyertes megjelenítése felugró ablakban | sikeres |
