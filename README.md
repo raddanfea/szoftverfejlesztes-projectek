@@ -1,4 +1,7 @@
 # README.md
+
+## 1. project
+Android alapú végtelen mezős tic-tac-toe játék.
 ## Programozási kódex
 - Ügyelünk arra hogy minimalizáljuk az ütközéseket.
 - Bármely commit-nál leírást adunk meg a szabvány alapján.
