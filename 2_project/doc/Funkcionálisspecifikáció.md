@@ -41,7 +41,14 @@
 - K06 A mentéseket titkosítva kell lokálisan tárolni.
 - K07 Képfájlok jpg/png formátumúak legyenek.
 - K08 A hangfájlokat wav kiterjesztéssel kell kezeléni.
-# 7. Használati esetek [Use cases]
+# 7. Használati esetek
+### Játékos
+- Játéklogikával való interakció: Tart, Dob, Emel
+- Játékállapot olvasása.
+- Eredmények rögzítése.
+- Eredmények megtekintése.
+
+![Image](res/usecases.jpg)
 # 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
 # 9. Képernyő tervek
 # 10. Forgatókönyvek
