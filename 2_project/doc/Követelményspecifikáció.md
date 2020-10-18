@@ -24,13 +24,13 @@ majd feloldani. Ezek külömböző kártya kombinációk(pl. két pár) elérés
 
 <br/><img src="res/folyamat.png" width="500"><br/>
 # 5. Rendszerre vonatkozó szabályok:
-# 6. Követelménylista
 - A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
 - Az UI megvalósításához xml-t kell használni.
 - Mentési fájl JSON formátumban.
 - wav kiterjesztésű hangfájlok kezelése.
 - Gradle fejlesztői projektautomatizációs eszköz használata.
 - Képfájlok jpg/png formátumúak legyenek.
+# 6. Követelménylista
 # 7. Fogalomszótár
 - mikrotranzakció: játékon belüli valós pénzért történő vásárlás
 - zseton: kaszinókban használt érme
