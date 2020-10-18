@@ -103,3 +103,5 @@ majd, illetve egy darab speciális ami akkor fog megnyilni ha a játékosnak sik
 - pokerkéz: kártyakombináció
 - mikrotranzakció: játékon belüli valós pénzért történő vásárlás
 - zseton: kaszinókban használt érme
+- common: közönséges, általános
+- rare: ritka
