@@ -45,11 +45,38 @@
 ### Játékos
 - Játéklogikával való interakció: Tart, Dob, Emel
 - Játékállapot olvasása.
-- Eredmények rögzítése.
-- Eredmények megtekintése.
+- Pakli változtatása.
+- Beállítások szerkesztése.
 
 ![Image](res/usecases.jpg)
 # 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
 # 9. Képernyő tervek
-# 10. Forgatókönyvek
-# 11. Fogalomszótár
+### Menü
+<img src="res/menu.png" width="200"><br/>
+- Játék kezdése
+- Pakli cseréje
+- Beállítások
+### Játék
+<img src="res/játék.png" width="200"><br/>
+- AI pénze
+- Kör nyeremény pot
+- Kiterített lapok
+- Döntésgombok
+- Játékos pénze
+- Játékos lapjai
+### Pakli
+<img src="res/pakli.png" width="200"><br/>
+- Minden jutalom kártyát mutat ABC sorrendben
+- Kattintással lehet aktíválni
+### Beállítások
+<img src="res/settings.png" width="200"><br/>
+- Hangerő
+- Pot mérete
+- Nehézség
+- Mentés törlése gomb
+# 10. Fogalomszótár
+- Chip: A játék valutája.
+- Pot: Chipek kupaca
+- Pakli: Kártyalapok összegsége
+- Pre-flop, Flop, Turn, River: A körök megnevezése, 1. től a 4.-ig.
+- Kisvak, Nagyvak: Póker szabály, a játék kezdetekor kötelező kezdőööszeget kell betenni bizonyos játékosoknak.
