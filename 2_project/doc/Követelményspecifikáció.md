@@ -29,3 +29,14 @@ majd feloldani. Ezek külömböző kártya kombinációk(pl. két pár) elérés
 - mikrotranzakció: játékon belüli valós pénzért történő vásárlás
 - zseton: kaszinókban használt érme
 - skin: Kinézet, textúra 
+- kártyakombinációk:
+  - Rojálflös (royal flush) : Ez a legjobb az összes pókerlap közül, a royal flös egy olyan színsor, amely tízest, bubit, dámát, királyt és ászt tartalmaz.
+  - Színsor (straight flush): Egy sor (lejjebb definiált), amelyben az összes kártya azonos színű.
+  - Póker (four of a kind): Négy ugyanolyan értéku kártya, például négy dáma.
+  - Full (full house): Egy pár és egy drill kombinációja.
+  - Flös (flush): Öt ugyanolyan színu kártya, például öt kör.
+  - Sor (straight): Öt egymást követo értéku kártya, az ászt alacsony és magas kártyának is lehet használni.
+  - Drill (Three of a kind): Három azonos értéku kártya, például három dáma.
+  - Két pár: Kétszer két ugyanolyan értéku kártya, például két hármas és két kilences.
+  - Pár: Bármilyen két azonos értéku kártya, például két kilences. A párok rangsora tükrözi a kártyák rangsorát, tehát a legerosebb pár az ász pár, a leggyengébb a kettes pár.
+  - Magas kártya: A legmagasabb értéku kártya az ász, a legalacsonyabb a kettes.
