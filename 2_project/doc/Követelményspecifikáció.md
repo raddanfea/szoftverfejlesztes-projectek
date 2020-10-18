@@ -20,6 +20,24 @@ A játékot egy személy fogja tudni játszani egy számítógép ellen. A ját�
 zsetonnal kezdenek, a végén  pedig az nyer akinek sikerül elnyernie ellenfele összes zsetonját. A játékmenet során kártya 
 skineket lehet feloldani. Ezek külömböző kártya kombinációk(pl. két pár) elérésekot fognak megnyílni majd számára.  
 # 3. Jelenlegi üzleti folyamatok
+
+4.1 A játékos kiosztja a kártyákat.
+
+4.2 Játékszabály szerint kisvagy és nagyvak eldöntése.
+
+4.3 Négy Licit kör kijátszása:
+
+4.3.1 A játékos tetszés szerint emel, tart vagy dob.
+
+4.3.2 Pre-flop, Flop, Turn, River kártyaosztás.
+
+4.4 Showdown, a játkosok lapjainak mutatása.  A játékos nyer vagy veszít.
+
+4.5 A játékos felírja az eredményt magának.
+
+4.6 A játékos összegyűji és újrakeveri a kártyát.
+
+4.7 A játékos újrakezdi a folyamatot előrehaladási élmény nélkül.
 # 4. Igényelt üzleti folyamatok
 - Beállítások => Hang, Pot méret, Nehézség, Adattörlés
 - Pakli => Jutalom kártyák megjelenítése => Jutalom kártyák aktiválása
