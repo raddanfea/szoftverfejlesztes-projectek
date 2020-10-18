@@ -92,3 +92,6 @@ vegyen, vagy olyan dolgokra költsön amiket a játékmenet előrehaladásával 
 - Pakli: Kártyalapok összegsége
 - Pre-flop, Flop, Turn, River: A körök megnevezése, 1. től a 4.-ig.
 - Kisvak, Nagyvak: Póker szabály, a játék kezdetekor kötelező kezdőööszeget kell betenni bizonyos játékosoknak.
+- pokerkéz: kártyakombináció
+- mikrotranzakció: játékon belüli valós pénzért történő vásárlás
+- zseton: kaszinókban használt érme
