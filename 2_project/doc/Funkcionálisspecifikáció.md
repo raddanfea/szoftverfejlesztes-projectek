@@ -30,8 +30,14 @@
 
 4.7 A játékos újrakezdi a folyamatot előrehaladási élmény nélkül.
 
-
 # 5. Igényelt üzleti folyamatok modellje
+- Beállítások => Hang, Pot méret, Nehézség, Adattörlés
+- Pakli => Jutalom kártyák megjelenítése => Jutalom kártyák aktiválása
+- Játék => Játék folyamat => Győzelem esetén jutalom
+
+
+<br/><img src="res/folyamat.png" width="500"><br/>
+
 # 6. Követelmény lista
 - K01 A játék kövesse a hivatalos nemzetközi  Texas Hold'Em játékszabályokat.
 - K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást.
