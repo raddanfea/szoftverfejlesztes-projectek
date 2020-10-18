@@ -2,6 +2,26 @@
 # 2. Jelenlegi helyzet
 # 3. Vágyálomrendszer
 # 4. Jelenlegi üzleti folyamatok modellje
+
+4.1 A játékos kiosztja a kártyákat.
+
+4.2 Játékszabály szerint kisvagy és nagyvak eldöntése.
+
+4.3 Négy Licit kör kijátszása:
+
+4.3.1 A játékos tetszés szerint emel, tart vagy dob.
+
+4.3.2 Pre-flop, Flop, Turn, River kártyaosztás.
+
+4.4 Showdown, a játkosok lapjainak mutatása.  A játékos nyer vagy veszít.
+
+4.5 A játékos felírja az eredményt magának.
+
+4.6 A játékos összegyűji és újrakeveri a kártyát.
+
+4.7 A játékos újrakezdi a folyamatot előrehaladási élmény nélkül.
+
+
 # 5. Igényelt üzleti folyamatok modellje
 # 6. Követelmény lista
 # 7. Használati esetek [Use cases]
