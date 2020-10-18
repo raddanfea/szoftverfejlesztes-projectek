@@ -53,6 +53,14 @@ skineket lehet feloldani. Ezek külömböző kártya kombinációk(pl. két pár
 - Gradle fejlesztői projektautomatizációs eszköz használata.
 - Képfájlok jpg/png formátumúak legyenek.
 # 6. Követelménylista
+- K01 A játék kövesse a hivatalos nemzetközi  Texas Hold'Em játékszabályokat.
+- K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást.
+- K03 A program legalább az android rendszerek 95%-án működjön.
+- K04 A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
+- K05 Az UI megvalósításához xml-t kell használni.
+- K06 A mentéseket titkosítva kell lokálisan tárolni.
+- K07 Képfájlok jpg/png formátumúak legyenek.
+- K08 A hangfájlokat wav kiterjesztéssel kell kezeléni.
 # 7. Fogalomszótár
 - mikrotranzakció: játékon belüli valós pénzért történő vásárlás
 - zseton: kaszinókban használt érme
