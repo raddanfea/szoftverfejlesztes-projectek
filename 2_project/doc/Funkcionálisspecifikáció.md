@@ -51,5 +51,13 @@
 ![Image](res/usecases.jpg)
 # 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
 # 9. Képernyő tervek
+<img src="res/menu.png" width="200"><br/>
+
+<img src="res/játék.png" width="200"><br/>
+
+<img src="res/pakli.png" width="200"><br/>
+
+<img src="res/settings.png" width="200"><br/>
+
 # 10. Forgatókönyvek
 # 11. Fogalomszótár
