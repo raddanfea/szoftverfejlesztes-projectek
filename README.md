@@ -3,7 +3,7 @@
 ## 1. project
 Android alapú végtelen mezős tic-tac-toe játék.
 ## 2. project
-TBD
+Android alapú egyjátékos Texas Hold'Em előrehaladási jutalmakkal.
 ## Programozási kódex
 - Ügyelünk arra hogy minimalizáljuk az ütközéseket.
 - Bármely commit-nál leírást adunk meg a szabvány alapján.
