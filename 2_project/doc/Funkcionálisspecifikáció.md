@@ -24,6 +24,14 @@
 
 # 5. Igényelt üzleti folyamatok modellje
 # 6. Követelmény lista
+- K01 A játék kövesse a hivatalos nemzetközi  Texas Hold'Em játékszabályokat.
+- K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást.
+- K03 A program legalább az android rendszerek 95%-án működjön.
+- K04 A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
+- K05 Az UI megvalósításához xml-t kell használni.
+- K06 A mentéseket titkosítva kell lokálisan tárolni.
+- K07 Képfájlok jpg/png formátumúak legyenek.
+- K08 A hangfájlokat wav kiterjesztéssel kell kezeléni.
 # 7. Használati esetek [Use cases]
 # 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
 # 9. Képernyő tervek
