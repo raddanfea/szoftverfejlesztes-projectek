@@ -22,6 +22,14 @@ egy pár kattintás és már élvezheti is a játékot, viszont ezek tele vannak
 a témahoz ezzel sok embert zavarva, illetve mikrotranzakcióval amivel arra az útra probálják terelni a játékost, hogy zsetont
 vegyen, vagy olyan dolgokra költsön amiket a játékmenet előrehaladásával amúgy is megszerezne.
 # 3. Vágyálomrendszer
+Az általunk megalkotott póker játék bárki számra elérhető lesz aki rendelkezik Adndroid operációs rendszerrel rendelkező
+készülékkel. Biztosítjuk a játszani vágyó szemálynek hogy 100%-ban reklámmentes játékélményben részesül majd, illtve azt is,
+hogy nincs semmi szüksége valódi pénzt belefektésnek a játékba mivel, minden mérföldkő és jutalom megszerezhető lesz e nélkül.
+A játékot egy személy fogja tudni játszani egy számítógép ellen. A játék kezdésekor mindketten ugyan annyi számú
+zsetonnal kezdenek, a végén  pedig az nyer akinek sikerül elvennie ellenfele összes zsetonját. A játékmenet során kártya skineket 
+majd feloldani. Ezek külömböző kártya kombinációk(pl. két pár) elérésekot fognak megnyílni majd számára. Az elérhatő skinek
+között lesz common, ide tartoznak majd az egyszerű színes kártyák (pl. kék színű). Lesz rare típusú, ami arany színű kártya lesz
+majd, illetve egy darab speciális ami akkor fog megnyilni ha a játékosnak sikerült megnyitnia az összes arany kártyát.
 # 4. Jelenlegi üzleti folyamatok modellje
 
 4.1 A játékos kiosztja a kártyákat.
