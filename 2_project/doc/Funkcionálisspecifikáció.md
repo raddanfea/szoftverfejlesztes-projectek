@@ -106,7 +106,9 @@ majd, illetve egy darab speciális ami akkor fog megnyilni ha a játékosnak sik
 - Pot mérete
 - Nehézség
 - Mentés törlése gomb
-# 10. Fogalomszótár
+# 10. Forgatókönyvek
+Amint a felhasználó megnyitja a programot, szembetalálja magát a játék kezdőképernyőjével. Ezen a képen lesz lehetősége megadni a nevét, illetve lesz lehetősége arra is, hogy profilképet válasszon magának a saját galériájából, ha szeretne. Ezen a képernyőn lesz még lehetősége a játék alatt lévő háttérzene nemítására is, valamint a játékban használt kártya skin kiválasztására is. A játék képernyője a start gomb megnyomása után válik láthatóvá. Ezen a képen fog zajlani a játék. Ezen képernyő alján fog elhelyezkedni a játékos neve, profilképe, a számára kiosztott két kártya, illetve a zsetonjainak száma. A képernyő tetején pedig ugyanezen felosztásban - a profilkép nélkül -  az ellenfele adatai lesznek láthatóak, természetesen a számára kiosztott kártyák hátulja lesz látható. A két játékos között, a képernyő közepén bal oldalon fog elhelyezkedni a pakli, tőle jobbra az öt közös lap foglal majd helyet. Amikor a felhasználó következik lépni, megjelennek számára a Texas Hold'Em szabályai szerint az adott körben végrehajtható lépések, (tartás, emelés, dobás, stb...) amelyek közül választania kell. A játszma addig fog tartani, amíg az egyik fél meg nem szerezte ellenfele összes zsetonját. Amennyiben a felhasználó győzedelmeskedik, a játék megjutalmazza egy kártya skin-nel, amely lehet átlagos és ritka előfordulású.
+# 11. Fogalomszótár
 - Chip: A játék valutája.
 - Pot: Chipek kupaca
 - Pakli: Kártyalapok összegsége
