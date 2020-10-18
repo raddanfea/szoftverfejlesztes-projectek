@@ -14,3 +14,5 @@ vegyen, vagy olyan dolgokra költsön amiket a játékmenet előrehaladásával 
 # 5. Rendszerre vonatkozó szabályok:
 # 6. Követelménylista
 # 7. Fogalomszótár
+- mikrotranzakció: játékon belüli valós pénzért történő vásárlás
+- zseton: kaszinókban használt érme
