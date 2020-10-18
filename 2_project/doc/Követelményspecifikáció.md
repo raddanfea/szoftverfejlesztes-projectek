@@ -31,7 +31,7 @@ skineket lehet feloldani. Ezek külömböző kártya kombinációk(pl. két pár
 
 4.3.2 Pre-flop, Flop, Turn, River kártyaosztás.
 
-4.4 Showdown, a játkosok lapjainak mutatása.  A játékos nyer vagy veszít.
+4.4 Showdown, a játékosok lapjainak mutatása.  A játékos nyer vagy veszít.
 
 4.5 A játékos felírja az eredményt magának.
 
