@@ -9,6 +9,12 @@ egy pár kattintás és már élvezheti is a játékot, viszont ezek tele vannak
 a témahoz ezzel sok embert zavarva, illetve mikrotranzakcióval amivel arra az útra probálják terelni a játékost, hogy zsetont
 vegyen, vagy olyan dolgokra költsön amiket a játékmenet előrehaladásával amúgy is megszerezne.
 # 2. Vágyálom rendszezr
+Az általunk megalkotott póker játék bárki számra elérhető lesz aki rendelkezik Adndroid operációs rendszerrel rendelkező
+készülékkel. Biztosítjuk a játszani vágyó szemálynek hogy 100%-ban reklámmentes játékélményben részesül majd, illtve azt is,
+hogy nincs semmi szüksége valódi pénzt belefektésnek a játékba mivel, minden mérföldkő és jutalom megszerezhető lesz e nélkül.
+A játékot egy személy fogja tudni játszani egy számítógép ellen. A játék kezdésekor mindketten ugyan annyi számú
+zsetonnal kezdenek, a végén  pedig az nyer akinek sikerül elvennie ellenfele összes zsetonját. A játékmenet során játék szkineket 
+majd feloldani. Ezek külömböző kártya kombinációk(pl. két pár) elérésekot fognak megnyílni majd számára.  
 # 3. Jelenlegi üzleti folyamatok
 # 4. Igényelt üzleti folyamatok
 # 5. Rendszerre vonatkozó szabályok:
