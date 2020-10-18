@@ -1,4 +1,13 @@
 # 1. A rendszer céljai és nem céljai.
+### Célok:
+- Android alapú játék.
+- Egy játékossal élvezhető játékmenet.
+- Texas Hold'Em játészabály.
+- Értékelhető és érzékelhető előrehaladás a játékmenetben.
+### Nem cél:
+- Egyéb platformok.
+- Egyéb játékszabályok.
+- Többjátékos mód.
 # 2. Jelenlegi helyzet
 # 3. Vágyálomrendszer
 # 4. Jelenlegi üzleti folyamatok modellje
