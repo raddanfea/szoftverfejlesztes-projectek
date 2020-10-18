@@ -21,9 +21,32 @@ zsetonnal kezdenek, a végén  pedig az nyer akinek sikerül elnyernie ellenfele
 skineket lehet feloldani. Ezek külömböző kártya kombinációk(pl. két pár) elérésekot fognak megnyílni majd számára.  
 # 3. Jelenlegi üzleti folyamatok
 # 4. Igényelt üzleti folyamatok
+- Beállítások => Hang, Pot méret, Nehézség, Adattörlés
+- Pakli => Jutalom kártyák megjelenítése => Jutalom kártyák aktiválása
+- Játék => Játék folyamat => Győzelem esetén jutalom
+
+
+<br/><img src="res/folyamat.png" width="500"><br/>
 # 5. Rendszerre vonatkozó szabályok:
+- A szoftver megvalósítása Java programozási nyelvben kell hogy történjen.
+- Az UI megvalósításához xml-t kell használni.
+- Mentési fájl JSON formátumban.
+- wav kiterjesztésű hangfájlok kezelése.
+- Gradle fejlesztői projektautomatizációs eszköz használata.
+- Képfájlok jpg/png formátumúak legyenek.
 # 6. Követelménylista
 # 7. Fogalomszótár
 - mikrotranzakció: játékon belüli valós pénzért történő vásárlás
 - zseton: kaszinókban használt érme
 - skin: Kinézet, textúra 
+- kártyakombinációk:
+  - Rojálflös (royal flush) : Ez a legjobb az összes pókerlap közül, a royal flös egy olyan színsor, amely tízest, bubit, dámát, királyt és ászt tartalmaz.
+  - Színsor (straight flush): Egy sor (lejjebb definiált), amelyben az összes kártya azonos színű.
+  - Póker (four of a kind): Négy ugyanolyan értéku kártya, például négy dáma.
+  - Full (full house): Egy pár és egy drill kombinációja.
+  - Flös (flush): Öt ugyanolyan színu kártya, például öt kör.
+  - Sor (straight): Öt egymást követo értéku kártya, az ászt alacsony és magas kártyának is lehet használni.
+  - Drill (Three of a kind): Három azonos értéku kártya, például három dáma.
+  - Két pár: Kétszer két ugyanolyan értéku kártya, például két hármas és két kilences.
+  - Pár: Bármilyen két azonos értéku kártya, például két kilences. A párok rangsora tükrözi a kártyák rangsorát, tehát a legerosebb pár az ász pár, a leggyengébb a kettes pár.
+  - Magas kártya: A legmagasabb értéku kártya az ász, a legalacsonyabb a kettes.
