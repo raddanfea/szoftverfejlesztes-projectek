@@ -18,6 +18,6 @@
 
 # 5. Funkcionális terv
 
-# 6. Implementációs  terv:
+# 6. Implementációs terv:
 
-# 7. Testterv
+# 7. Teszt terv
