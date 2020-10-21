@@ -17,7 +17,11 @@ Hogy egy ilyen nagyszerű és népszerű játékot akárhol és akármikor játs
 ## Operációs rendszer:
 Az operációs rendszerek közül az androidot választottuk, hogy így több felhasználót érjünk el.
 ## Fejlesztői eszközök:
-
+A rendelkezésünkre álló szoftverek közül csapatunk az Android Studio nevű IDE-t fogja használni a fejlesztéshez, amely a Gradle fejlesztői projektautomatizációs eszközt használja. Itt a UI-t is meg tudjuk tervezni, amelyel párhuzamosan generálja belőle az xml fájlt.  <br/>
+Az Android Studio 2 programozási nyelvben is lehetővé teszi a fejlesztést:
+- Java
+- Kotlin <br/>
+Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk használni.
 
 # 5. Funkcionális terv
 
