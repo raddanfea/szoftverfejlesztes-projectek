@@ -3,7 +3,7 @@
 ## 1.2 A rendszernek nem célja:
 
 # 2. Projekt terv
-## 2.1 A projekt résztvevői: 
+## 2.1 A projekt résztvevői:
 ## 2.2 Ütemterv:
 
 # 3. Üzleti folyamatok modellje
@@ -13,8 +13,11 @@
 
 # 4. Fizikai környezet
 ## Hardver:
+Hogy egy ilyen nagyszerű és népszerű játékot akárhol és akármikor játszhasson az ember, ahhoz manapság az okostelefonok a legjobb választás.
 ## Operációs rendszer:
+Az operációs rendszerek közül az androidot választottuk, hogy így több felhasználót érjünk el.
 ## Fejlesztői eszközök:
+
 
 # 5. Funkcionális terv
 
