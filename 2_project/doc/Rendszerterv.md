@@ -29,14 +29,27 @@ A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakö
 
 # 4. Fizikai környezet
 ## Hardver:
-Hogy egy ilyen nagyszerű és népszerű játékot akárhol és akármikor játszhasson az ember, ahhoz manapság az okostelefonok a legjobb választás.
+
+Megfontolt opciók:
+ * Számítógép
+ * Okostelefonok
+
+Hogy egy ilyen nagyszerű és népszerű játékot akárhol és akármikor játszhasson az ember, ahhoz manapság az okostelefonok a legjobb választás. Számítógépen egyértelműen látványosabb játékélmény nyújtható és az irányítás is egyszerűbb, de nem olyan mértékben, hogy emiatt kénytelenek lennénk szánítógépre fejleszteni. Valamint játék nem igényel intenzív aktivitást a felhasználótól és kényelmesen élvezhető bárhol bármilyen körülmények között.
+
 ## Operációs rendszer:
-Az operációs rendszerek közül az androidot választottuk, hogy így több felhasználót érjünk el.
+
+A mai okostelefonok operációs rendszerei:
+ * IOS
+ * Android
+
+Ezek közül az androidot választottuk, hogy így több felhasználót érjünk el.
+
 ## Fejlesztői eszközök:
 A rendelkezésünkre álló szoftverek közül csapatunk az Android Studio nevű IDE-t fogja használni a fejlesztéshez, amely a Gradle fejlesztői projektautomatizációs eszközt használja. Itt a UI-t is meg tudjuk tervezni, amelyel párhuzamosan generálja belőle az xml fájlt.  <br/>
 Az Android Studio 2 programozási nyelvben is lehetővé teszi a fejlesztést:
 - Java
-- Kotlin <br/>
+- Kotlin
+
 Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk használni.
 
 # 5. Funkcionális terv
