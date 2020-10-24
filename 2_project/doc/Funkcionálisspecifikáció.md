@@ -82,6 +82,18 @@ majd, illetve egy darab speciális ami akkor fog megnyilni ha a játékosnak sik
 
 ![Image](res/usecases.jpg)
 # 8. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
+- K01 A játék kövesse a hivatalos nemzetközi  Texas Hold'Em játékszabályokat.
+  - A játék szabályait a Texas Hold'Em wikipédiaoldala, illetve a játékról szóló könyvek, weboldalak segítségével gyűjtjük ki és implementáljuk a programban.
+- K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást.
+  - Abban az esetben, ha a játék végállásában a felhasználó kerül ki győztesen, jutalmat kap kártya kinézet formájában.
+- K03 A program legalább az android rendszerek 95%-án működjön.
+  - A megfelelő andorid api kiválasztásakor és a fejlesztés során az univerzalitás lesz a fő szempont.
+- K04 A szoftver megvalósítása Java programozási nyelvben kell hogy történjen. ✅
+- K05 Az UI megvalósításához xml-t kell használni.
+  - Az UI tervezésekor az Androidstudio által biztosított beépített UI tervezőt fogjuk használni, mely xml fájlt állít elő.
+- K06 A mentéseket titkosítva kell lokálisan tárolni. ✅
+- K07 Képfájlok jpg/png formátumúak legyenek. ✅
+- K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. ✅
 # 9. Képernyő tervek
 ### Menü
 <img src="res/menu.png" width="200"><br/>
