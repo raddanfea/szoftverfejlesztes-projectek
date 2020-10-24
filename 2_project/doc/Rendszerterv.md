@@ -45,8 +45,23 @@ A mai okostelefonok operációs rendszerei:
 Ezek közül az androidot választottuk, hogy így több felhasználót érjünk el.
 
 ## Fejlesztői eszközök:
-A rendelkezésünkre álló szoftverek közül csapatunk az Android Studio nevű IDE-t fogja használni a fejlesztéshez, amely a Gradle fejlesztői projektautomatizációs eszközt használja. Itt a UI-t is meg tudjuk tervezni, amelyel párhuzamosan generálja belőle az xml fájlt.  <br/>
+
+Rendelkezésre álló fejlesztői eszközök:
+
+ * IntellIj IDEA
+ * Android Studio
+ * Visual Studio
+ * Eclipse
+ * Flutter
+
+Mivel az okostelefonok közül az Andriod operációs rendszerrel rendelkező eszközöket céloztuk meg, ezért a cross-platform opciók - mint például a Visual Stidio Xamarinnal (ami a c# programozási nyelvet használja), Flutter (saját nyelvvel rendelkezik Dart néven) - az átaluk használt programozási nyelvek miatt, valamint az alkalmazás úgyis csupán az Android operációs rendelkező okostelefonokra készül, ezért tehát ezt a 2 opciót kizártuk.
+Az Eclipse IDE-t a felhasználói felület bonyolultsága miatt zártuk ki, a csapatunk egyébként sem jártas a szoftver használatában és ez nem is jár semmiféle hátránnyal számunkra.
+Az Eclipse-el ellentétben az Intellij IDEA már egy sokkal barátságosabb fejlesztői környezet, de mivel ez nem egy ingyenes opció és a követelményekben sem szerepel, ezért ezt az opciót is elvetettük.
+
+Végül csapatunk az Android Studio nevű IDE-t fogja használni a fejlesztéshez, amely a Gradle fejlesztői projektautomatizációs eszközt használja. Itt a UI-t is meg tudjuk tervezni, amelyel párhuzamosan generálja belőle az xml fájlt.
+
 Az Android Studio 2 programozási nyelvben is lehetővé teszi a fejlesztést:
+
 - Java
 - Kotlin
 
