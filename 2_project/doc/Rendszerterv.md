@@ -27,7 +27,9 @@ A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakö
 ## 3.2 Üzleti folyamatok
 ## 3.3 Üzleti entitások
 
-# 4. Fizikai környezet
+# 4. Követelmények
+
+# 5. Fizikai környezet
 ## Hardver:
 
 Megfontolt opciók:
@@ -67,8 +69,8 @@ Az Android Studio 2 programozási nyelvben is lehetővé teszi a fejlesztést:
 
 Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk használni.
 
-# 5. Funkcionális terv
+# 6. Funkcionális terv
 
-# 6. Implementációs terv:
+# 7. Implementációs terv:
 
-# 7. Teszt terv
+# 8. Teszt terv
