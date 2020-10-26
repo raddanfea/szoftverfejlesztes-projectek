@@ -31,13 +31,13 @@ A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakö
 
 A rendszerterv a következő követelmények fogja megvalósítani:
 
- - [K01 A játék kövesse a hivatalos nemzetközi Texas Hold'Em játétszabályokat](./KövetelKövetelményspecifikáció.md#6.)
+ - [K01 A játék kövesse a hivatalos nemzetközi Texas Hold'Em játétszabályokat](./Követelményspecifikáció.md#6.)
 
- - [K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást](./KövetelKövetelményspecifikáció.md#6.)
+ - [K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást](./Követelményspecifikáció.md#6.)
 
- - [K05 Az UI megvalósításáshoz xml-t kell használni](./KövetelKövetelményspecifikáció.md#6.)
+ - [K05 Az UI megvalósításáshoz xml-t kell használni](./Követelményspecifikáció.md#6.)
 
- - [K06 A mentéseket lokáslisan kell tárolni](./KövetelKövetelményspecifikáció.md#6.)
+ - [K06 A mentéseket lokáslisan kell tárolni](./Követelményspecifikáció.md#6.)
 
 # 5. Fizikai környezet
 ## Hardver:
