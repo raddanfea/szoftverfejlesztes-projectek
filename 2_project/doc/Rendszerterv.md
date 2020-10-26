@@ -29,6 +29,16 @@ A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakö
 
 # 4. Követelmények
 
+A rendszerterv a következő követelmények fogja megvalósítani:
+
+ - K01 A játék kövesse a hivatalos nemzetközi Texas Hold'Em játétszabályokat
+
+ - K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást
+
+ - K05 Az UI megvalósításáshoz xml-t kell használni
+
+ - K06 A mentéseket lokáslisan kell tárolni
+
 # 5. Fizikai környezet
 ## Hardver:
 
