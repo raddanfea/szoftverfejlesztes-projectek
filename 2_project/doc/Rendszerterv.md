@@ -1,5 +1,6 @@
 # 1. A rendszer céljai és nem céljai
 ## 1.1 A rendszer céljai:
+A mai világban rengeteg pókerjáték megtalálható. A mi célünk nem egy újabb ilyen játék létrehozása, hanem a játék alapjaira támaszkodva egy kis segítségnyújtás azon felhasználók számára, akik nem rendelkeznek elég tudással a játékról, és szeretnék tudásukat tét nélkül csiszolni. Az ingyenes póker játékok ugyanis általában tele vannak hírdetésekkel, amik élvezhetetlenné teszik a játékot. A hírdetés nélküli játékért pedig bizony fizetnünk kell, és nyílván valóan a saját pénzünk forog kockán az egyes játszmákban. Éppen ezért választottuk az egyjátékos módszert, itt ugyanis a számítógép ellen kell a felhasználónak helytállnia, és vereség során nem veszít semmit sem. Ezáltal elsajátíthatja a játék alapjait, és bár az emberi ravaszság nem jelenhet meg ellenfelénél, egy egész jó rálátást fog biztosítani a játék menetére. Motiváció gyanánt pedig győzelem során kártya kinézetet oldhat fel a játékos.
 ## 1.2 A rendszernek nem célja:
 
 # 2. Projekt terv
