@@ -32,8 +32,20 @@ A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakö
 
 # 3. Üzleti folyamatok modellje
 ## 3.1 Üzleti szereplők
+A felhasználó, aki használja a programot.
 ## 3.2 Üzleti folyamatok
-## 3.3 Üzleti entitások
+
+<br/><img src="res/folyamat.png" width="500"><br/>
+
+### Megvalósítandó üzleti folyamatok:
+- Megadható legyen a felhasználó neve
+- A felhasználó állíthasson be számára profilképet
+- játék alatt háttérzene
+- zene némítása gombbal
+- a felhasználót győzelme esetén kártya kinézettel megjutalmazni
+- a felhasználó kiválaszthassa a játékban használt kártyaskint
+- nehézség állítása
+- a felhasználó el kell tudja menteni az adott adatait (kártyaskinek)
 
 # 4. Követelmények
 
