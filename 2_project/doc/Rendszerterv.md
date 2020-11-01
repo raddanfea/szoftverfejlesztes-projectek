@@ -101,6 +101,14 @@ Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk
 
 # 6. Funkcionális terv
 
+A megalkotott project minden olyan eszközön elérhető lesz amin valamilyen Android operációs rendszer fut, ezzel
+elérve az emberek több mint 73%-át. Mivel ennyi emberhez eljuthat a játék ezért megjelenésben egy egyszerű kezelőfelület fogja várni mindazokat
+akik kíváncsiak rá. 
+
+Minden képernyőn nagy gombok és egyszerűen értelmezhető szövegek lesznek, hogy mindenki számára könnyen használható legyen 
+a program, állítható lesz a nehézségi szint, hogy akár egy kezdő és egy profi poker játékos is élvezni tudja a játékot.
+
+
 # 7. Implementációs terv:
 
 # 8. Teszt terv
