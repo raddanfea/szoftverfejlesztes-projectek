@@ -137,3 +137,10 @@ tesztelése minden elérhető Andorid verzión.
             * Pot Size csúszkát balról jobbra tolva növekszik a tétek mérete
             * Difficulty csúszkát balról jobbra tolva növekszik a játék nehézsége
 
+* Béta teszt
+
+    * A teljes játékmenet tesztelése elejétől a végéig
+    * Tesztelni kell, hogy megnyílnak e a jutalom kártyák ha a játek során
+teljesítjük ezek feltételeit 
+    * Kiíródik-e a győztes neve ha elnyerte ellenfele összes pénzét
+    * Nem lép fel olyan probléma amit az előrehaladást veszéjezteti, ezzel a jutalomkártyákat elveszítve
