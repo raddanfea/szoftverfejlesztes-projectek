@@ -104,3 +104,11 @@ Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk
 # 7. Implementációs terv:
 
 # 8. Teszt terv
+
+A tesztelések célja a rendszer komponenseinek és funkcióinak teljes vizsgálata. A tesztelés során
+megpróbálunk minden eshetőséget, illetve felhasználási módot tesztelni. Ahol lehetséges ott Unit tesztet
+végzünk már fejlesztés közben is, hogy a metódusaink megfelelően működnek. Ezt követi egy Alfa teszt 
+amit mi, fejlesztők fogunk elvégezni, aminek elsődleges célja hogy a már meglévő funkciókat teszteljük, illetve
+a felmerülő hibákat időben javvítsuk. Majd végezetül jön a Béta teszt, aminek időtartama egy hét lesz. Ezt a tesztet 
+ez esetben ugyancsak mi fejlesztők fogjuk elvégezni. Itt kerül tesztelésre a kész program, annak minden funkciója, illetve 
+tesztelése minden elérhető Andorid verzión.
