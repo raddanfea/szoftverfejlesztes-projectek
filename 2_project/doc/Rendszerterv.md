@@ -108,6 +108,11 @@ akik kíváncsiak rá.
 Minden képernyőn nagy gombok és egyszerűen értelmezhető szövegek lesznek, hogy mindenki számára könnyen használható legyen 
 a program, állítható lesz a nehézségi szint, hogy akár egy kezdő és egy profi poker játékos is élvezni tudja a játékot.
 
+A kezdőképernyőn a játékos eléri a beállításokat ahol igénye szerint beállíthat minden fontosat, eléri a jutalomkártyáit, amik az ABC rend miatt könnyen követhetőek lessznek
+illetve eléri az egyik legfontosabb gombot is amivel elindíthatja a játékot.
+
+A jatékot elindítva atkérül a játékos a "poker asztalhoz", itt minden számára fontos információ megjelenik majd ami szükséges ahhoz hogy ellenfelétől elnyerje az összes zsetont
+
 
 # 7. Implementációs terv:
 
