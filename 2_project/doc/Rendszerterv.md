@@ -112,3 +112,28 @@ amit mi, fejlesztők fogunk elvégezni, aminek elsődleges célja hogy a már me
 a felmerülő hibákat időben javvítsuk. Majd végezetül jön a Béta teszt, aminek időtartama egy hét lesz. Ezt a tesztet 
 ez esetben ugyancsak mi fejlesztők fogjuk elvégezni. Itt kerül tesztelésre a kész program, annak minden funkciója, illetve 
 tesztelése minden elérhető Andorid verzión.
+
+* Alfa teszt során elvégzendők:
+    * Main menü képernyőn
+        * Start Game gombot lenyomva elindul-e a játék, megjelenik e minden szükséges adat és információ a teljes játékmenethez
+        * Change Deck gombot le nyomva megjelenik minden normál és speciáis kártya a pakliban
+        * Setting gombot lenyomva átkerülünk-e a beállításokhoz
+        
+    * Game Screen
+        * Láthatóak lesznek a saját lapjaink, rendelkezésre álló pénz összegünk
+        * Látható-e az ellenfelünk pénz értéke
+        * Megjelennek a funkció gombok amivel tartani (Hold), emelni (Raise) tudjuk a tétet, illetve a bedobás (Fold) gomb és ezek stabilan 
+        és rendeltetés szerűen működnek
+        * A kiterített lapok a megfelelő sorrendben jelennek meg
+       
+    * Deck Screen
+        * ABC sorrendben jelennek e meg a jutalom kártyák
+        * működik-e a kattintásos kiválasztás hogy a kártya amire kattintunk az be kerüljön
+        az aktív paklinkba
+        
+    * Settings Screen
+        * a Sound, Pot Size, Difficulty csúszkák műkönek-e, illetve azt a funkciót látják-e el amirea nevük utal    
+            * Sound csúszkát balról jobbra tolva növekszik a hangerő
+            * Pot Size csúszkát balról jobbra tolva növekszik a tétek mérete
+            * Difficulty csúszkát balról jobbra tolva növekszik a játék nehézsége
+
