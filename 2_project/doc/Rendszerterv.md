@@ -103,9 +103,9 @@ Mivel a csapatunk a Java nyelvet ismeri, így a fejlesztés során is azt fogjuk
 
 A megalkotott project minden olyan eszközön elérhető lesz amin valamilyen Android operációs rendszer fut, ezzel
 elérve az emberek több mint 73%-át. Mivel ennyi emberhez eljuthat a játék ezért megjelenésben egy egyszerű kezelőfelület fogja várni mindazokat
-akik kíváncsiak rá. 
+akik kíváncsiak rá.
 
-Minden képernyőn nagy gombok és egyszerűen értelmezhető szövegek lesznek, hogy mindenki számára könnyen használható legyen 
+Minden képernyőn nagy gombok és egyszerűen értelmezhető szövegek lesznek, hogy mindenki számára könnyen használható legyen
 a program, állítható lesz a nehézségi szint, hogy akár egy kezdő és egy profi poker játékos is élvezni tudja a játékot.
 
 A kezdőképernyőn a játékos eléri a beállításokat ahol igénye szerint beállíthat minden fontosat, eléri a jutalomkártyáit, amik az ABC rend miatt könnyen követhetőek lessznek
@@ -116,14 +116,18 @@ A jatékot elindítva atkérül a játékos a "poker asztalhoz", itt minden szá
 
 # 7. Implementációs terv:
 
+## Forrásfájlok mappahierarchiája:
+
+<br/><img src="res/folder_structure.png" width="500"><br/>
+
 # 8. Teszt terv
 
 A tesztelések célja a rendszer komponenseinek és funkcióinak teljes vizsgálata. A tesztelés során
 megpróbálunk minden eshetőséget, illetve felhasználási módot tesztelni. Ahol lehetséges ott Unit tesztet
-végzünk már fejlesztés közben is, hogy a metódusaink megfelelően működnek. Ezt követi egy Alfa teszt 
+végzünk már fejlesztés közben is, hogy a metódusaink megfelelően működnek. Ezt követi egy Alfa teszt
 amit mi, fejlesztők fogunk elvégezni, aminek elsődleges célja hogy a már meglévő funkciókat teszteljük, illetve
-a felmerülő hibákat időben javvítsuk. Majd végezetül jön a Béta teszt, aminek időtartama egy hét lesz. Ezt a tesztet 
-ez esetben ugyancsak mi fejlesztők fogjuk elvégezni. Itt kerül tesztelésre a kész program, annak minden funkciója, illetve 
+a felmerülő hibákat időben javvítsuk. Majd végezetül jön a Béta teszt, aminek időtartama egy hét lesz. Ezt a tesztet
+ez esetben ugyancsak mi fejlesztők fogjuk elvégezni. Itt kerül tesztelésre a kész program, annak minden funkciója, illetve
 tesztelése minden elérhető Andorid verzión.
 
 * Alfa teszt során elvégzendők:
@@ -131,19 +135,19 @@ tesztelése minden elérhető Andorid verzión.
         * Start Game gombot lenyomva elindul-e a játék, megjelenik e minden szükséges adat és információ a teljes játékmenethez
         * Change Deck gombot le nyomva megjelenik minden normál és speciáis kártya a pakliban
         * Setting gombot lenyomva átkerülünk-e a beállításokhoz
-        
+
     * Game Screen
         * Láthatóak lesznek a saját lapjaink, rendelkezésre álló pénz összegünk
         * Látható-e az ellenfelünk pénz értéke
-        * Megjelennek a funkció gombok amivel tartani (Hold), emelni (Raise) tudjuk a tétet, illetve a bedobás (Fold) gomb és ezek stabilan 
+        * Megjelennek a funkció gombok amivel tartani (Hold), emelni (Raise) tudjuk a tétet, illetve a bedobás (Fold) gomb és ezek stabilan
         és rendeltetés szerűen működnek
         * A kiterített lapok a megfelelő sorrendben jelennek meg
-       
+
     * Deck Screen
         * ABC sorrendben jelennek e meg a jutalom kártyák
         * működik-e a kattintásos kiválasztás hogy a kártya amire kattintunk az be kerüljön
         az aktív paklinkba
-        
+
     * Settings Screen
         * a Sound, Pot Size, Difficulty csúszkák műkönek-e, illetve azt a funkciót látják-e el amirea nevük utal    
             * Sound csúszkát balról jobbra tolva növekszik a hangerő
@@ -154,6 +158,6 @@ tesztelése minden elérhető Andorid verzión.
 
     * A teljes játékmenet tesztelése elejétől a végéig
     * Tesztelni kell, hogy megnyílnak e a jutalom kártyák ha a játek során
-teljesítjük ezek feltételeit 
+teljesítjük ezek feltételeit
     * Kiíródik-e a győztes neve ha elnyerte ellenfele összes pénzét
     * Nem lép fel olyan probléma amit az előrehaladást veszéjezteti, ezzel a jutalomkártyákat elveszítve
