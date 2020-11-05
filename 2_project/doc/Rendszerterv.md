@@ -120,6 +120,8 @@ A jatékot elindítva atkérül a játékos a "poker asztalhoz", itt minden szá
 
 <br/><img src="res/folder_structure.png" width="500"><br/>
 
+<img src="res/implementacios_terv.png" width="800"><br/>
+
 # 8. Teszt terv
 
 A tesztelések célja a rendszer komponenseinek és funkcióinak teljes vizsgálata. A tesztelés során
