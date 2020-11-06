@@ -5,7 +5,12 @@ public class Player {
   private String name;
   private int money;
   
-  // Set this before the GameLogic processes the player's action (before the getNextAction() is called)
+  /**
+   * Set this in the controller when the user interact's with the game,
+   * before the getNextAction() is called in the GameLogic, because it will process the player's action.
+   *
+   * WARNING: The Bot - which extends this class - will use the think() function to set the value of nextAction.
+   */
   private Action nextAction;
   
   
