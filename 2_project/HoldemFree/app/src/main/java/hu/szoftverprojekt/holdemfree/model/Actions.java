@@ -3,9 +3,9 @@ package hu.szoftverprojekt.holdemfree.model;
 /**
  * Query class.
  * !!! Use this to create an instance from one of the child of the Action class.
- * For example: {@code nextTurn( Actions.FOLD )}
- *           or {@code nextTurn( Actions.RAISE_BY(100) )}
- *           where {@code void nextTurn(Action action)} expects an argument with Action type.
+ * For example: {@code setNextAction( Actions.FOLD )}
+ *           or {@code setNextAction( Actions.RAISE_BY(100) )}
+ *           where {@code void setNextAction(Action action)} expects an argument with Action type.
  *
  * Think about it as an Enum type, where the "Actions" is the name of the enum
  * and the "FOLD" is just a value.
@@ -24,7 +24,7 @@ public class Actions {
 /**
  * Base class for all action.
  * !!! Use this as a type when you want to store an action or request one as a function argument.
- * For example: {@code void nextTurn(Action action){}}
+ * For example: {@code void setNextAction(Action action){}}
  */
 class Action {}
 
