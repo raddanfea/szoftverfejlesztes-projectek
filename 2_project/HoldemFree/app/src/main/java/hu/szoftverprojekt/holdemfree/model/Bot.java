@@ -12,7 +12,7 @@ public class Bot extends Player{
   }
   
   /**
-   * Call this before the getNextAction() is called in the GameLogic, because it will process the player's action.
+   * Call this in the nextTurn() method, before the getNextAction() is called in the GameLogic, because it will process the player's action.
    * Has to call the setNextAction function!
    * @param board   the cards on the board
    */
