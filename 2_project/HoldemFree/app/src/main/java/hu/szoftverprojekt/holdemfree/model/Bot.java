@@ -16,7 +16,7 @@ public class Bot extends Player{
    * Has to call the setNextAction function!
    * @param board   the cards on the board
    */
-  public void think(ArrayList<Card> board) {
+  public void think(ArrayList<Card> board /* ide lehet tobb parametert is irni ha kell */) {
     // pl.: if ( i_have_good_cards ) setNextAction( Actions.RAISE_BY(50) );
   }
   
