@@ -6,8 +6,8 @@ public class Bot extends Player{
   
   private int difficulty;
   
-  public Bot(String name, int difficulty) {
-    super(name);
+  public Bot(String name, int startingMoney, int difficulty) {
+    super(name, startingMoney);
     this.difficulty = difficulty;
   }
   

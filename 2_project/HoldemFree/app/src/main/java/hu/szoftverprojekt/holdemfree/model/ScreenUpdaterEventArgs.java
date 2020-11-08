@@ -15,4 +15,12 @@ public class ScreenUpdaterEventArgs {
   public int currentBet;
   public int dealerOffset;
   // extend this if needed, but remember to update the createEventArgs() function in the GameLogic too
+  
+  public ScreenUpdaterEventArgs(ArrayList<Player> players, ArrayList<Card> board, int moneyOnBoard, int currentBet, int dealerOffset) {
+    this.players = players;
+    this.board = board;
+    this.moneyOnBoard = moneyOnBoard;
+    this.currentBet = currentBet;
+    this.dealerOffset = dealerOffset;
+  }
 }
