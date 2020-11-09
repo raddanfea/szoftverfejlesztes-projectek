@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".controller.NameScreen">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:background="#5C5353"
+        android:layout_marginTop="70dp"/>
+
+    <TextView
+        android:id="@+id/p1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Player's name:"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/p1name"
+        android:layout_width="270dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:hint="Enter Name"
+        android:inputType="text"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"/>
+
+
+
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:enabled="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
