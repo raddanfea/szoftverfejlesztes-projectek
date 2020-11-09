@@ -143,5 +143,14 @@ public class GameLogic {
   private int calcMinBet() {
     return -1;
   }
+
+  public Player getCurrentPlayer() {
+    Log.d(TAG, "the current player is " + players.get(getCurrentPlayerIndex()).getName());
+    return players.get(getCurrentPlayerIndex());
+  }
+  
+  public int getCurrentPlayerIndex() {
+    return (turn + dealerOffset+3) % players.size();
+  }
   
 }
