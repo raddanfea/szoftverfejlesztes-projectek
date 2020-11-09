@@ -1,6 +1,7 @@
 package hu.szoftverprojekt.holdemfree.model;
 
 import java.util.ArrayList;
+import android.util.Log;
 
 /**
  * Game cycle:
