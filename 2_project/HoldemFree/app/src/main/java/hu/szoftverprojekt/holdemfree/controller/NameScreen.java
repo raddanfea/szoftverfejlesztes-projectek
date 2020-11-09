@@ -5,6 +5,8 @@ import hu.szoftverprojekt.holdemfree.R;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ public class NameScreen extends AppCompatActivity {
         back_button = (Button)findViewById(R.id.back_button);
         player_name = (EditText)findViewById(R.id.player_name);
         imageView = (ImageView)findViewById(R.id.imageView);
+        player_name.addTextChangedListener(loginTextWatcher);
 
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +46,25 @@ public class NameScreen extends AppCompatActivity {
             }
         });
     }
+
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String name1 = player_name.getText().toString().trim();
+
+            start_button.setEnabled(!name1.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
     public void openGameScreen() {
         Intent startGame = new Intent(this, GameScreen.class);
