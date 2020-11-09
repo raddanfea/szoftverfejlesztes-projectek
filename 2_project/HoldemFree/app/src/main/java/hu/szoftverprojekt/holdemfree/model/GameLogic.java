@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class GameLogic {
   
+  private static final String TAG = "testtest";
   private static final int BOT_STARTING_MONEY = 500;
 
   private ArrayList<Player> players;
