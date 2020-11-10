@@ -3,6 +3,8 @@ package hu.szoftverprojekt.holdemfree.model;
 import java.util.ArrayList;
 import android.util.Log;
 
+import hu.szoftverprojekt.holdemfree.model.actions.Raise;
+
 /**
  * Game cycle:
  * 1) starts with choosing the dealer, dealing the cards to the players ...
@@ -155,6 +157,16 @@ public class GameLogic {
     switch (getCurrentPlayer().getNextAction().name) {
       case "Fold":
         getCurrentPlayer().folded = true;
+        break;
+      case "Hold":
+        // hold if someone raised, check otherwise
+        if (indexOfRaiser != -1) {
+          moneyOnBoard += getCurrentPlayer().pay(currentBet);
+        }
+        break;
+      case "Raise":
+        currentBet = ((Raise) getCurrentPlayer().getNextAction() ).by;
+        moneyOnBoard += getCurrentPlayer().pay(currentBet);
         break;
     }
   
