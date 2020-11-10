@@ -107,10 +107,23 @@ public class GameLogic {
   }
   
   /**
-   * ... I will do this
+   * Handles the current players action.
    */
   public void nextTurn() {
+    Log.d(TAG, getCurrentPlayerIndex() + ". players turn\n - Action: " + getCurrentPlayer().getNextAction().name);
   
+    // process action
+    switch (getCurrentPlayer().getNextAction().name) {
+      case "Fold":
+        getCurrentPlayer().folded = true;
+        break;
+    }
+  
+    onChange.invoke(createEventArgs());
+  
+    // gameover?
+    // maybe...
+    turn++;
   }
   
   /**
