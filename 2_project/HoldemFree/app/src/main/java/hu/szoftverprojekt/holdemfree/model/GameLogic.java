@@ -14,6 +14,7 @@ public class GameLogic {
   
   private static final String TAG = "testtest";
   private static final int BOT_STARTING_MONEY = 500;
+  private static final int LAST_ROUND_NUMBER = 3;
 
   private ArrayList<Player> players;
   private int round; // starts from 0. A round is all player turns combined, ends when someone takes the money away from the board
@@ -21,6 +22,7 @@ public class GameLogic {
   private ArrayList<Card> board; // only contains the upsided cards
   private int moneyOnBoard;
   private int currentBet; // the current bet a player has to hold
+  private int indexOfRaiser; // the index of the player who raised. -1 means no one raised!
   private int dealerOffset; // index of the player (in the players list) who is the dealer, starts with 0
   private ArrayList<Card> deck; // works like a deck in real life, so in the beginning all the cards are here, but when you add card to a player or put on the board, remove it from this.
   private int difficulty; // 0 is the easiest
@@ -41,7 +43,7 @@ public class GameLogic {
   public GameLogic(Player user) {
     players = new ArrayList<>();
     players.add(user);
-    players.add(new Bot("bot", 500, 0));
+    players.add(new Bot("bot", BOT_STARTING_MONEY, 0));
     dealerOffset = 0;
   }
   
@@ -83,6 +85,7 @@ public class GameLogic {
   private void nextRound() {
     Log.d(TAG, "round " + round);
     turn = 0;
+    indexOfRaiser = -1;
 //    currentBet = calcMinBet();
     switch (round) {
       case 0: // preflop
@@ -101,9 +104,45 @@ public class GameLogic {
       case 3: // river
         board.add(getNextCardFromDeck());
         break;
+      case 4: // game over
+        gameOver();
+        return;
     }
   
     onChange.invoke(createEventArgs());
+  }
+  
+  /**
+   * @return true if
+   *  - everyone folded
+   *  - everyone acted but no one raised
+   *  - someone raised, but everyone paid
+   */
+  private boolean isRoundOver() {
+    // if everyone folded
+    int playersNotFolded = 0;
+    for (Player player : players) {
+      if (player.folded) {
+        if (++playersNotFolded > 1) {
+          round = LAST_ROUND_NUMBER; // game over
+          return true;
+        }
+      }
+    }
+    
+    // everyone acted but no one raised
+    if (indexOfRaiser == -1) {
+      if (turn == players.size()-1) {
+        return true;
+      }
+    } else {
+      // someone raised, but everyone paid
+      if (indexOfRaiser == ((getCurrentPlayerIndex()+1) % players.size()) ) {
+        return true;
+      }
+    }
+    
+    return false;
   }
   
   /**
@@ -121,8 +160,12 @@ public class GameLogic {
   
     onChange.invoke(createEventArgs());
   
-    // gameover?
-    // maybe...
+    if (isRoundOver()) {
+      round++;
+      nextRound();
+      return;
+    }
+  
     turn++;
   }
   
@@ -131,13 +174,6 @@ public class GameLogic {
    */
   private ScreenUpdaterEventArgs createEventArgs() {
     return  null;
-  }
-  
-  /**
-   * @return true if all 5 cards are on the board or the other players folded ...
-   */
-  private boolean isGameOver() {
-    return false;
   }
   
   /**
