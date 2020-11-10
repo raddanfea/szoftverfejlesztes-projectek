@@ -35,10 +35,14 @@ public class GameLogic {
   /**
    * Create the Bot here.
    * Add the user and the Bot to the players.
+   * Init the dealerOffset
    * @param user  a Player instance initialized with name and money
    */
   public GameLogic(Player user) {
-  
+    players = new ArrayList<>();
+    players.add(user);
+    players.add(new Bot("bot", 500, 0));
+    dealerOffset = 0;
   }
   
   /**
