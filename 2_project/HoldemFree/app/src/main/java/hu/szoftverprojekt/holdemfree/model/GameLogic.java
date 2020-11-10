@@ -102,6 +102,8 @@ public class GameLogic {
         board.add(getNextCardFromDeck());
         break;
     }
+  
+    onChange.invoke(createEventArgs());
   }
   
   /**
