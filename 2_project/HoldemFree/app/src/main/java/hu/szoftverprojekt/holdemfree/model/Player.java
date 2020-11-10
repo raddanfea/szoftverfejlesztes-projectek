@@ -25,7 +25,12 @@ public class Player {
     this.money = money;
     folded = false;
   }
-
+  
+  public int pay(int amount) {
+    int paying = Math.min(money, amount);
+    money -= paying;
+    return paying;
+  }
   
   public String getName() {
     return name;

@@ -70,7 +70,27 @@ public class GameLogic {
    *  ...
    */
   private void nextRound() {
-  
+    Log.d(TAG, "round " + round);
+    turn = 0;
+//    currentBet = calcMinBet();
+    switch (round) {
+      case 0: // preflop
+        // dealing 2 card for every player
+        for (Player player : players) {
+          player.setHand(getNextCardsFromDeck(2));
+        }
+      
+        moneyOnBoard += players.get(dealerOffset+1).pay(calcMinBet()/2) // small blind
+            + players.get(dealerOffset+2).pay(calcMinBet()); // big blind
+        break;
+      case 1: // flop
+        board.addAll(getNextCardsFromDeck(3));
+        break;
+      case 2: // turn
+      case 3: // river
+        board.add(getNextCardFromDeck());
+        break;
+    }
   }
   
   /**
