@@ -63,7 +63,13 @@ public class GameLogic {
    * Has to call the nextRound() function.
    */
   private void init() {
-  
+    Log.d(TAG, "init ...");
+    round = 0;
+    board = new ArrayList<>();
+    moneyOnBoard = 0;
+    dealerOffset++;
+    deck = generateShuffledDeck();
+    nextRound();
   }
   
   /**
