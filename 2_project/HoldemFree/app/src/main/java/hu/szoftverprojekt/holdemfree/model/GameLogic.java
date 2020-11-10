@@ -47,13 +47,14 @@ public class GameLogic {
    * Calls the init() function at the end.
    */
   public void start() {
-  
+    Log.d(TAG, "start ...");
+    init();
   }
   
   /**
    * Initializes a game.
    * Fields that needs to be reset:
-   * round, board, moneyOnBoard, dealerOffset, deck.
+   * round, board, moneyOnBoard, deck.
    * Remember that round starts from 0!
    * Has to call the nextRound() function.
    */
