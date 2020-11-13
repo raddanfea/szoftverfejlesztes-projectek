@@ -20,15 +20,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button start_game_button = (Button) findViewById(R.id.start_game);
-        start_game_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNameScreen();
-            }
-        });
-
-        /* Máté fogja létrhozni a DeckScrrent és SegttingScreent
+        /* Máté fogja létrhozni a DeckScrrent
         Button change_deck_button = (Button) findViewById(R.id.change_deck);
         change_deck_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +28,7 @@ public class Menu extends AppCompatActivity {
                 openDeckScreen();
             }
         });
+         */
 
         Button settings_button = (Button) findViewById(R.id.settings);
         settings_button.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +37,7 @@ public class Menu extends AppCompatActivity {
                 openSettingsScreen();
             }
         });
-        */
+
 
         Button exit_button = (Button) findViewById(R.id.exit);
         exit_button.setOnClickListener(new View.OnClickListener() {
@@ -56,22 +49,17 @@ public class Menu extends AppCompatActivity {
 
     }
 
-    private void openNameScreen() {
-        Intent target_start_game = new Intent(this, NameScreen.class);
-        startActivity(target_start_game);
-    }
-
-   /* amint kész a DeckScreen és SettingScreen használható
+   /* amint kész a DeckScreen használható
    private void openDeckScreen () {
         Intent target_change_deck = new Intent(this, DeckScreen.class);
         startActivity(target_change_deck);
     }
-
+*/
    private void openSettingsScreen () {
        Intent target_settings = new Intent(this, SettingsScreen.class);
        startActivity(target_settings);
    }
-   */
+
 
     private void exitGame () {
 

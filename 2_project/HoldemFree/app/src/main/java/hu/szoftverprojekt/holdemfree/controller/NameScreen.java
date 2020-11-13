@@ -35,7 +35,7 @@ public class NameScreen extends AppCompatActivity {
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGameScreen();
+                openMenuScreen();
             }
         });
 
@@ -66,8 +66,8 @@ public class NameScreen extends AppCompatActivity {
         }
     };
 
-    public void openGameScreen() {
-        Intent startGame = new Intent(this, GameScreen.class);
+    public void openMenuScreen() {
+        Intent startGame = new Intent(this, Menu.class);
         startActivity(startGame);
     }
 
