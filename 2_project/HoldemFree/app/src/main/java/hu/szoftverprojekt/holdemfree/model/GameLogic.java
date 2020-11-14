@@ -1,6 +1,10 @@
 package hu.szoftverprojekt.holdemfree.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import hu.szoftverprojekt.holdemfree.model.actions.Raise;
 
@@ -243,12 +247,28 @@ public class GameLogic {
    */
   private static ArrayList<Card> generateShuffledDeck() {
     ArrayList<Card> out = new ArrayList<>();
-    for (int i = 1; i < 53; i++) {
-      out.add(new Card(i, 0));
+
+    ArrayList<Integer> deckIndexes = getNumbersInRange(1,53);
+    Collections.shuffle(deckIndexes);
+
+    for (int i=1; i<deckIndexes.size(); i++)
+    {
+      out.add(new Card(deckIndexes.get(i), 0));
     }
+
     return out;
   }
-  
+
+  /**
+   * Generates list of numbers in in range.
+   */
+  public static ArrayList<Integer> getNumbersInRange(int start, int end) {
+    ArrayList<Integer> result = new ArrayList<>();
+    for (int i = start; i < end; i++) {
+      result.add(i);
+    }
+    return result;
+  }
   /**
    * The price of the big blind.
    * The difficulty may alter this value.
