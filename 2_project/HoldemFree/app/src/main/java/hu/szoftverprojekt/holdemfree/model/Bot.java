@@ -2,6 +2,8 @@ package hu.szoftverprojekt.holdemfree.model;
 
 import java.util.ArrayList;
 
+import hu.szoftverprojekt.holdemfree.model.actions.Actions;
+
 public class Bot extends Player{
   
   private int difficulty;
@@ -18,6 +20,7 @@ public class Bot extends Player{
    */
   public void think(ArrayList<Card> board /* ide lehet tobb parametert is irni ha kell */) {
     // pl.: if ( i_have_good_cards ) setNextAction( Actions.RAISE_BY(50) );
+    setNextAction(Actions.HOLD);
   }
   
 }
