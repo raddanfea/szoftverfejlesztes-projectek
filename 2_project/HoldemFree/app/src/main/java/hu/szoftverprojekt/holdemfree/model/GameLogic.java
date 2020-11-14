@@ -1,9 +1,21 @@
 package hu.szoftverprojekt.holdemfree.model;
 
+import android.os.Build;
+import android.util.Log;
 import android.util.Pair;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import hu.szoftverprojekt.holdemfree.model.actions.Raise;
 
@@ -250,85 +262,183 @@ public class GameLogic {
     allCards.addAll(board);
     allCards.addAll(hand);
 
+    List<Integer> cardList = new ArrayList<>(allCards.size());
+    for (Card elem : allCards) {
+      cardList.add(elem.getId());
+    }
 
 
     //getting pairs value
-    Pair<Integer, Integer> pairs = findPairs(allCards);
+    Pair<Integer, Integer> pairs = findPairs(allCards, new ArrayList(cardList));
 
-    //getting drill value
-    Pair<Integer, Integer> drills = findDrills(allCards);
+    //getting drill and poker value
+    Pair<Integer, Integer> drills = findDrills(allCards, new ArrayList(cardList));
+
+    //getting straight flush value
+    Pair<Integer, Integer> straightF = findStraightFlush(allCards, new ArrayList(cardList));
 
     Integer cumValue = 0;
 
     // comparing results and giving points
-    if(drills.first > 0) { cumValue += (500 + drills.second); }
-    else if(pairs.first > 0) {
+    if (false) { return 0; }                                                   // else if miatt
+    else if(drills.first == 2) { cumValue += (2000 + drills.second); }        //poker
+    else if(straightF.first > 0) {  cumValue += (1000 + straightF.second);  } //straight flush
+    else if(drills.first == 1) { cumValue += (500 + drills.second); }         //drills
+    else if(pairs.first > 0) {                                                //one and two pairs
           cumValue += (100*pairs.first);
           cumValue += pairs.second;
     }
     return cumValue;
   }
 
+
+
+  private static Pair<Integer, Integer> findStraightFlush(ArrayList<Card> allCards, List<Integer> cardList) {
+
+    int[] cardArray = cardList.stream().mapToInt(i->i).toArray();
+    Arrays.sort(cardArray);
+    int[] tempArray = new int[5];
+    int straight = 0;
+    int highestStraight = 0;
+
+    for(int k = 0; k < 52-15; k++){
+            tempArray[0] = k+1;
+            tempArray[1] = k+4+1;
+            tempArray[2] = k+8+1;
+            tempArray[3] = k+12+1;
+            tempArray[4] = k+16+1;
+            if(isSubArray(cardArray, tempArray, cardArray.length, tempArray.length)) {
+                straight = 1;
+                if((allCards.get(k).getId() > highestStraight) | (allCards.get(k).getId() <= 4)){
+                    highestStraight = tempArray[4];
+                }
+            }
+    }
+
+    Log.d("temparray", String.valueOf(tempArray[0]));
+    Log.d("cardarray", String.valueOf(cardArray[0]));
+
+    Pair<Integer,Integer> p = new Pair(straight, highestStraight);
+    return p;
+  }
+
+
+  /**
+   * Checks if B is subarray of A
+   * @return  True or False
+   */
+  static boolean isSubArray(int A[], int B[], int n, int m)
+  {
+    int i = 0, j = 0;
+    while (i < n && j < m)
+    {
+      if (A[i] == B[j]){
+          i++;
+          j++;
+          if (j == m) return true;
+      }
+      else {
+        i = i-j+1;
+        j = 0;
+      }
+    }
+    return false;
+  }
+
   /**
    * Calculates value of drill.
    * Higher score means you have better cards.
    */
-  private static Pair<Integer, Integer> findDrills(ArrayList<Card> allCards) {
+  private static Pair<Integer, Integer> findDrills(ArrayList<Card> allCards, List<Integer> cardList) {
     int drill = 0;
     int highestDrill = 0;
 
-    List<Integer> cardList = new ArrayList<>(allCards.size());
-    for (Card elem : allCards) {
-      cardList.add(elem.getId());
-    }
-    List<Integer> cardListBackup = cardList;
+    List<Integer> localCardList = cardList;
 
-          while (cardList.size() > 0) {
 
-            int cardVal = 0;
-            int occur = 0;
+          while (localCardList.size() > 0) {
+              int cardVal = 0;
+              int occur = 1;
 
-              if(allCards.get(cardVal).getId() % 4 == 0){
-                if(cardList.contains(allCards.get(cardVal).getId()-1)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); } }
-                if(cardList.contains(allCards.get(cardVal).getId()-2)){occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); } }
-                if(cardList.contains(allCards.get(cardVal).getId()-3)){occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-              }
-              else if(allCards.get(cardVal).getId() % 3 == 0){
-                if(cardList.contains(allCards.get(cardVal).getId()+1)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-                if(cardList.contains(allCards.get(cardVal).getId()-1)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId();  }  }
-               if(cardList.contains(allCards.get(cardVal).getId()-2)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId();  }  }
-              }
-              else if(allCards.get(cardVal).getId() % 2 == 0){
-                if(cardList.contains(allCards.get(cardVal).getId()+1)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-                if(cardList.contains(allCards.get(cardVal).getId()+2)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-                if(cardList.contains(allCards.get(cardVal).getId()-1)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-              }
-              else {
-                if(cardList.contains(allCards.get(cardVal).getId()+1)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-                if(cardList.contains(allCards.get(cardVal).getId()+2)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-                if(cardList.contains(allCards.get(cardVal).getId()+3)) {occur+=1;
-                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
-              }
-              if (occur > 2) {
-                  drill = 1;
-                  if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {
-                      //skips if aces are already found
-                      highestDrill = cardVal;
-                  };
-              }
-              cardList.remove(0);
+                  if(allCards.get(cardVal).getId() % 4 == 0){
+                      if(localCardList.contains(allCards.get(cardVal).getId()-1)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); } }
+                      if(localCardList.contains(allCards.get(cardVal).getId()-2)){
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); } }
+                      if(localCardList.contains(allCards.get(cardVal).getId()-3)){
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                  }
+                  else if(allCards.get(cardVal).getId() % 3 == 0){
+                      if(localCardList.contains(allCards.get(cardVal).getId()+1)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                      if(localCardList.contains(allCards.get(cardVal).getId()-1)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId();  }  }
+                     if(localCardList.contains(allCards.get(cardVal).getId()-2)) {
+                       occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId();  }  }
+                  }
+                  else if(allCards.get(cardVal).getId() % 2 == 0){
+                      if(localCardList.contains(allCards.get(cardVal).getId()+1)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                      if(localCardList.contains(allCards.get(cardVal).getId()+2)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                      if(localCardList.contains(allCards.get(cardVal).getId()-1)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                  }
+                  else {
+                      if(localCardList.contains(allCards.get(cardVal).getId()+1)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                      if(localCardList.contains(allCards.get(cardVal).getId()+2)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                      if(localCardList.contains(allCards.get(cardVal).getId()+3)) {
+                        occur+=1;
+                        if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4))
+                        {highestDrill = allCards.get(cardVal).getId(); }  }
+                  }
+
+                  if (occur == 3) {
+                      drill = 1;
+                          if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {
+                              //makes aces the highest
+                              highestDrill = cardVal;
+                          };
+                    Log.d("drillO", String.valueOf(occur));
+                  }
+                  if (occur == 4) {
+                      drill = 2;
+                      if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {
+                        //makes aces the highest
+                        highestDrill = cardVal;
+                      };
+                    Log.d("pokerO", String.valueOf(occur));
+                    break;
+                  }
+                  localCardList.remove(0);
           }
+
+
+    Log.d("drillEnd", String.valueOf(drill));
 
     if ((highestDrill < 5) & (highestDrill > 0)) { highestDrill = 53; }
     Pair<Integer,Integer> p = new Pair(drill, highestDrill);
@@ -339,47 +449,43 @@ public class GameLogic {
    * Calculates value of pairs and two pairs.
    * Higher score means you have better cards.
    */
-  private static Pair<Integer,Integer> findPairs(ArrayList<Card> allCards) {
+  private static Pair<Integer,Integer> findPairs(ArrayList<Card> allCards, List<Integer> cardList) {
     Integer pair = 0;
     Integer highestPair = 0;
-
-    List<Integer> cardList = new ArrayList<>(allCards.size());
-    for (Card elem : allCards) {
-      cardList.add(elem.getId());
-    }
+    List<Integer> localCardList = cardList;
 
         for (int i = 0; i < allCards.size(); i++) {
-            cardList.remove(0);
+            localCardList.remove(0);
             if(allCards.get(i).getId() % 4 == 0){
-                if(cardList.contains(allCards.get(i).getId()-1)) {pair+=1;
+                if(localCardList.contains(allCards.get(i).getId()-1)) {pair+=1;
                     if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();} }
-                else if(cardList.contains(allCards.get(i).getId()-2)){pair+=1;
+                else if(localCardList.contains(allCards.get(i).getId()-2)){pair+=1;
                   if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();} }
-                else if(cardList.contains(allCards.get(i).getId()-3)){pair+=1;
+                else if(localCardList.contains(allCards.get(i).getId()-3)){pair+=1;
                   if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
             }
             else if(allCards.get(i).getId() % 3 == 0){
-              if(cardList.contains(allCards.get(i).getId()+1)) {pair+=1;
+              if(localCardList.contains(allCards.get(i).getId()+1)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
-              else if(cardList.contains(allCards.get(i).getId()-1)) {pair+=1;
+              else if(localCardList.contains(allCards.get(i).getId()-1)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
-              else if(cardList.contains(allCards.get(i).getId()-2)) {pair+=1;
+              else if(localCardList.contains(allCards.get(i).getId()-2)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
             }
             else if(allCards.get(i).getId() % 2 == 0){
-              if(cardList.contains(allCards.get(i).getId()+1)) {pair+=1;
+              if(localCardList.contains(allCards.get(i).getId()+1)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
-              else if(cardList.contains(allCards.get(i).getId()+2)) {pair+=1;
+              else if(localCardList.contains(allCards.get(i).getId()+2)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
-              else if(cardList.contains(allCards.get(i).getId()-1)) {pair+=1;
+              else if(localCardList.contains(allCards.get(i).getId()-1)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
             }
             else {
-              if(cardList.contains(allCards.get(i).getId()+1)) {pair+=1;
+              if(localCardList.contains(allCards.get(i).getId()+1)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
-              else if(cardList.contains(allCards.get(i).getId()+2)) {pair+=1;
+              else if(localCardList.contains(allCards.get(i).getId()+2)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
-              else if(cardList.contains(allCards.get(i).getId()+3)) {pair+=1;
+              else if(localCardList.contains(allCards.get(i).getId()+3)) {pair+=1;
                 if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
             }
         }
@@ -425,11 +531,12 @@ public class GameLogic {
     ////////////////FOR TESTS AND DEBUG///////////////
     out.set(0, new Card(1, 0));
     out.set(1, new Card(2, 0));
-    out.set(2, new Card(12, 0));
-    out.set(3, new Card(13, 0));
+
     out.set(4, new Card(3, 0));
-    out.set(5, new Card(4, 0));
-    out.set(6, new Card(5, 0));
+    out.set(5, new Card(5, 0));
+    out.set(6, new Card(17, 0));
+    out.set(7, new Card(21, 0));
+    out.set(8, new Card(17, 0));
     //////////////////////////////////////////////////
 
 
