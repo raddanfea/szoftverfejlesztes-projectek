@@ -98,10 +98,17 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void invoke(ScreenUpdaterEventArgs gameData) {
                 Log.d(TAG, "onChange ... " + gameData.toString());
-                
-                for (int i = 0; i < gameData.board.size(); i++) {
-                    cardsOnBoard[i].setImageResource(
-                        getResId("k"+gameData.board.get(i).getId(), R.drawable.class));
+    
+                if(gameData.board.size() == 0) {
+                    // clear images
+                    for (int i = 0; i < 5; i++) {
+                        cardsOnBoard[i].setImageResource(R.drawable.cb);
+                    }
+                } else {
+                    for (int i = 0; i < gameData.board.size(); i++) {
+                        cardsOnBoard[i].setImageResource(
+                            getResId("k"+gameData.board.get(i).getId(), R.drawable.class));
+                    }
                 }
                 
                 for (int i = 0; i < 2; i++) {
@@ -129,6 +136,12 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void invoke(ScreenUpdaterEventArgs gameData) {
                 Log.d(TAG, "onGameOver");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                game.start();
             }
         };
         
@@ -136,14 +149,12 @@ public class GameScreen extends AppCompatActivity {
     
     private void handlePlayers(ScreenUpdaterEventArgs e) {
         if (game.getCurrentPlayerIndex() != 0) {
-            log("-");
-            log("Bots turn ......................");
+            log("///////////////////////////////////////////////\nBots turn ......................");
             canInteract = false;
             ((Bot) game.getCurrentPlayer()).think(e.board);
             game.nextTurn();
         } else {
-            log("-");
-            log("Users turn ......................");
+            log("///////////////////////////////////////////////\nUsers turn ......................");
             canInteract = true;
         }
     }

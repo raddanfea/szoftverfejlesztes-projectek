@@ -32,6 +32,7 @@ public class GameLogic {
   private int dealerOffset; // index of the player (in the players list) who is the dealer, starts with 0
   private ArrayList<Card> deck; // works like a deck in real life, so in the beginning all the cards are here, but when you add card to a player or put on the board, remove it from this.
   private int difficulty; // 0 is the easiest
+  private int winnerByFold;
   
   /**
    * Call this event when you want to update the screen.
@@ -51,7 +52,6 @@ public class GameLogic {
     players.add(user);
     players.add(new Bot("bot", BOT_STARTING_MONEY, 0));
     dealerOffset = -1;
-    startingPlayerIndex = 0;
   }
   
   /**
@@ -78,6 +78,12 @@ public class GameLogic {
     moneyOnBoard = 0;
     dealerOffset++;
     deck = generateShuffledDeck();
+  
+    for (Player player : players) {
+      player.folded = false;
+    }
+    winnerByFold = -1;
+    
     nextRound();
   }
   
@@ -130,10 +136,13 @@ public class GameLogic {
   private boolean isRoundOver() {
     // if everyone folded
     int playersFolded = 0;
-    for (Player player : players) {
+    for (int i = 0; i < players.size(); i++) {
+      Player player = players.get(i);
       log(player.getName() + (player.folded ? " folded" : " not folded"));
       if (player.folded) {
         playersFolded++;
+      } else {
+        winnerByFold = i;
       }
     }
     
@@ -141,6 +150,7 @@ public class GameLogic {
       round = LAST_ROUND_NUMBER; // game over
       return true;
     }
+    winnerByFold = -1;
     
     // everyone acted but no one raised
     if (indexOfRaiser == -1) {
@@ -161,17 +171,22 @@ public class GameLogic {
    * Handles the current players action.
    */
   public void nextTurn() {
-    log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"+getCurrentPlayerIndex() + ". players turn\n - Action: " + getCurrentPlayer().getNextAction().name);
-    
+    log("players[" + getCurrentPlayerIndex() + "]'s turn\n - Action: " + getCurrentPlayer().getNextAction().name);
+  
     // process action
     switch (getCurrentPlayer().getNextAction().name) {
       case "Fold":
         getCurrentPlayer().folded = true;
         break;
       case "Hold":
-        // hold if someone raised, check otherwise
-        if (indexOfRaiser != -1) {
-          moneyOnBoard += getCurrentPlayer().pay(currentBet);
+        if((round == 0) && (getCurrentPlayerIndex() == calcPlayerIndex(dealerOffset+1))) {
+          // pay the second half of small blind
+          moneyOnBoard += getCurrentPlayer().pay(calcMinBet()/2);
+        } else {
+          // hold if someone raised, check otherwise
+          if (indexOfRaiser != -1) {
+            moneyOnBoard += getCurrentPlayer().pay(currentBet);
+          }
         }
         break;
       case "Raise":
@@ -206,6 +221,15 @@ public class GameLogic {
    */
   private void gameOver() {
     log("GAME OVER");
+    // ha kesz a calcWinner akkor ki lehet venni a kommentet
+//    int winnerIndex;
+//    if (winnerByFold > -1) {
+//      winnerIndex = winnerByFold;
+//    } else {
+//      winnerIndex = calculateWinner(players, board);
+//    }
+//
+//    players.get(winnerIndex).setMoney( players.get(winnerIndex).getMoney() + moneyOnBoard );
     onGameOver.invoke(createEventArgs());
   }
   
