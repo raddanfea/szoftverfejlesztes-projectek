@@ -52,6 +52,7 @@ public class GameScreen extends AppCompatActivity {
         for (int i = 0; i < 2; i++)
             playerCards[i] = findViewById(getResId("player_card"+(i+1), R.id.class));
         
+        
         holdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
