@@ -243,7 +243,7 @@ public class GameLogic {
    */
   private static ArrayList<Card> generateShuffledDeck() {
     ArrayList<Card> out = new ArrayList<>();
-    for (int i = 0; i < 52; i++) {
+    for (int i = 1; i < 53; i++) {
       out.add(new Card(i, 0));
     }
     return out;
