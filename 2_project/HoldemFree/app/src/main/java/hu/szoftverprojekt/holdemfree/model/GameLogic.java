@@ -140,7 +140,7 @@ public class GameLogic {
     
     // everyone acted but no one raised
     if (indexOfRaiser == -1) {
-      if (calcPlayerIndex(turn-startingPlayerIndex) == players.size()-1) {
+      if (turn == players.size()-1) {
         return true;
       }
     } else {
@@ -180,7 +180,7 @@ public class GameLogic {
     if (isRoundOver()) {
       round++;
       turn++;
-      startingPlayerIndex = calcPlayerIndex(turn);
+      startingPlayerIndex = getCurrentPlayerIndex();
       nextRound();
       return;
     }
@@ -243,7 +243,7 @@ public class GameLogic {
    */
   private static ArrayList<Card> generateShuffledDeck() {
     ArrayList<Card> out = new ArrayList<>();
-    for (int i = 0; i < 52; i++) {
+    for (int i = 1; i < 53; i++) {
       out.add(new Card(i, 0));
     }
     return out;
