@@ -52,6 +52,10 @@ public class GameScreen extends AppCompatActivity {
         for (int i = 0; i < 2; i++)
             playerCards[i] = findViewById(getResId("player_card"+(i+1), R.id.class));
         
+        /////////////////////////////// DEBUG /////////////////////////////////
+        debugBindBotCards();
+        ///////////////////////////////////////////////////////////////////////
+        
         
         holdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,11 +107,16 @@ public class GameScreen extends AppCompatActivity {
                     playerCards[i].setImageResource(
                         getResId("k"+player.getHand().get(i).getId(), R.drawable.class));
                 }
+    
+                /////////////////////////////// DEBUG /////////////////////////////////
+                debugSetImageForBotCards(gameData);
+                ///////////////////////////////////////////////////////////////////////
                 
                 aiPot.setText("ai pot: " + Integer.toString(gameData.players.get(1).getMoney()));
                 currentPot.setText(Integer.toString(gameData.moneyOnBoard));
                 playerPot.setText(Integer.toString(player.getMoney()));
                 
+                // this will start the next turn
                 if (gameData.roundsEnded < 4)
                     handlePlayers(gameData);
             }
@@ -123,11 +132,13 @@ public class GameScreen extends AppCompatActivity {
     
     private void handlePlayers(ScreenUpdaterEventArgs e) {
         if (game.getCurrentPlayerIndex() != 0) {
+            log("-");
             log("Bots turn ......................");
             canInteract = false;
             ((Bot) game.getCurrentPlayer()).think(e.board);
             game.nextTurn();
         } else {
+            log("-");
             log("Users turn ......................");
             canInteract = true;
         }
@@ -147,4 +158,21 @@ public class GameScreen extends AppCompatActivity {
     private void log(String s) {
         System.out.println(s);
     }
+    
+    
+    // --------------------- DEBUG ---------------------------
+    private ImageView[] debugBotCards = new ImageView[2];
+    
+    private void debugBindBotCards() {
+        for (int i = 0; i < 2; i++)
+            debugBotCards[i] = findViewById(getResId("debug_bot_card_"+(i+1), R.id.class));
+    }
+    
+    private void debugSetImageForBotCards(ScreenUpdaterEventArgs e) {
+        for (int i = 0; i < 2; i++) {
+            debugBotCards[i].setImageResource(
+                getResId("k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
+        }
+    }
+    
 }
