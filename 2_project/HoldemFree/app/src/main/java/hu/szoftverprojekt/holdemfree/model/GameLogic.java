@@ -253,7 +253,7 @@ public class GameLogic {
 
 
     //getting pairs value
-    Pair<Integer, Integer> pairs = findpairs(allCards);
+    Pair<Integer, Integer> pairs = findPairs(allCards);
 
     //getting drill value
     Pair<Integer, Integer> drills = findDrills(allCards);
@@ -277,25 +277,60 @@ public class GameLogic {
     int drill = 0;
     int highestDrill = 0;
 
+    List<Integer> cardList = new ArrayList<>(allCards.size());
+    for (Card elem : allCards) {
+      cardList.add(elem.getId());
+    }
+    List<Integer> cardListBackup = cardList;
 
-    for (int i=0; i<13; i++){
-        for (int k=0; k<4; k++) {
-            int cardVal = (i*4)+k;
+          while (cardList.size() > 0) {
+
+            int cardVal = 0;
             int occur = 0;
 
-          for (int n=0; n<allCards.size(); n++) {
-            if(cardVal == allCards.get(n).getId()) { occur += 1; }
-          }
-            if (occur == 3) {
-              if (!((highestDrill > 0) & (highestDrill < 5))) {
-                //skips if aces are already found
-                drill = 1;
-                highestDrill = cardVal;
+              if(allCards.get(cardVal).getId() % 4 == 0){
+                if(cardList.contains(allCards.get(cardVal).getId()-1)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); } }
+                if(cardList.contains(allCards.get(cardVal).getId()-2)){occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); } }
+                if(cardList.contains(allCards.get(cardVal).getId()-3)){occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
               }
-            }
-        }
-    }
+              else if(allCards.get(cardVal).getId() % 3 == 0){
+                if(cardList.contains(allCards.get(cardVal).getId()+1)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+                if(cardList.contains(allCards.get(cardVal).getId()-1)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId();  }  }
+               if(cardList.contains(allCards.get(cardVal).getId()-2)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId();  }  }
+              }
+              else if(allCards.get(cardVal).getId() % 2 == 0){
+                if(cardList.contains(allCards.get(cardVal).getId()+1)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+                if(cardList.contains(allCards.get(cardVal).getId()+2)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+                if(cardList.contains(allCards.get(cardVal).getId()-1)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+              }
+              else {
+                if(cardList.contains(allCards.get(cardVal).getId()+1)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+                if(cardList.contains(allCards.get(cardVal).getId()+2)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+                if(cardList.contains(allCards.get(cardVal).getId()+3)) {occur+=1;
+                  if((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {highestDrill = allCards.get(cardVal).getId(); }  }
+              }
+              if (occur > 2) {
+                  drill = 1;
+                  if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {
+                      //skips if aces are already found
+                      highestDrill = cardVal;
+                  };
+              }
+              cardList.remove(0);
+          }
 
+    if ((highestDrill < 5) & (highestDrill > 0)) { highestDrill = 53; }
     Pair<Integer,Integer> p = new Pair(drill, highestDrill);
     return p;
   }
@@ -304,7 +339,7 @@ public class GameLogic {
    * Calculates value of pairs and two pairs.
    * Higher score means you have better cards.
    */
-  private static Pair<Integer,Integer> findpairs(ArrayList<Card> allCards) {
+  private static Pair<Integer,Integer> findPairs(ArrayList<Card> allCards) {
     Integer pair = 0;
     Integer highestPair = 0;
 
@@ -350,6 +385,7 @@ public class GameLogic {
         }
 
     if (pair > 2) {pair = 2;}
+    if ((highestPair < 5) & (highestPair > 0)) { highestPair = 53; }
     Pair< Integer, Integer > p = new Pair(pair, highestPair);
     return p;
   }
@@ -380,10 +416,22 @@ public class GameLogic {
     ArrayList<Integer> deckIndexes = getNumbersInRange(1,53);
     Collections.shuffle(deckIndexes);
 
-    for (int i=1; i<deckIndexes.size(); i++)
+    for (int i=0; i<deckIndexes.size(); i++)
     {
       out.add(new Card(deckIndexes.get(i), 0));
     }
+
+
+    ////////////////FOR TESTS AND DEBUG///////////////
+    out.set(0, new Card(1, 0));
+    out.set(1, new Card(2, 0));
+    out.set(2, new Card(12, 0));
+    out.set(3, new Card(13, 0));
+    out.set(4, new Card(3, 0));
+    out.set(5, new Card(4, 0));
+    out.set(6, new Card(5, 0));
+    //////////////////////////////////////////////////
+
 
     return out;
   }
