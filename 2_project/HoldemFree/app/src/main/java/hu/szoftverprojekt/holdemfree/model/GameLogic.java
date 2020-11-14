@@ -1,7 +1,6 @@
 package hu.szoftverprojekt.holdemfree.model;
 
 import java.util.ArrayList;
-import android.util.Log;
 
 import hu.szoftverprojekt.holdemfree.model.actions.Raise;
 
@@ -17,10 +16,11 @@ public class GameLogic {
   private static final String TAG = "testtest";
   private static final int BOT_STARTING_MONEY = 500;
   private static final int LAST_ROUND_NUMBER = 3;
-
+  
   private ArrayList<Player> players;
   private int round; // starts from 0. A round is all player turns combined, ends when someone takes the money away from the board
   private int turn; // starts from 0. A turn is when a single player can act.
+  private int startingPlayerIndex;
   private ArrayList<Card> board; // only contains the upsided cards
   private int moneyOnBoard;
   private int currentBet; // the current bet a player has to hold
@@ -46,7 +46,8 @@ public class GameLogic {
     players = new ArrayList<>();
     players.add(user);
     players.add(new Bot("bot", BOT_STARTING_MONEY, 0));
-    dealerOffset = 0;
+    dealerOffset = -1;
+    startingPlayerIndex = 0;
   }
   
   /**
@@ -55,7 +56,7 @@ public class GameLogic {
    * Calls the init() function at the end.
    */
   public void start() {
-    Log.d(TAG, "start ...");
+    log("start ...");
     init();
   }
   
@@ -67,7 +68,7 @@ public class GameLogic {
    * Has to call the nextRound() function.
    */
   private void init() {
-    Log.d(TAG, "init ...");
+    log("init ...");
     round = 0;
     board = new ArrayList<>();
     moneyOnBoard = 0;
@@ -85,19 +86,20 @@ public class GameLogic {
    *  ...
    */
   private void nextRound() {
-    Log.d(TAG, "round " + round);
+    log("round " + round);
     turn = 0;
     indexOfRaiser = -1;
-//    currentBet = calcMinBet();
     switch (round) {
       case 0: // preflop
         // dealing 2 card for every player
         for (Player player : players) {
           player.setHand(getNextCardsFromDeck(2));
         }
-      
-        moneyOnBoard += players.get(dealerOffset+1).pay(calcMinBet()/2) // small blind
-            + players.get(dealerOffset+2).pay(calcMinBet()); // big blind
+        startingPlayerIndex = calcPlayerIndex(dealerOffset+3);
+        
+        currentBet = calcMinBet();
+        moneyOnBoard += players.get(calcPlayerIndex(dealerOffset+1)).pay(calcMinBet()/2) // small blind
+            + players.get(calcPlayerIndex(dealerOffset+2)).pay(calcMinBet()); // big blind
         break;
       case 1: // flop
         board.addAll(getNextCardsFromDeck(3));
@@ -107,10 +109,11 @@ public class GameLogic {
         board.add(getNextCardFromDeck());
         break;
       case 4: // game over
+        onChange.invoke(createEventArgs());
         gameOver();
         return;
     }
-  
+    
     onChange.invoke(createEventArgs());
   }
   
@@ -122,24 +125,27 @@ public class GameLogic {
    */
   private boolean isRoundOver() {
     // if everyone folded
-    int playersNotFolded = 0;
+    int playersFolded = 0;
     for (Player player : players) {
+      log(player.getName() + (player.folded ? " folded" : " not folded"));
       if (player.folded) {
-        if (++playersNotFolded > 1) {
-          round = LAST_ROUND_NUMBER; // game over
-          return true;
-        }
+        playersFolded++;
       }
+    }
+    
+    if (playersFolded == players.size()-1) {
+      round = LAST_ROUND_NUMBER; // game over
+      return true;
     }
     
     // everyone acted but no one raised
     if (indexOfRaiser == -1) {
-      if (turn == players.size()-1) {
+      if (calcPlayerIndex(turn-startingPlayerIndex) == players.size()-1) {
         return true;
       }
     } else {
       // someone raised, but everyone paid
-      if (indexOfRaiser == ((getCurrentPlayerIndex()+1) % players.size()) ) {
+      if (indexOfRaiser == calcPlayerIndex(getCurrentPlayerIndex()+1) ) {
         return true;
       }
     }
@@ -151,8 +157,8 @@ public class GameLogic {
    * Handles the current players action.
    */
   public void nextTurn() {
-    Log.d(TAG, getCurrentPlayerIndex() + ". players turn\n - Action: " + getCurrentPlayer().getNextAction().name);
-  
+    log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"+getCurrentPlayerIndex() + ". players turn\n - Action: " + getCurrentPlayer().getNextAction().name);
+    
     // process action
     switch (getCurrentPlayer().getNextAction().name) {
       case "Fold":
@@ -167,25 +173,27 @@ public class GameLogic {
       case "Raise":
         currentBet = ((Raise) getCurrentPlayer().getNextAction() ).by;
         moneyOnBoard += getCurrentPlayer().pay(currentBet);
+        indexOfRaiser = getCurrentPlayerIndex();
         break;
     }
-  
-    onChange.invoke(createEventArgs());
-  
+    
     if (isRoundOver()) {
       round++;
+      turn++;
+      startingPlayerIndex = calcPlayerIndex(turn);
       nextRound();
       return;
     }
-  
+    
     turn++;
+    onChange.invoke(createEventArgs());
   }
   
   /**
    * @return the data for the onChange() event
    */
   private ScreenUpdaterEventArgs createEventArgs() {
-    return  null;
+    return  new ScreenUpdaterEventArgs(players, board, moneyOnBoard, currentBet, dealerOffset, round, turn, indexOfRaiser);
   }
   
   /**
@@ -193,7 +201,8 @@ public class GameLogic {
    * Invokes the onGameOver event
    */
   private void gameOver() {
-  
+    log("GAME OVER");
+    onGameOver.invoke(createEventArgs());
   }
   
   /**
@@ -208,12 +217,12 @@ public class GameLogic {
    * Higher score means you have better cards.
    * @return  the score of a player
    */
-  private static int calcScoreOfHand(ArrayList<Card> board, ArrayList<Card> hand) {
+  public static int calcScoreOfHand(ArrayList<Card> board, ArrayList<Card> hand) {
     return -1;
   }
   
   private Card getNextCardFromDeck() {
-    return getNextCardsFromDeck(1).get(0);
+    return deck.remove(0);
   }
   
   /**
@@ -222,14 +231,22 @@ public class GameLogic {
    * @param amount  amount of cards
    */
   private ArrayList<Card> getNextCardsFromDeck(int amount) {
-    return null;
+    ArrayList<Card> out = new ArrayList<>();
+    for (int i = 0; i < amount; i++) {
+      out.add( deck.remove(0) );
+    }
+    return out;
   }
   
   /**
    * Create a new list of cards with all the cards and shuffle them.
    */
   private static ArrayList<Card> generateShuffledDeck() {
-    return null;
+    ArrayList<Card> out = new ArrayList<>();
+    for (int i = 0; i < 52; i++) {
+      out.add(new Card(i, 0));
+    }
+    return out;
   }
   
   /**
@@ -237,16 +254,24 @@ public class GameLogic {
    * The difficulty may alter this value.
    */
   private int calcMinBet() {
-    return -1;
+    return 80;
   }
-
+  
   public Player getCurrentPlayer() {
-    Log.d(TAG, "the current player is " + players.get(getCurrentPlayerIndex()).getName());
+    log("the current player is " + players.get(getCurrentPlayerIndex()).getName());
     return players.get(getCurrentPlayerIndex());
   }
   
   public int getCurrentPlayerIndex() {
-    return (turn + dealerOffset+3) % players.size();
+    return (startingPlayerIndex + turn) % players.size();
+  }
+  
+  public int calcPlayerIndex(int i) {
+    return i%players.size();
+  }
+  
+  private void log(String s) {
+    System.out.println(s);
   }
   
 }
