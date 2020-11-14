@@ -261,15 +261,11 @@ public class GameLogic {
     Integer cumValue = 0;
 
     // comparing results and giving points
-    if(drills.first != 0) { cumValue += (500 + drills.second); }
+    if(drills.first > 0) { cumValue += (500 + drills.second); }
     else if(pairs.first > 0) {
           cumValue += (100*pairs.first);
           cumValue += pairs.second;
     }
-
-    System.out.println("cumValue");
-    System.out.println(cumValue.toString());
-
     return cumValue;
   }
 
@@ -278,32 +274,29 @@ public class GameLogic {
    * Higher score means you have better cards.
    */
   private static Pair<Integer, Integer> findDrills(ArrayList<Card> allCards) {
-    Integer drill = 0;
-    Integer highestDrill = 0;
+    int drill = 0;
+    int highestDrill = 0;
 
-    List<Integer> allCardsList = new ArrayList<>();
-    for (Card t : allCards) {
-      allCardsList.add(t.getId());
-    }
 
-    for (int i=1; i<13; i++){
-      for(int k=0; k<4; k++){
-        Integer occur = 0;
-        Integer val = (i*4)+k;
-        if(allCardsList.contains(val)){
-          occur += 1;
-        }
-        if(occur == 3){
-          if (!((highestDrill > 0) & (highestDrill < 5))) {
-            //skips if aces are already found
-            drill = 1;
-            highestDrill = val;
+    for (int i=0; i<13; i++){
+        for (int k=0; k<4; k++) {
+            int cardVal = (i*4)+k;
+            int occur = 0;
+
+          for (int n=0; n<allCards.size(); n++) {
+            if(cardVal == allCards.get(n).getId()) { occur += 1; }
           }
+            if (occur == 3) {
+              if (!((highestDrill > 0) & (highestDrill < 5))) {
+                //skips if aces are already found
+                drill = 1;
+                highestDrill = cardVal;
+              }
+            }
         }
-      }
     }
 
-    Pair< Integer, Integer > p = new Pair(drill, highestDrill);
+    Pair<Integer,Integer> p = new Pair(drill, highestDrill);
     return p;
   }
 
@@ -314,75 +307,49 @@ public class GameLogic {
   private static Pair<Integer,Integer> findpairs(ArrayList<Card> allCards) {
     Integer pair = 0;
     Integer highestPair = 0;
-    Boolean pairExists = Boolean.FALSE;
-    outerloop:
-    for (int i=0; i<allCards.size(); i++)
-    {
-      Integer cardVal = allCards.get(i).getId();
-      for (int k=i+1; k<allCards.size(); k++)
-      {
-        if(cardVal % 4 == 0){
-          if (allCards.get(k).getId() == cardVal - 1) {
-            pair += 1;
-            if(cardVal > highestPair) {highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;
-          }
-          else if (allCards.get(k).getId() == cardVal - 2) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal - 3) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-        }
-        else if(cardVal % 3 == 0){
-          if (allCards.get(k).getId() == cardVal + 1) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal - 1) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal - 2) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-        }
-        else if(cardVal % 2 == 0){
-          if (allCards.get(k).getId() == cardVal + 1) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal + 2) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal - 1) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-        }
-        else {
-          if (allCards.get(k).getId() == cardVal + 1) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal + 2) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
-          else if (allCards.get(k).getId() == cardVal + 3) {pair += 1;
-            if(cardVal > highestPair){highestPair=cardVal;}
-            if (pairExists) { break outerloop; }
-            pairExists = Boolean.TRUE;}
+
+    List<Integer> cardList = new ArrayList<>(allCards.size());
+    for (Card elem : allCards) {
+      cardList.add(elem.getId());
+    }
+
+        for (int i = 0; i < allCards.size(); i++) {
+            cardList.remove(0);
+            if(allCards.get(i).getId() % 4 == 0){
+                if(cardList.contains(allCards.get(i).getId()-1)) {pair+=1;
+                    if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();} }
+                else if(cardList.contains(allCards.get(i).getId()-2)){pair+=1;
+                  if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();} }
+                else if(cardList.contains(allCards.get(i).getId()-3)){pair+=1;
+                  if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+            }
+            else if(allCards.get(i).getId() % 3 == 0){
+              if(cardList.contains(allCards.get(i).getId()+1)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+              else if(cardList.contains(allCards.get(i).getId()-1)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+              else if(cardList.contains(allCards.get(i).getId()-2)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+            }
+            else if(allCards.get(i).getId() % 2 == 0){
+              if(cardList.contains(allCards.get(i).getId()+1)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+              else if(cardList.contains(allCards.get(i).getId()+2)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+              else if(cardList.contains(allCards.get(i).getId()-1)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+            }
+            else {
+              if(cardList.contains(allCards.get(i).getId()+1)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+              else if(cardList.contains(allCards.get(i).getId()+2)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+              else if(cardList.contains(allCards.get(i).getId()+3)) {pair+=1;
+                if((allCards.get(i).getId() > highestPair) | (allCards.get(i).getId() <= 4)) {highestPair = allCards.get(i).getId();}  }
+            }
         }
 
-      }
-    }
-    if (pair > 2) {pair = 2;};
+    if (pair > 2) {pair = 2;}
     Pair< Integer, Integer > p = new Pair(pair, highestPair);
     return p;
   }
