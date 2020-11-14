@@ -25,7 +25,7 @@ public class GameLogic {
   private int round; // starts from 0. A round is all player turns combined, ends when someone takes the money away from the board
   private int turn; // starts from 0. A turn is when a single player can act.
   private int startingPlayerIndex;
-  private ArrayList<Card> board; // only contains the upsided cards
+  public ArrayList<Card> board; // only contains the upsided cards
   private int moneyOnBoard;
   private int currentBet; // the current bet a player has to hold
   private int indexOfRaiser; // the index of the player who raised. -1 means no one raised!
@@ -222,7 +222,115 @@ public class GameLogic {
    * @return  the score of a player
    */
   public static int calcScoreOfHand(ArrayList<Card> board, ArrayList<Card> hand) {
-    return -1;
+
+    ArrayList<Card> allCards = new ArrayList<>();
+    allCards.addAll(board);
+    allCards.addAll(hand);
+
+    /**
+     * Calculates the value of the highest card.
+     * Higher score means you have better cards.
+     */
+    Integer highestCard = 5;
+    for (int i=0; i<allCards.size(); i++)
+    {
+      Integer cardVal = allCards.get(i).getId();
+      if (cardVal <= 4) {cardVal = 53;}
+      if (cardVal > highestCard) {highestCard = cardVal;}
+    }
+
+    /**
+     * Calculates value of pairs and two pairs.
+     * Higher score means you have better cards.
+     */
+    Integer pair = 0;
+    ArrayList<Card> allCardsPair = allCards;
+    Integer highestPair = 0;
+    Boolean pairExists = Boolean.FALSE;
+    outerloop:
+    for (int i=0; i<allCards.size(); i++)
+    {
+      Integer cardVal = allCards.get(i).getId();
+      allCardsPair = allCards;
+      for (int k=i+1; k<allCardsPair.size(); k++)
+      {
+          if(cardVal % 4 == 0){
+                if (allCardsPair.get(k).getId() == cardVal - 1) {
+                  pair += 200;
+                  if(cardVal > highestPair) {highestPair=cardVal;}
+                  if (pairExists) { break outerloop; }
+                  pairExists = Boolean.TRUE;
+                }
+                else if (allCardsPair.get(k).getId() == cardVal - 2) {pair += 200;
+                  if(cardVal > highestPair){highestPair=cardVal;}
+                  if (pairExists) { break outerloop; }
+                  pairExists = Boolean.TRUE;}
+                else if (allCardsPair.get(k).getId() == cardVal - 3) {pair += 200;
+                  if(cardVal > highestPair){highestPair=cardVal;}
+                  if (pairExists) { break outerloop; }
+                  pairExists = Boolean.TRUE;}
+          }
+          else if(cardVal % 3 == 0){
+              if (allCardsPair.get(k).getId() == cardVal + 1) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+              else if (allCardsPair.get(k).getId() == cardVal - 1) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+              else if (allCardsPair.get(k).getId() == cardVal - 2) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+          }
+          else if(cardVal % 2 == 0){
+              if (allCardsPair.get(k).getId() == cardVal + 1) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+              else if (allCardsPair.get(k).getId() == cardVal + 2) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+              else if (allCardsPair.get(k).getId() == cardVal - 1) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+          }
+          else {
+              if (allCardsPair.get(k).getId() == cardVal + 1) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+              else if (allCardsPair.get(k).getId() == cardVal + 2) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+              else if (allCardsPair.get(k).getId() == cardVal + 3) {pair += 200;
+                if(cardVal > highestPair){highestPair=cardVal;}
+                if (pairExists) { break outerloop; }
+                pairExists = Boolean.TRUE;}
+          }
+
+      }
+    }
+
+    pair += 100+highestPair;
+
+
+    /**
+     * Calculates value of drill.
+     * Higher score means you have better cards.
+     */
+
+    Integer cumValue = highestCard + pair;
+
+    System.out.println(highestCard + "  highestCardValue");
+    System.out.println(pair-100 + "  pairValue");
+    System.out.println(cumValue + "  cumValue");
+
+    return cumValue;
   }
   
   private Card getNextCardFromDeck() {

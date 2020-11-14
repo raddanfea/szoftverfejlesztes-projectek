@@ -8,20 +8,18 @@
 
     <ImageView
         android:id="@+id/debug_bot_card_1"
-        android:layout_width="35dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="50dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_report_image" />
 
     <ImageView
         android:id="@+id/debug_bot_card_2"
-        android:layout_width="35dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="50dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="4dp"
         app:layout_constraintStart_toEndOf="@+id/debug_bot_card_1"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_report_image" />

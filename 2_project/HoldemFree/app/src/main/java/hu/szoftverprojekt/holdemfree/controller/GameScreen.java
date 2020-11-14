@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
@@ -107,15 +108,18 @@ public class GameScreen extends AppCompatActivity {
                     playerCards[i].setImageResource(
                         getResId("k"+player.getHand().get(i).getId(), R.drawable.class));
                 }
-    
                 /////////////////////////////// DEBUG /////////////////////////////////
+
+                // text = GameLogic.calcScoreOfHand(game.board, player.getHand());
+                // Toast.makeText(getApplicationContext(), String.valueOf(text), Toast.LENGTH_SHORT).show();
+
                 debugSetImageForBotCards(gameData);
                 ///////////////////////////////////////////////////////////////////////
                 
                 aiPot.setText("ai pot: " + Integer.toString(gameData.players.get(1).getMoney()));
                 currentPot.setText(Integer.toString(gameData.moneyOnBoard));
                 playerPot.setText(Integer.toString(player.getMoney()));
-                
+
                 // this will start the next turn
                 if (gameData.roundsEnded < 4)
                     handlePlayers(gameData);
