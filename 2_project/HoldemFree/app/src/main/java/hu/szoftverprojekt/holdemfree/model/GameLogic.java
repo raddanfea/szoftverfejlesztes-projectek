@@ -277,12 +277,16 @@ public class GameLogic {
     //getting straight flush value
     Pair<Integer, Integer> straightF = findStraightFlush(allCards, new ArrayList(cardList));
 
+    //getting straight value
+    Pair<Integer, Integer> straight = findStraight(allCards, new ArrayList(cardList));
+
     Integer cumValue = 0;
 
     // comparing results and giving points
     if (false) { return 0; }                                                   // else if miatt
     else if(drills.first == 2) { cumValue += (2000 + drills.second); }        //poker
-    else if(straightF.first > 0) {  cumValue += (1000 + straightF.second);  } //straight flush
+    else if(straightF.first > 0) {  cumValue += (1000 + straightF.second); }  //straight flush
+    else if(straight.first > 0) { cumValue += (750 + straight.second); }
     else if(drills.first == 1) { cumValue += (500 + drills.second); }         //drills
     else if(pairs.first > 0) {                                                //one and two pairs
           cumValue += (100*pairs.first);
@@ -291,6 +295,45 @@ public class GameLogic {
     return cumValue;
   }
 
+  private static int getRangeType(int id){
+      for (int i=1; i<14; i++) {
+        if (id <= i*4) { return i;}
+      }
+      return 0;
+  }
+
+  private static Pair<Integer, Integer> findStraight(ArrayList<Card> allCards,  List<Integer> cardList) {
+
+    int[] cardArray = cardList.stream().mapToInt(i->i).toArray();
+    Arrays.sort(cardArray);
+
+    int straight = 0;
+    int highestStraight = 0;
+    int rangeOf = 1;
+    int lasti = -1;
+    for(int i=0; i< cardArray.length; i++){
+
+        if (getRangeType(cardArray[i]) == lasti+1) {
+          rangeOf += 1;
+        }
+        else {
+          rangeOf = 1;
+        }
+
+        lasti = getRangeType(cardArray[i]);
+
+        if (rangeOf == 5) {
+
+            straight = 1;
+            if((allCards.get(i).getId() > highestStraight) | (allCards.get(i).getId() <= 4)) {
+                highestStraight = allCards.get(i).getId();
+            }
+        }
+    }
+
+    Pair<Integer,Integer> p = new Pair(straight, highestStraight);
+    return p;
+  }
 
 
   private static Pair<Integer, Integer> findStraightFlush(ArrayList<Card> allCards, List<Integer> cardList) {
@@ -315,8 +358,6 @@ public class GameLogic {
             }
     }
 
-    Log.d("temparray", String.valueOf(tempArray[0]));
-    Log.d("cardarray", String.valueOf(cardArray[0]));
 
     Pair<Integer,Integer> p = new Pair(straight, highestStraight);
     return p;
@@ -421,24 +462,20 @@ public class GameLogic {
                       drill = 1;
                           if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {
                               //makes aces the highest
-                              highestDrill = cardVal;
+                              highestDrill = allCards.get(cardVal).getId();
                           };
-                    Log.d("drillO", String.valueOf(occur));
                   }
                   if (occur == 4) {
                       drill = 2;
-                      if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() <= 4)) {
+                      if ((allCards.get(cardVal).getId() > highestDrill) | (allCards.get(cardVal).getId() < 5)) {
                         //makes aces the highest
-                        highestDrill = cardVal;
+                        highestDrill = allCards.get(cardVal).getId();
                       };
-                    Log.d("pokerO", String.valueOf(occur));
                     break;
                   }
                   localCardList.remove(0);
           }
 
-
-    Log.d("drillEnd", String.valueOf(drill));
 
     if ((highestDrill < 5) & (highestDrill > 0)) { highestDrill = 53; }
     Pair<Integer,Integer> p = new Pair(drill, highestDrill);
@@ -530,12 +567,12 @@ public class GameLogic {
 
     ////////////////FOR TESTS AND DEBUG///////////////
     out.set(0, new Card(1, 0));
-    out.set(1, new Card(2, 0));
+    out.set(1, new Card(5, 0));
 
-    out.set(4, new Card(3, 0));
-    out.set(5, new Card(5, 0));
-    out.set(6, new Card(17, 0));
-    out.set(7, new Card(21, 0));
+    out.set(4, new Card(10, 0));
+    out.set(5, new Card(13, 0));
+    out.set(6, new Card(18, 0));
+    out.set(7, new Card(22, 0));
     out.set(8, new Card(17, 0));
     //////////////////////////////////////////////////
 
