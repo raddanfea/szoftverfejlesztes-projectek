@@ -20,7 +20,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        /* Máté fogja létrhozni a DeckScrrent
+
         Button change_deck_button = (Button) findViewById(R.id.change_deck);
         change_deck_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,7 +28,7 @@ public class Menu extends AppCompatActivity {
                 openDeckScreen();
             }
         });
-         */
+
 
         Button settings_button = (Button) findViewById(R.id.settings);
         settings_button.setOnClickListener(new View.OnClickListener() {
@@ -57,12 +57,12 @@ public class Menu extends AppCompatActivity {
 
     }
 
-   /* amint kész a DeckScreen használható
+
    private void openDeckScreen () {
         Intent target_change_deck = new Intent(this, DeckScreen.class);
         startActivity(target_change_deck);
     }
-*/
+
    private void openSettingsScreen () {
        Intent target_settings = new Intent(this, SettingsScreen.class);
        startActivity(target_settings);
