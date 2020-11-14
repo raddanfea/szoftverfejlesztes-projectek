@@ -10,16 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.GameScreen"></activity>
-        <activity android:name=".controller.NameScreen">
+        <activity android:name=".controller.NameScreen"></activity>
+        <activity android:name=".controller.SettingsScreen">
+        </activity>
+        <activity android:name=".controller.Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".controller.SettingsScreen">
-        </activity>
-        <activity android:name=".controller.Menu">
         </activity>
     </application>
 
