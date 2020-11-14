@@ -140,7 +140,7 @@ public class GameLogic {
     
     // everyone acted but no one raised
     if (indexOfRaiser == -1) {
-      if (calcPlayerIndex(turn-startingPlayerIndex) == players.size()-1) {
+      if (turn == players.size()-1) {
         return true;
       }
     } else {
@@ -180,7 +180,7 @@ public class GameLogic {
     if (isRoundOver()) {
       round++;
       turn++;
-      startingPlayerIndex = calcPlayerIndex(turn);
+      startingPlayerIndex = getCurrentPlayerIndex();
       nextRound();
       return;
     }

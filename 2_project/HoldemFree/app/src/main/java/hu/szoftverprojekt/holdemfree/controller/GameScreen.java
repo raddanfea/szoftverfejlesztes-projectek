@@ -101,7 +101,7 @@ public class GameScreen extends AppCompatActivity {
                 
                 for (int i = 0; i < 2; i++) {
                     playerCards[i].setImageResource(
-                        getResId("c"+player.getHand().get(i).getId(), R.drawable.class));
+                        getResId("k"+player.getHand().get(i).getId(), R.drawable.class));
                 }
                 
                 aiPot.setText("ai pot: " + Integer.toString(gameData.players.get(1).getMoney()));
