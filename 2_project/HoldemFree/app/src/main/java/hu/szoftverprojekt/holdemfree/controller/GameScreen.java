@@ -117,8 +117,8 @@ public class GameScreen extends AppCompatActivity {
                 }
                 /////////////////////////////// DEBUG /////////////////////////////////
 
-                // text = GameLogic.calcScoreOfHand(game.board, player.getHand());
-                // Toast.makeText(getApplicationContext(), String.valueOf(text), Toast.LENGTH_SHORT).show();
+                Integer text = GameLogic.calcScoreOfHand(game.board, player.getHand());
+                Toast.makeText(getApplicationContext(), String.valueOf(text), Toast.LENGTH_SHORT).show();
 
                 debugSetImageForBotCards(gameData);
                 ///////////////////////////////////////////////////////////////////////

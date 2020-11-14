@@ -1,10 +1,9 @@
 package hu.szoftverprojekt.holdemfree.model;
 
+import android.util.Pair;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import hu.szoftverprojekt.holdemfree.model.actions.Raise;
 
@@ -20,7 +19,7 @@ public class GameLogic {
   private static final String TAG = "testtest";
   private static final int BOT_STARTING_MONEY = 500;
   private static final int LAST_ROUND_NUMBER = 3;
-  
+
   private ArrayList<Player> players;
   private int round; // starts from 0. A round is all player turns combined, ends when someone takes the money away from the board
   private int turn; // starts from 0. A turn is when a single player can act.
@@ -251,112 +250,143 @@ public class GameLogic {
     allCards.addAll(board);
     allCards.addAll(hand);
 
-    /**
-     * Calculates the value of the highest card.
-     * Higher score means you have better cards.
-     */
-    Integer highestCard = 5;
-    for (int i=0; i<allCards.size(); i++)
-    {
-      Integer cardVal = allCards.get(i).getId();
-      if (cardVal <= 4) {cardVal = 53;}
-      if (cardVal > highestCard) {highestCard = cardVal;}
+
+
+    //getting pairs value
+    Pair<Integer, Integer> pairs = findpairs(allCards);
+
+    //getting drill value
+    Pair<Integer, Integer> drills = findDrills(allCards);
+
+    Integer cumValue = 0;
+
+    // comparing results and giving points
+    if(drills.first != 0) { cumValue += (500 + drills.second); }
+    else if(pairs.first > 0) {
+          cumValue += (100*pairs.first);
+          cumValue += pairs.second;
     }
 
-    /**
-     * Calculates value of pairs and two pairs.
-     * Higher score means you have better cards.
-     */
+    System.out.println("cumValue");
+    System.out.println(cumValue.toString());
+
+    return cumValue;
+  }
+
+  /**
+   * Calculates value of drill.
+   * Higher score means you have better cards.
+   */
+  private static Pair<Integer, Integer> findDrills(ArrayList<Card> allCards) {
+    Integer drill = 0;
+    Integer highestDrill = 0;
+
+    List<Integer> allCardsList = new ArrayList<>();
+    for (Card t : allCards) {
+      allCardsList.add(t.getId());
+    }
+
+    for (int i=1; i<13; i++){
+      for(int k=0; k<4; k++){
+        Integer occur = 0;
+        Integer val = (i*4)+k;
+        if(allCardsList.contains(val)){
+          occur += 1;
+        }
+        if(occur == 3){
+          if (!((highestDrill > 0) & (highestDrill < 5))) {
+            //skips if aces are already found
+            drill = 1;
+            highestDrill = val;
+          }
+        }
+      }
+    }
+
+    Pair< Integer, Integer > p = new Pair(drill, highestDrill);
+    return p;
+  }
+
+  /**
+   * Calculates value of pairs and two pairs.
+   * Higher score means you have better cards.
+   */
+  private static Pair<Integer,Integer> findpairs(ArrayList<Card> allCards) {
     Integer pair = 0;
-    ArrayList<Card> allCardsPair = allCards;
     Integer highestPair = 0;
     Boolean pairExists = Boolean.FALSE;
     outerloop:
     for (int i=0; i<allCards.size(); i++)
     {
       Integer cardVal = allCards.get(i).getId();
-      allCardsPair = allCards;
-      for (int k=i+1; k<allCardsPair.size(); k++)
+      for (int k=i+1; k<allCards.size(); k++)
       {
-          if(cardVal % 4 == 0){
-                if (allCardsPair.get(k).getId() == cardVal - 1) {
-                  pair += 200;
-                  if(cardVal > highestPair) {highestPair=cardVal;}
-                  if (pairExists) { break outerloop; }
-                  pairExists = Boolean.TRUE;
-                }
-                else if (allCardsPair.get(k).getId() == cardVal - 2) {pair += 200;
-                  if(cardVal > highestPair){highestPair=cardVal;}
-                  if (pairExists) { break outerloop; }
-                  pairExists = Boolean.TRUE;}
-                else if (allCardsPair.get(k).getId() == cardVal - 3) {pair += 200;
-                  if(cardVal > highestPair){highestPair=cardVal;}
-                  if (pairExists) { break outerloop; }
-                  pairExists = Boolean.TRUE;}
+        if(cardVal % 4 == 0){
+          if (allCards.get(k).getId() == cardVal - 1) {
+            pair += 1;
+            if(cardVal > highestPair) {highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;
           }
-          else if(cardVal % 3 == 0){
-              if (allCardsPair.get(k).getId() == cardVal + 1) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-              else if (allCardsPair.get(k).getId() == cardVal - 1) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-              else if (allCardsPair.get(k).getId() == cardVal - 2) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-          }
-          else if(cardVal % 2 == 0){
-              if (allCardsPair.get(k).getId() == cardVal + 1) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-              else if (allCardsPair.get(k).getId() == cardVal + 2) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-              else if (allCardsPair.get(k).getId() == cardVal - 1) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-          }
-          else {
-              if (allCardsPair.get(k).getId() == cardVal + 1) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-              else if (allCardsPair.get(k).getId() == cardVal + 2) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-              else if (allCardsPair.get(k).getId() == cardVal + 3) {pair += 200;
-                if(cardVal > highestPair){highestPair=cardVal;}
-                if (pairExists) { break outerloop; }
-                pairExists = Boolean.TRUE;}
-          }
+          else if (allCards.get(k).getId() == cardVal - 2) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal - 3) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+        }
+        else if(cardVal % 3 == 0){
+          if (allCards.get(k).getId() == cardVal + 1) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal - 1) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal - 2) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+        }
+        else if(cardVal % 2 == 0){
+          if (allCards.get(k).getId() == cardVal + 1) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal + 2) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal - 1) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+        }
+        else {
+          if (allCards.get(k).getId() == cardVal + 1) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal + 2) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+          else if (allCards.get(k).getId() == cardVal + 3) {pair += 1;
+            if(cardVal > highestPair){highestPair=cardVal;}
+            if (pairExists) { break outerloop; }
+            pairExists = Boolean.TRUE;}
+        }
 
       }
     }
-
-    pair += 100+highestPair;
-
-
-    /**
-     * Calculates value of drill.
-     * Higher score means you have better cards.
-     */
-
-    Integer cumValue = highestCard + pair;
-
-    System.out.println(highestCard + "  highestCardValue");
-    System.out.println(pair-100 + "  pairValue");
-    System.out.println(cumValue + "  cumValue");
-
-    return cumValue;
+    if (pair > 2) {pair = 2;};
+    Pair< Integer, Integer > p = new Pair(pair, highestPair);
+    return p;
   }
-  
+
   private Card getNextCardFromDeck() {
     return deck.remove(0);
   }
