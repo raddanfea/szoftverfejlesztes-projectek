@@ -96,7 +96,7 @@ public class GameScreen extends AppCompatActivity {
                 
                 for (int i = 0; i < gameData.board.size(); i++) {
                     cardsOnBoard[i].setImageResource(
-                        getResId("c"+gameData.board.get(i).getId(), R.drawable.class));
+                        getResId("k"+gameData.board.get(i).getId(), R.drawable.class));
                 }
                 
                 for (int i = 0; i < 2; i++) {
