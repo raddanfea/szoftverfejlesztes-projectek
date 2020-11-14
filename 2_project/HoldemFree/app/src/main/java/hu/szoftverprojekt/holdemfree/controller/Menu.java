@@ -29,20 +29,20 @@ public class Menu extends AppCompatActivity {
             }
         });
          */
-        
-        Button game = findViewById(R.id.start_game);
-        game.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGame();
-            }
-        });
 
         Button settings_button = (Button) findViewById(R.id.settings);
         settings_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSettingsScreen();
+            }
+        });
+
+        Button game_button = (Button) findViewById(R.id.start_game);
+        game_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGameScreen();
             }
         });
 
@@ -56,11 +56,6 @@ public class Menu extends AppCompatActivity {
         });
 
     }
-    
-    private void openGame() {
-        Intent target_settings = new Intent(this, GameScreen.class);
-        startActivity(target_settings);
-    }
 
    /* amint kész a DeckScreen használható
    private void openDeckScreen () {
@@ -72,6 +67,11 @@ public class Menu extends AppCompatActivity {
        Intent target_settings = new Intent(this, SettingsScreen.class);
        startActivity(target_settings);
    }
+
+    private void openGameScreen () {
+        Intent target_game = new Intent(this, GameScreen.class);
+        startActivity(target_game);
+    }
 
 
     private void exitGame () {
