@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.GameScreen"></activity>
-        <activity android:name=".controller.NameScreen"></activity>
+        <activity android:name=".controller.DeckScreen"></activity>
         <activity android:name=".controller.SettingsScreen">
         </activity>
         <activity android:name=".controller.Menu">
