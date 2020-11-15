@@ -17,17 +17,20 @@ public class ScreenUpdaterEventArgs {
   public int roundsEnded;
   public int turnsEnded;
   public int indexOfRaiser;
+  public int winnerIndex;
   // extend this if needed, but remember to update the createEventArgs() function in the GameLogic too
   
-  public ScreenUpdaterEventArgs(ArrayList<Player> players, ArrayList<Card> board, int moneyOnBoard, int currentBet, int dealerOffset, int round, int turn, int indexOfRaiser) {
+  
+  public ScreenUpdaterEventArgs(ArrayList<Player> players, ArrayList<Card> board, int moneyOnBoard, int currentBet, int dealerOffset, int roundsEnded, int turnsEnded, int indexOfRaiser, int winnerIndex) {
     this.players = players;
     this.board = board;
     this.moneyOnBoard = moneyOnBoard;
     this.currentBet = currentBet;
     this.dealerOffset = dealerOffset;
-    this.roundsEnded = round;
-    this.turnsEnded = turn;
+    this.roundsEnded = roundsEnded;
+    this.turnsEnded = turnsEnded;
     this.indexOfRaiser = indexOfRaiser;
+    this.winnerIndex = winnerIndex;
   }
   
   @Override
@@ -38,9 +41,10 @@ public class ScreenUpdaterEventArgs {
         ", moneyOnBoard=" + moneyOnBoard +
         ", currentBet=" + currentBet +
         ", dealerOffset=" + dealerOffset +
-        ", round=" + roundsEnded +
-        ", turn=" + turnsEnded +
+        ", roundsEnded=" + roundsEnded +
+        ", turnsEnded=" + turnsEnded +
         ", indexOfRaiser=" + indexOfRaiser +
+        ", winnerIndex=" + winnerIndex +
         '}';
   }
 }

@@ -44,6 +44,7 @@ public class GameLogic {
   private ArrayList<Card> deck; // works like a deck in real life, so in the beginning all the cards are here, but when you add card to a player or put on the board, remove it from this.
   private int difficulty; // 0 is the easiest
   private int winnerByFold;
+  private int winnerIndex;
   
   /**
    * Call this event when you want to update the screen.
@@ -223,7 +224,7 @@ public class GameLogic {
    * @return the data for the onChange() event
    */
   private ScreenUpdaterEventArgs createEventArgs() {
-    return  new ScreenUpdaterEventArgs(players, board, moneyOnBoard, currentBet, dealerOffset, round, turn, indexOfRaiser);
+    return  new ScreenUpdaterEventArgs(players, board, moneyOnBoard, currentBet, dealerOffset, round, turn, indexOfRaiser, winnerIndex);
   }
   
   /**
@@ -233,14 +234,13 @@ public class GameLogic {
   private void gameOver() {
     log("GAME OVER");
     // ha kesz a calcWinner akkor ki lehet venni a kommentet
-//    int winnerIndex;
-//    if (winnerByFold > -1) {
-//      winnerIndex = winnerByFold;
-//    } else {
-//      winnerIndex = calculateWinner(players, board);
-//    }
-//
-//    players.get(winnerIndex).setMoney( players.get(winnerIndex).getMoney() + moneyOnBoard );
+    if (winnerByFold > -1) {
+      winnerIndex = winnerByFold;
+    } else {
+      winnerIndex = calculateWinner(players, board);
+    }
+
+    players.get(winnerIndex).setMoney( players.get(winnerIndex).getMoney() + moneyOnBoard );
     onGameOver.invoke(createEventArgs());
   }
   
@@ -249,7 +249,7 @@ public class GameLogic {
    * @return  the index of the winner in the players list
    */
   private static int calculateWinner(ArrayList<Player> players, ArrayList<Card> board) {
-    return -1;
+    return 0;
   }
   
   /**
@@ -732,7 +732,7 @@ public class GameLogic {
    * The price of the big blind.
    * The difficulty may alter this value.
    */
-  private int calcMinBet() {
+  public static int calcMinBet() {
     return 80;
   }
   

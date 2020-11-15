@@ -141,7 +141,16 @@ public class GameScreen extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                game.start();
+                // don't start new game if only one player has money
+                int playersLeft = 0;
+                for (Player player : gameData.players) {
+                    if (player.getMoney() >= GameLogic.calcMinBet()) {
+                        playersLeft++;
+                    }
+                }
+    
+                if (playersLeft > 1)
+                    game.start();
             }
         };
         
