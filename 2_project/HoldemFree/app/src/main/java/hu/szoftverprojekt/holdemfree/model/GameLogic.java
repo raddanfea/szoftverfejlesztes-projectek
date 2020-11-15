@@ -280,13 +280,17 @@ public class GameLogic {
     //getting straight value
     Pair<Integer, Integer> straight = findStraight(allCards, new ArrayList(cardList));
 
+    //getting flush value
+    Pair<Integer, Integer> flush = findFlush(allCards, new ArrayList(cardList));
+
     Integer cumValue = 0;
 
     // comparing results and giving points
-    if (false) { return 0; }                                                   // else if miatt
+    if (false) { return 0; }                                                  // else if miatt
     else if(drills.first == 2) { cumValue += (2000 + drills.second); }        //poker
-    else if(straightF.first > 0) {  cumValue += (1000 + straightF.second); }  //straight flush
-    else if(straight.first > 0) { cumValue += (750 + straight.second); }
+    else if(straightF.first > 0) {  cumValue += (1300 + straightF.second); }  //straight flush
+    else if(flush.first > 0) {  cumValue += (1000 + flush.second); }          //flush
+    else if(straight.first > 0) { cumValue += (750 + straight.second); }      //straight
     else if(drills.first == 1) { cumValue += (500 + drills.second); }         //drills
     else if(pairs.first > 0) {                                                //one and two pairs
           cumValue += (100*pairs.first);
@@ -295,13 +299,83 @@ public class GameLogic {
     return cumValue;
   }
 
-  private static int getRangeType(int id){
+
+
+
+
+
+
+
+    /**
+     * Checks if hand has flush.
+     * @return  ? 0:1, highest
+     */
+    private static Pair<Integer, Integer> findFlush(ArrayList<Card> allCards, List<Integer> cardList) {
+
+
+        List<Integer> c1 = new ArrayList<>();
+        List<Integer> c2 = new ArrayList<>();
+        List<Integer> c3 = new ArrayList<>();
+        List<Integer> c4 = new ArrayList<>();
+        int flush = 0;
+        int highestFlush = 0;
+
+        for(Card card: allCards){
+            if (getColor(card.getId()) == 1){   c1.add(card.getId());   }
+            else if (getColor(card.getId()) == 2){   c2.add(card.getId());   }
+            else if (getColor(card.getId()) == 3){   c3.add(card.getId());   }
+            else if (getColor(card.getId()) == 4){   c4.add(card.getId());   }
+        }
+
+        if (c1.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
+        else if (c2.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
+        else if (c3.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
+        else if (c4.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
+
+        for (int i: c1 ) {
+            String str = String.valueOf(i) + getColor(i);
+            Log.d("c4", str);
+        }
+
+        Log.d("flush 1", String.valueOf(c1.size()));
+        Log.d("flush 2", String.valueOf(c2.size()));
+        Log.d("flush 3", String.valueOf(c3.size()));
+        Log.d("flush 4", String.valueOf(c4.size()));
+
+        Pair<Integer,Integer> p = new Pair(flush, highestFlush);
+        return p;
+    }
+
+    /**
+     * Checks for card color
+     * @return  range of 1-4
+     */
+    private static int getColor(int id) {
+
+        for(int i = 0; i < 13; i++){
+            for(int k = 1; k< 5; k++){
+                int val = (i*4)+k;
+                if (id == val) { return k; }
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * Checks for card value
+     * @return  range of 1-13
+     */
+    private static int getRangeType(int id){
       for (int i=1; i<14; i++) {
         if (id <= i*4) { return i;}
       }
       return 0;
   }
 
+    /**
+     * Checks if hand has straight.
+     * @return  ? 0:1, highest
+     */
   private static Pair<Integer, Integer> findStraight(ArrayList<Card> allCards,  List<Integer> cardList) {
 
     int[] cardArray = cardList.stream().mapToInt(i->i).toArray();
@@ -310,17 +384,25 @@ public class GameLogic {
     int straight = 0;
     int highestStraight = 0;
     int rangeOf = 1;
-    int lasti = -1;
+    int lastI = -1;
+    boolean hasAce = false;
+
     for(int i=0; i< cardArray.length; i++){
 
-        if (getRangeType(cardArray[i]) == lasti+1) {
+        if (getRangeType(cardArray[i]) == 1) {
+            hasAce = true;
+        }
+        if (getRangeType(cardArray[i]) == lastI+1) {
           rangeOf += 1;
+        }
+        else if ((getRangeType(cardArray[i]) == 13) & hasAce){
+            rangeOf += 1;
         }
         else {
           rangeOf = 1;
         }
 
-        lasti = getRangeType(cardArray[i]);
+        lastI = getRangeType(cardArray[i]);
 
         if (rangeOf == 5) {
 
@@ -335,7 +417,10 @@ public class GameLogic {
     return p;
   }
 
-
+    /**
+     * Checks if hand has straight flush.
+     * @return  ? 0:1, highest
+     */
   private static Pair<Integer, Integer> findStraightFlush(ArrayList<Card> allCards, List<Integer> cardList) {
 
     int[] cardArray = cardList.stream().mapToInt(i->i).toArray();
@@ -569,11 +654,11 @@ public class GameLogic {
     out.set(0, new Card(1, 0));
     out.set(1, new Card(5, 0));
 
-    out.set(4, new Card(10, 0));
+    out.set(4, new Card(33, 0));
     out.set(5, new Card(13, 0));
     out.set(6, new Card(18, 0));
     out.set(7, new Card(22, 0));
-    out.set(8, new Card(17, 0));
+    out.set(8, new Card(49, 0));
     //////////////////////////////////////////////////
 
 
