@@ -321,10 +321,10 @@ public class GameLogic {
         int highestFlush = 0;
 
         for(Card card: allCards){
-            if (getColor(card.getId()) == 1){   c1.add(card.getId());   }
-            else if (getColor(card.getId()) == 2){   c2.add(card.getId());   }
-            else if (getColor(card.getId()) == 3){   c3.add(card.getId());   }
-            else if (getColor(card.getId()) == 4){   c4.add(card.getId());   }
+            if (getCardColor(card.getId()) == 1){   c1.add(card.getId());   }
+            else if (getCardColor(card.getId()) == 2){   c2.add(card.getId());   }
+            else if (getCardColor(card.getId()) == 3){   c3.add(card.getId());   }
+            else if (getCardColor(card.getId()) == 4){   c4.add(card.getId());   }
         }
 
         if (c1.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
@@ -333,7 +333,7 @@ public class GameLogic {
         else if (c4.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
 
         for (int i: c1 ) {
-            String str = String.valueOf(i) + getColor(i);
+            String str = String.valueOf(i) + getCardColor(i);
             Log.d("c4", str);
         }
 
@@ -350,7 +350,7 @@ public class GameLogic {
      * Checks for card color
      * @return  range of 1-4
      */
-    private static int getColor(int id) {
+    private static int getCardColor(int id) {
 
         for(int i = 0; i < 13; i++){
             for(int k = 1; k< 5; k++){
@@ -365,7 +365,7 @@ public class GameLogic {
      * Checks for card value
      * @return  range of 1-13
      */
-    private static int getRangeType(int id){
+    private static int getCardTypeValue(int id){
       for (int i=1; i<14; i++) {
         if (id <= i*4) { return i;}
       }
@@ -389,20 +389,20 @@ public class GameLogic {
 
     for(int i=0; i< cardArray.length; i++){
 
-        if (getRangeType(cardArray[i]) == 1) {
+        if (getCardTypeValue(cardArray[i]) == 1) {
             hasAce = true;
         }
-        if (getRangeType(cardArray[i]) == lastI+1) {
+        if (getCardTypeValue(cardArray[i]) == lastI+1) {
           rangeOf += 1;
         }
-        else if ((getRangeType(cardArray[i]) == 13) & hasAce){
+        else if ((getCardTypeValue(cardArray[i]) == 13) & hasAce){
             rangeOf += 1;
         }
         else {
           rangeOf = 1;
         }
 
-        lastI = getRangeType(cardArray[i]);
+        lastI = getCardTypeValue(cardArray[i]);
 
         if (rangeOf == 5) {
 
