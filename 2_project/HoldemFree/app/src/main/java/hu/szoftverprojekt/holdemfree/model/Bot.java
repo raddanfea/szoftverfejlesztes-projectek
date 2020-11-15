@@ -19,7 +19,18 @@ public class Bot extends Player{
    * @param board   the cards on the board
    */
   public void think(ArrayList<Card> board /* ide lehet tobb parametert is irni ha kell */) {
-    // pl.: if ( i_have_good_cards ) setNextAction( Actions.RAISE_BY(50) );
+    int score = GameLogic.calcScoreOfHand(board, getHand());
+    System.out.println("--------- score: " + score);
+    
+    if (score > 1000) {
+      setNextAction(Actions.RAISE_BY(30));
+      return;
+    }
+    
+    if ((score < 200) && (score > 0)) {
+      setNextAction(Actions.FOLD);
+      return;
+    }
     setNextAction(Actions.HOLD);
   }
   

@@ -184,6 +184,7 @@ public class GameLogic {
    */
   public void nextTurn() {
     log("players[" + getCurrentPlayerIndex() + "]'s turn\n - Action: " + getCurrentPlayer().getNextAction().name);
+    log("                                          SCORE : " + Integer.toString(calcScoreOfHand(board, getCurrentPlayer().getHand())));
   
     // process action
     switch (getCurrentPlayer().getNextAction().name) {
