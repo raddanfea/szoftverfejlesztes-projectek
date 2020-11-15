@@ -290,9 +290,11 @@ public class GameLogic {
 
     // comparing results and giving points
     if (false) { return 0; }
+    else if((straightF.first > 0) & straightF.second == 53) {
+                                    cumValue += (2500); }                     //royal flush
     else if(straightF.first > 0) {  cumValue += (2000 + straightF.second); }  //straight flush// else if miatt
     else if(drills.first == 2) { cumValue += (1500 + drills.second); }        //poker
-    else if(fullHouse.first > 0) { cumValue += (1300 + fullHouse.second); }
+    else if(fullHouse.first > 0) { cumValue += (1300 + fullHouse.second); }   //full
     else if(flush.first > 0) {  cumValue += (1000 + flush.second); }          //flush
     else if(straight.first > 0) { cumValue += (750 + straight.second); }      //straight
     else if(drills.first == 1) { cumValue += (500 + drills.second); }         //drills
