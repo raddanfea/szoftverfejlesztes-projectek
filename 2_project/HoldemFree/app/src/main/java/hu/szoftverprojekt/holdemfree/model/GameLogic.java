@@ -263,32 +263,36 @@ public class GameLogic {
     allCards.addAll(hand);
 
     List<Integer> cardList = new ArrayList<>(allCards.size());
-    for (Card elem : allCards) {
-      cardList.add(elem.getId());
-    }
+        for (Card elem : allCards) {
+          cardList.add(elem.getId());
+        }
 
 
     //getting pairs value
-    Pair<Integer, Integer> pairs = findPairs(allCards, new ArrayList(cardList));
+    Pair<Integer, Integer> pairs = findPairs(new ArrayList<>(allCards), new ArrayList(cardList));
 
     //getting drill and poker value
-    Pair<Integer, Integer> drills = findDrills(allCards, new ArrayList(cardList));
+    Pair<Integer, Integer> drills = findDrills(new ArrayList<>(allCards), new ArrayList(cardList));
 
     //getting straight flush value
-    Pair<Integer, Integer> straightF = findStraightFlush(allCards, new ArrayList(cardList));
+    Pair<Integer, Integer> straightF = findStraightFlush(new ArrayList<>(allCards), new ArrayList(cardList));
 
     //getting straight value
-    Pair<Integer, Integer> straight = findStraight(allCards, new ArrayList(cardList));
+    Pair<Integer, Integer> straight = findStraight(new ArrayList<>(allCards), new ArrayList(cardList));
 
     //getting flush value
-    Pair<Integer, Integer> flush = findFlush(allCards, new ArrayList(cardList));
+    Pair<Integer, Integer> flush = findFlush(new ArrayList<>(allCards));
+
+      //getting full house value
+      Pair<Integer, Integer> fullHouse = findFull(new ArrayList<>(allCards), new ArrayList(cardList), drills.second);
 
     Integer cumValue = 0;
 
     // comparing results and giving points
-    if (false) { return 0; }                                                  // else if miatt
-    else if(drills.first == 2) { cumValue += (2000 + drills.second); }        //poker
-    else if(straightF.first > 0) {  cumValue += (1300 + straightF.second); }  //straight flush
+    if (false) { return 0; }
+    else if(straightF.first > 0) {  cumValue += (2000 + straightF.second); }  //straight flush// else if miatt
+    else if(drills.first == 2) { cumValue += (1500 + drills.second); }        //poker
+    else if(fullHouse.first > 0) { cumValue += (1300 + fullHouse.second); }
     else if(flush.first > 0) {  cumValue += (1000 + flush.second); }          //flush
     else if(straight.first > 0) { cumValue += (750 + straight.second); }      //straight
     else if(drills.first == 1) { cumValue += (500 + drills.second); }         //drills
@@ -299,18 +303,68 @@ public class GameLogic {
     return cumValue;
   }
 
+    /**
+     * Checks if hand has fullhouse.
+     * @return  ? 0:1, highest
+     */
+    private static Pair<Integer, Integer> findFull(ArrayList<Card> allCards, List<Integer> cardList, int drillVal) {
+
+          int fullVal = 0;
+          int fullBest = 0;
 
 
 
+          if (drillVal != 0){
 
+              List<Integer> newCardList = new ArrayList<>();
 
+              Log.d("drillval", String.valueOf(drillVal));
+
+              if(drillVal == 53) { drillVal = 1; }
+
+              for(int i = 0; i < cardList.size(); i++){
+                  if (getCardTypeValue(cardList.get(i)) != getCardTypeValue(drillVal)) {
+                      fullBest = drillVal;
+                      newCardList.add(cardList.get(i));
+                  }
+              }
+
+              Log.d("newcardsize", String.valueOf(newCardList.size()));
+
+              ArrayList<Card> newAllCard = new ArrayList<>();
+
+              for(Card card : allCards){
+                  if(newCardList.contains(card.getId())){
+                      newAllCard.add(card);
+                  }
+              }
+
+              Log.d("allcardsize", String.valueOf(allCards.size()));
+
+              Pair<Integer, Integer> pairs = findPairs(newAllCard, new ArrayList(newCardList));
+              Log.d("pairlength", String.valueOf(pairs.first));
+              if(pairs.first > 0){
+                  Log.d("fulval", String.valueOf(pairs.first));
+                  fullVal = 1;
+                        if (fullBest < pairs.second){
+                            fullBest = pairs.second;
+                        }
+
+                  Pair<Integer,Integer> p = new Pair(fullVal, fullBest);
+                  return p;
+              }
+          }
+
+          Pair<Integer,Integer> p = new Pair(0, 0);
+          return p;
+    }
 
 
     /**
      * Checks if hand has flush.
      * @return  ? 0:1, highest
      */
-    private static Pair<Integer, Integer> findFlush(ArrayList<Card> allCards, List<Integer> cardList) {
+    private static Pair<Integer, Integer> findFlush(ArrayList<Card> allCards) {
 
 
         List<Integer> c1 = new ArrayList<>();
@@ -332,15 +386,12 @@ public class GameLogic {
         else if (c3.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
         else if (c4.size()>=5) { flush = 1; highestFlush = Collections.max(c1); }
 
+        /*
         for (int i: c1 ) {
             String str = String.valueOf(i) + getCardColor(i);
             Log.d("c4", str);
         }
-
-        Log.d("flush 1", String.valueOf(c1.size()));
-        Log.d("flush 2", String.valueOf(c2.size()));
-        Log.d("flush 3", String.valueOf(c3.size()));
-        Log.d("flush 4", String.valueOf(c4.size()));
+        */
 
         Pair<Integer,Integer> p = new Pair(flush, highestFlush);
         return p;
@@ -652,12 +703,12 @@ public class GameLogic {
 
     ////////////////FOR TESTS AND DEBUG///////////////
     out.set(0, new Card(1, 0));
-    out.set(1, new Card(5, 0));
+    out.set(1, new Card(2, 0));
 
-    out.set(4, new Card(33, 0));
-    out.set(5, new Card(13, 0));
+    out.set(4, new Card(3, 0));
+    out.set(5, new Card(17, 0));
     out.set(6, new Card(18, 0));
-    out.set(7, new Card(22, 0));
+    out.set(7, new Card(19, 0));
     out.set(8, new Card(49, 0));
     //////////////////////////////////////////////////
 
