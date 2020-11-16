@@ -8,7 +8,6 @@ A mai világban rengeteg pókerjáték megtalálható. A mi célünk nem egy új
 - nem áll szándékunkban a pénzvesztés kockázatának kitenni a felhasználót
 - a felhasználót úgymond "magára hagyni", vagyis nem jutalmazni, ha nyertesként kerül ki
 - androidon kívül más platformra kiterjeszteni a játékot
-
 # 2. Projekt terv
 ## 2.1 A projekt résztvevői:
 A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakörben,
