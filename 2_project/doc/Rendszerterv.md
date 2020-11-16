@@ -9,26 +9,7 @@ A mai világban rengeteg pókerjáték megtalálható. A mi célünk nem egy új
 - a felhasználót úgymond "magára hagyni", vagyis nem jutalmazni, ha nyertesként kerül ki
 - androidon kívül más platformra kiterjeszteni a játékot
 
-# 2. Projekt terv
-## 2.1 A projekt résztvevői:
-A projekten 4 programtervező informatikus hallgató dolgozik, egyenlő munkakörben,
-   - Rádi Dániel (fejlesztő)
-   - Simion Tamás (fejlesztő)
-   - Nagy Kristián (fejlesztő)
-   - Puskás Máté (fejlesztő)
-## 2.2 Ütemterv:
-- Projekt kezdete: 2020.10.12.
-- Dokumentációk határideje: 2020.10.26.
-  - Követelményspecifikáció: 2020.10.19.
-  - Funkcionálisspecifikáció: 2020.10.19.
-  - Rendszerterv: 2020.10.26.
-- Fejlesztési sprintek: 2020.11.30.
-  - első fejlesztési sprint: 2020.11.02.
-  - második fejlesztési sprint: 2020.11.09.
-  - harmadik fejlesztési sprint + Demó: 2020.11.16.
-  - negyedik fejlesztési sprint + Tesztelés: 2020.11.23.
-  - ötödik fejlesztési sprint + tesztelés + teszt dokumentálás: 2020.11.30.
-- Átadás-átvétel: 2020.12.07.
+
 
 # 3. Üzleti folyamatok modellje
 ## 3.1 Üzleti szereplők
