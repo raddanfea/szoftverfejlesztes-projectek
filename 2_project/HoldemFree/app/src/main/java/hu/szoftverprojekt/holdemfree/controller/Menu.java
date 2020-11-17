@@ -29,6 +29,13 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        Button rules_button = (Button) findViewById(R.id.rules);
+        rules_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRulesScreen();
+            }
+        });
 
         Button settings_button = (Button) findViewById(R.id.settings);
         settings_button.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +78,11 @@ public class Menu extends AppCompatActivity {
     private void openGameScreen () {
         Intent target_game = new Intent(this, GameScreen.class);
         startActivity(target_game);
+    }
+
+    public void openRulesScreen () {
+        Intent target_rules = new Intent(this, RulesScreen.class);
+        startActivity(target_rules);
     }
 
 
