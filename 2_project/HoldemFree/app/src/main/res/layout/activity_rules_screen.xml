@@ -19,25 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15sp"/>
 
-    <TextView
+    <WebView
         android:id="@+id/rules"
         android:layout_width="match_parent"
-        android:layout_height="503dp"
-        android:text="      A holdemben minden játékos kap két saját lapot (ezek a „zárt
-        lapok”), amelyeket csak ő láthat. Az asztalra képpel felfelé öt közös lapot
-        osztanak le, ezek a közös lapok. A játék során a közös lapokat minden játékos
-        a saját zárt lapjaival egyesítve igyekszik a lehető legjobb ötlapos pókerkezet
-        összeállítani. A holdemben a játékosok ennek a hét lapnak bármilyen kombinációját
-        felhasználhatják, hogy a lehető legjobb ötlapos pókerkezet kapják, vagyis saját
-        lapjaikból akár egyet sem vagy mindet is belevehetik. A pókerlapok rangsorát a
-        'Winning Hands' alatt tekintheted meg. JATEKMOD HELYE!!!
-        \n
-        \n   A texas holdem szabályai
-        \n
-        Késöbbiekben ki kerul kulon html fájlba"
-        android:padding="20sp"
-        android:scrollbars="vertical"
-        android:textSize="15sp"/>
+        android:layout_height="515dp"
+        android:padding="15sp"
+        android:background="@android:color/white"/>
 
     <Button
         android:id="@+id/back_button"

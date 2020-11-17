@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="rules">
+        <![CDATA[
         <h2>
             Legfontosabb tudnivalók:
         </h2>
@@ -22,7 +23,7 @@
             </li>
         </ul>
         <h2>
-            A Texas Hold'Em szabályai
+            A Texas Hold&#39;Em szabályai
         </h2>
         <p>
             A holdemben minden játékos kap két saját lapot (ezek a „zárt lapok”), amelyeket csak ő
@@ -31,10 +32,10 @@
             lehető legjobb ötlapos pókerkezet összeállítani. A holdemben a játékosok ennek a hét
             lapnak bármilyen kombinációját felhasználhatják, hogy a lehető legjobb ötlapos pókerkezet
             kapják, vagyis saját lapjaikból akár egyet sem vagy mindet is belevehetik. A pókerlapok
-            rangsorát a 'Winning Hands' fül alatt tekinthető meg.
+            rangsorát a &#39;Winning Hands&#39; fül alatt tekinthető meg.
         </p>
         <h2>
-            A Texas Hold'Em játék menete
+            A Texas Hold&#39;Em játék menete
         </h2>
         <h3>
             A vakok
@@ -108,12 +109,13 @@
             legközelebb ülő játékosnak kell először megmutatnia a lapját. A legjobb ötlapos
             pókerkombinációval rendelkező játékos nyeri a kasszát. Ha több játékosnak is azonos
             kombinációja van, a kasszát azonos mértékben kell elosztani a legjobb kézzel rendelkező
-            játékosok között. A holdem szabályai szerint a különböző színek egyenlő értékűek.<br></br>
+            játékosok között. A holdem szabályai szerint a különböző színek egyenlő értékűek.
         </p>
         <p>
             Miután a pot gazdára talált, kezdődhet egy új holdem leosztás. Az osztógomb átkerül a
             korábbi birtokosa mellett lévő játékoshoz az óramutató járásával egyező irányban, majd
             minden játékos új lapokat kap.
         </p>
+        ]]>
     </string>
 </resources>
