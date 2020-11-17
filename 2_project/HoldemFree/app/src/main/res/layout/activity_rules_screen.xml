@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RulesScreen">
+    android:orientation="vertical"
+    tools:context=".controller.RulesScreen">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Texas Hold'Em Poker"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/rules"
+        android:layout_width="match_parent"
+        android:layout_height="503dp"
+        android:text="      A holdemben minden játékos kap két saját lapot (ezek a „zárt
+        lapok”), amelyeket csak ő láthat. Az asztalra képpel felfelé öt közös lapot
+        osztanak le, ezek a közös lapok. A játék során a közös lapokat minden játékos
+        a saját zárt lapjaival egyesítve igyekszik a lehető legjobb ötlapos pókerkezet
+        összeállítani. A holdemben a játékosok ennek a hét lapnak bármilyen kombinációját
+        felhasználhatják, hogy a lehető legjobb ötlapos pókerkezet kapják, vagyis saját
+        lapjaikból akár egyet sem vagy mindet is belevehetik. A pókerlapok rangsorát a
+        'Winning Hands' alatt tekintheted meg. JATEKMOD HELYE!!!
+        \n
+        \n   A texas holdem szabályai
+        \n
+        Késöbbiekben ki kerul kulon html fájlba"
+        android:padding="20sp"
+        android:scrollbars="vertical"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="BACK"
+        android:layout_gravity="center" />
+</LinearLayout>
