@@ -31,20 +31,39 @@ public class SettingsScreen extends AppCompatActivity {
             }
         });
 
-        TextView volumeValue;
-        SeekBar volumeBar;
-
-        TextView potSize;
-        SeekBar potBar;
+        TextView volumeValue, potSize, difficultyValue;
+        SeekBar volumeBar, potBar, difficultyBar;
 
         potSize=(TextView)findViewById(R.id.potSize);
         potBar=(SeekBar)findViewById(R.id.potBar);
         potBar.setMax(1200);//ezt később eldöntjük mennyi legyen csak írtam valamit xd
         potBar.setMin(500);
 
+        difficultyValue=(TextView)findViewById(R.id.difficultyValue);
+        difficultyBar=(SeekBar)findViewById(R.id.difficultyBar);
+        difficultyBar.setMin(1);
+        difficultyBar.setMax(3);//ahogy ezt is
+
         volumeValue=(TextView)findViewById(R.id.volumeValue);
         volumeBar=(SeekBar)findViewById(R.id.volumeBar);
 
+        difficultyBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                difficultyBar.setProgress(progress);
+                difficultyValue.setText(""+progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         potBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
