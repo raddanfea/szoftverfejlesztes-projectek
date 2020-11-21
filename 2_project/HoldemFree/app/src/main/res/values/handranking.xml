@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="handranking">
+         //<![CDATA[
+            <h2>
+                Pókerkezek rangsora a legerősebbtől a leggyengébbig
+            </h2>
+            <h3>
+                Royal flush - Royal flöss
+            </h3>
+            <p>
+                A K Q J 10 értékű lap, azonos színben
+            </p>
+            <h3>
+                Straight flush - Színsor
+            </h3>
+            <p>
+                 Öt egymást követő értékű lap, mind azonos színben
+            </p>
+            <h3>
+                Four of a kind - Póker
+            </h3>
+            <p>
+                Négy azonos értékű lap és egy plusz lap, a kísérő
+            </p>
+            <h3>
+                Full house - Full
+            </h3>
+            <p>
+                Három azonos értékű lap és két másik, egymással azonos értékű lap
+            </p>
+            <h3>
+                Flush - Flöss
+            </h3>
+            <p>
+                Öt azonos színű lap
+            </p>
+            <h3>
+                Straight - Sor
+            </h3>
+            <p>
+                Öt egymást követő lap
+            </p>
+            <h3>
+                Three of a kind - Drill
+            </h3>
+            <p>
+                Három azonos értékű lap, két, egymástól független kísérőlappal kiegészülve
+            </p>
+            <h3>
+                Two pair - Két pár
+            </h3>
+            <p>
+                : Két azonos értékű lap és két másik, egymással azonos értékű kártya, plusz egy kísérő
+            </p>
+            <h3>
+                Pair - Egy pár
+            </h3>
+            <p>
+                 Két azonos értékű lap és három különböző kártya
+            </p>
+            <h3>
+                High Card - Magas lap
+            </h3>
+            <p>
+                Mindazok a kezek, amelyek a fenti kategóriák egyikébe sem tartoznak
+            </p>
+         //]]>
+    </string>
+</resources>
