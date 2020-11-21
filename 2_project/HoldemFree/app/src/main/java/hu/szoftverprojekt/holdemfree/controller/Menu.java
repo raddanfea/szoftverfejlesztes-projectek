@@ -53,6 +53,14 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        Button handranking_button = (Button) findViewById(R.id.handranking);
+        handranking_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHandRankingScreen();
+            }
+        });
+
 
         Button exit_button = (Button) findViewById(R.id.exit);
         exit_button.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +91,11 @@ public class Menu extends AppCompatActivity {
     public void openRulesScreen () {
         Intent target_rules = new Intent(this, RulesScreen.class);
         startActivity(target_rules);
+    }
+
+    public void openHandRankingScreen () {
+        Intent  target_handranking = new Intent(this, HandRankingScreen.class);
+        startActivity(target_handranking);
     }
 
 
