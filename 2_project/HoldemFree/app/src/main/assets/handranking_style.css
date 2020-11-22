@@ -22,4 +22,6 @@ p::before {
 
 body {
     padding: 5px;
+    background-color: transparent;
+    
 }
