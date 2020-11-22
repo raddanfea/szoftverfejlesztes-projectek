@@ -1,0 +1,15 @@
+body {
+    padding: 5px;
+}
+h2 {
+    text-align: center;
+}
+
+h3 {
+    color: rgb(78, 78, 78);
+}
+
+p {
+    text-align: justify;
+    text-indent: 20px;
+}
