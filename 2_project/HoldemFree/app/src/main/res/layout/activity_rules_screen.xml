@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".controller.RulesScreen">
+    tools:context=".controller.RulesScreen"
+    android:background="@drawable/rb">
 
     <TextView
         android:id="@+id/title"
@@ -17,20 +18,22 @@
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15sp"/>
+        android:layout_marginTop="15sp"
+        android:textColor="@android:color/black"/>
 
     <WebView
         android:id="@+id/rules"
         android:layout_width="match_parent"
-        android:layout_height="515dp"
+        android:layout_height="530dp"
         android:padding="15sp"
-        android:background="@android:color/white"/>
+        android:layout_marginBottom="6dp"
+        android:backgroundTint="@android:color/transparent"/>
 
     <Button
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="BACK"
+        android:text="\u00abBACK"
         android:layout_gravity="center" />
 </LinearLayout>

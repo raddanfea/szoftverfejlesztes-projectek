@@ -18,6 +18,7 @@ public class RulesScreen extends AppCompatActivity {
 
         WebView webView = (WebView) findViewById(R.id.rules);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.setBackgroundColor(0);
         webView.loadUrl("file:///android_asset/" + "rules.html");
     }
 }
