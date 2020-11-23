@@ -4,168 +4,176 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".controller.GameScreen">
 
     <ImageView
         android:id="@+id/debug_bot_card_1"
-        android:layout_width="50dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="77dp"
+        android:layout_height="106dp"
+        app:layout_constraintEnd_toStartOf="@+id/debug_bot_card_2"
+        app:layout_constraintHorizontal_bias="0.60"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_report_image" />
 
     <ImageView
         android:id="@+id/debug_bot_card_2"
-        android:layout_width="50dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintStart_toEndOf="@+id/debug_bot_card_1"
+        android:layout_width="77dp"
+        android:layout_height="106dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_report_image" />
 
     <TextView
-        android:id="@+id/ai_pot"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
-        android:text="AI Pot"
-        app:layout_constraintBottom_toTopOf="@+id/card3"
-        app:layout_constraintEnd_toStartOf="@+id/current_pot"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/current_pot"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_width="127dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:textSize="60px"
         android:text="Current Pot"
-        app:layout_constraintBottom_toTopOf="@+id/card3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ai_pot"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/debug_bot_card_2" />
 
-    <ImageView
-        android:id="@+id/card1"
-        android:layout_width="70dp"
-        android:layout_height="118dp"
-        android:src="@drawable/cb"
-        app:layout_constraintBottom_toTopOf="@+id/hold"
-        app:layout_constraintEnd_toStartOf="@+id/card2"
+    <TextView
+        android:id="@+id/ai_pot"
+        android:layout_width="127dp"
+        android:layout_height="23dp"
+        android:gravity="center"
+        android:textSize="60px"
+        android:layout_marginTop="90dp"
+        android:text="AI Pot"
+        app:layout_constraintEnd_toStartOf="@+id/current_pot"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ai_pot" />
+        app:layout_constraintTop_toBottomOf="@+id/debug_bot_card_1" />
+
+    <ImageView
+        android:id="@+id/card5"
+        android:layout_width="70dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/cb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/card4"
+        app:layout_constraintTop_toBottomOf="@+id/current_pot" />
 
     <ImageView
         android:id="@+id/card2"
         android:layout_width="70dp"
         android:layout_height="118dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/cb"
-        app:layout_constraintBottom_toTopOf="@+id/hold"
         app:layout_constraintEnd_toStartOf="@+id/card3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/card1"
         app:layout_constraintTop_toBottomOf="@+id/ai_pot" />
 
     <ImageView
-        android:id="@+id/card3"
+        android:id="@+id/card1"
         android:layout_width="70dp"
         android:layout_height="118dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/cb"
-        app:layout_constraintBottom_toTopOf="@+id/raise"
-        app:layout_constraintEnd_toStartOf="@+id/card4"
+        app:layout_constraintEnd_toStartOf="@+id/card2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/card2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ai_pot" />
 
     <ImageView
         android:id="@+id/card4"
         android:layout_width="70dp"
         android:layout_height="118dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/cb"
-        app:layout_constraintBottom_toTopOf="@+id/fold"
         app:layout_constraintEnd_toStartOf="@+id/card5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/card3"
         app:layout_constraintTop_toBottomOf="@+id/current_pot" />
 
     <ImageView
-        android:id="@+id/card5"
+        android:id="@+id/card3"
         android:layout_width="70dp"
         android:layout_height="118dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/cb"
-        app:layout_constraintBottom_toTopOf="@+id/fold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/card4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/card4"
+        app:layout_constraintStart_toEndOf="@+id/card2"
         app:layout_constraintTop_toBottomOf="@+id/current_pot" />
 
     <Button
         android:id="@+id/hold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="26dp"
         android:text="Hold"
-        app:layout_constraintBottom_toTopOf="@+id/player_pot"
         app:layout_constraintEnd_toStartOf="@+id/raise"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card2" />
+        app:layout_constraintTop_toBottomOf="@+id/player_card1" />
 
     <Button
         android:id="@+id/raise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="26dp"
         android:text="Raise"
-        app:layout_constraintBottom_toTopOf="@+id/player_card1"
         app:layout_constraintEnd_toStartOf="@+id/fold"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/hold"
-        app:layout_constraintTop_toBottomOf="@+id/card3" />
+        app:layout_constraintTop_toBottomOf="@+id/player_card1" />
 
     <Button
         android:id="@+id/fold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="26dp"
         android:text="Fold"
-        app:layout_constraintBottom_toTopOf="@+id/player_card2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/raise"
-        app:layout_constraintTop_toBottomOf="@+id/card5" />
+        app:layout_constraintTop_toBottomOf="@+id/player_card2" />
 
     <TextView
         android:id="@+id/player_pot"
-        android:layout_width="80dp"
-        android:layout_height="135dp"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="44dp"
+        android:textSize="65px"
         android:text="Player Pot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/player_card1"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:gravity="bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hold" />
+        app:layout_constraintTop_toBottomOf="@+id/card2" />
 
     <ImageView
         android:id="@+id/player_card1"
-        android:layout_width="80dp"
-        android:layout_height="135dp"
+        android:layout_width="96dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="13dp"
         android:src="@android:drawable/ic_menu_gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/player_card2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/player_pot"
-        app:layout_constraintTop_toBottomOf="@+id/raise" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_pot" />
 
     <ImageView
         android:id="@+id/player_card2"
-        android:layout_width="80dp"
-        android:layout_height="135dp"
+        android:layout_width="96dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="13dp"
         android:src="@android:drawable/ic_menu_gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/player_card1"
-        app:layout_constraintTop_toBottomOf="@+id/fold" />
+        app:layout_constraintTop_toBottomOf="@+id/player_pot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
