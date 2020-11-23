@@ -5,11 +5,13 @@ package hu.szoftverprojekt.holdemfree.controller;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
+import hu.szoftverprojekt.holdemfree.model.PlaySound;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;

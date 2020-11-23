@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
 import hu.szoftverprojekt.holdemfree.model.Bot;
 import hu.szoftverprojekt.holdemfree.model.GameLogic;
+import hu.szoftverprojekt.holdemfree.model.PlaySound;
 import hu.szoftverprojekt.holdemfree.model.Player;
 import hu.szoftverprojekt.holdemfree.model.ScreenUpdater;
 import hu.szoftverprojekt.holdemfree.model.ScreenUpdaterEventArgs;
 import hu.szoftverprojekt.holdemfree.model.actions.Actions;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +37,7 @@ public class GameScreen extends AppCompatActivity {
     private Button foldButton;
     private Button holdButton;
     private Button raiseButton;
+    private PlaySound music = new PlaySound();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,14 @@ public class GameScreen extends AppCompatActivity {
         holdButton = findViewById(R.id.hold);
         raiseButton = findViewById(R.id.raise);
         
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++){
             cardsOnBoard[i] = findViewById(getResId("card"+(i+1), R.id.class));
+        }
         
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++){
             playerCards[i] = findViewById(getResId("player_card"+(i+1), R.id.class));
+            playerCards[i].setColorFilter(0xB3FFD700, PorterDuff.Mode.SRC_ATOP);
+        }
         
         /////////////////////////////// DEBUG /////////////////////////////////
         debugBindBotCards();
@@ -88,7 +95,9 @@ public class GameScreen extends AppCompatActivity {
         
         initGame();
         game.start();
-        
+
+
+        music.play(this,"dreams", true);
     }
     
     private void initGame() {
@@ -198,5 +207,17 @@ public class GameScreen extends AppCompatActivity {
                 getResId("k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
         }
     }
-    
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        music.resume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        music.stop(true);
+    }
+
 }

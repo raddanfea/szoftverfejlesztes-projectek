@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import hu.szoftverprojekt.holdemfree.R;
+import hu.szoftverprojekt.holdemfree.model.PlaySound;
 
 public class Menu extends AppCompatActivity {
 
@@ -94,8 +95,8 @@ public class Menu extends AppCompatActivity {
     }
 
     public void openHandRankingScreen () {
-        Intent  target_handranking = new Intent(this, HandRankingScreen.class);
-        startActivity(target_handranking);
+        Intent target_handRanking = new Intent(this, HandRankingScreen.class);
+        startActivity(target_handRanking);
     }
 
 
@@ -111,6 +112,15 @@ public class Menu extends AppCompatActivity {
         }
 
         BackPressedTime = System.currentTimeMillis();
+
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
 
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  * So the fields are for example the data which you want to update on the screen (like the cards on the board)
  */
-public class ScreenUpdaterEventArgs {
+public class ScreenUpdaterEventArgs{
   public ArrayList<Player> players;
   public ArrayList<Card> board;
   public int moneyOnBoard;
@@ -18,6 +18,9 @@ public class ScreenUpdaterEventArgs {
   public int turnsEnded;
   public int indexOfRaiser;
   public int winnerIndex;
+  public int volume;
+  public int difficulty;
+  public int potsize;
   // extend this if needed, but remember to update the createEventArgs() function in the GameLogic too
   
   
