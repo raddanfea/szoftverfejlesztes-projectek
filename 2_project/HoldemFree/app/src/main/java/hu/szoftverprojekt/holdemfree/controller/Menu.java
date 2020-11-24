@@ -3,9 +3,11 @@ package hu.szoftverprojekt.holdemfree.controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import hu.szoftverprojekt.holdemfree.R;
@@ -21,6 +23,10 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        //draws shadow around the title
+        TextView textViewShadow = (TextView) findViewById(R.id.game_title_shadow);
+        textViewShadow.getPaint().setStrokeWidth(20);
+        textViewShadow.getPaint().setStyle(Paint.Style.STROKE);
 
         Button change_deck_button = (Button) findViewById(R.id.change_deck);
         change_deck_button.setOnClickListener(new View.OnClickListener() {

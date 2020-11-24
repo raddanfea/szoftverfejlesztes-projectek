@@ -4,65 +4,104 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".controller.Menu">
+    tools:context=".controller.Menu"
+    android:background="@drawable/mbg2">
 
-  <TextView
-      android:id="@+id/game_title"
+  <FrameLayout
       android:layout_width="wrap_content"
-      android:layout_height="150dp"
-      android:layout_gravity="center"
-      android:gravity="center"
-      android:text="Welcome To    Two Player Poker"
-      android:textSize="50dp"
-      android:layout_marginTop="65dp"/>
+      android:layout_height="wrap_content"
+      android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/game_title_shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Welcome To    Two Player Poker"
+        android:textColor="#000000"
+        android:textSize="50dp" />
+
+    <TextView
+        android:id="@+id/game_title"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Welcome To    Two Player Poker"
+        android:textColor="#FF5722"
+        android:textSize="50dp" />
+
+  </FrameLayout>
 
   <Button
       android:id="@+id/start_game"
       android:layout_width="200dp"
-      android:layout_height="wrap_content"
+      android:layout_height="50sp"
       android:gravity="center"
       android:layout_gravity="center"
+      android:textSize="20sp"
       android:text="Start Game"
+      android:textColor="#FFFFFF"
+      android:background="@drawable/rounded_corner_btn"
       android:layout_marginTop="70dp"/>
 
   <Button
       android:id="@+id/change_deck"
       android:layout_width="200dp"
-      android:layout_height="wrap_content"
+      android:layout_height="50sp"
       android:text="Change Deck"
+      android:textColor="#FFFFFF"
       android:layout_gravity="center"
-      android:layout_marginTop="10dp"/>
+      android:textSize="20sp"
+      android:background="@drawable/rounded_corner_btn"
+      android:layout_marginTop="5sp"/>
 
   <Button
       android:id="@+id/rules"
       android:layout_width="200sp"
-      android:layout_height="wrap_content"
+      android:layout_height="50sp"
       android:text="Rules"
+      android:textColor="#FFFFFF"
       android:layout_gravity="center"
-      android:layout_marginTop="10dp"/>
+      android:textSize="20sp"
+      android:background="@drawable/rounded_corner_btn"
+      android:layout_marginTop="5dp"/>
 
   <Button
       android:id="@+id/handranking"
       android:layout_width="200sp"
-      android:layout_height="wrap_content"
+      android:layout_height="50sp"
       android:layout_gravity="center"
-      android:layout_marginTop="10dp"
+      android:layout_marginTop="5dp"
+      android:textSize="20sp"
+      android:textColor="#FFFFFF"
+      android:background="@drawable/rounded_corner_btn"
       android:text="Hand Ranking" />
 
   <Button
       android:id="@+id/settings"
       android:layout_width="200dp"
-      android:layout_height="wrap_content"
+      android:layout_height="50sp"
       android:text="Settings"
       android:layout_gravity="center"
-      android:layout_marginTop="10dp"/>
+      android:textSize="20sp"
+      android:textColor="#FFFFFF"
+      android:layout_marginTop="5sp"
+      android:background="@drawable/rounded_corner_btn"/>
 
   <Button
       android:id="@+id/exit"
       android:layout_width="125dp"
-      android:layout_height="wrap_content"
+      android:layout_height="50sp"
       android:text="Exit"
       android:layout_gravity="center"
-      android:layout_marginTop="35dp"/>
+      android:layout_marginTop="35dp"
+      android:textSize="17sp"
+      android:textColor="#6C0E0E"
+      android:backgroundTint="#FF3D3D"
+      android:background="@drawable/rounded_corner_btn"/>
 
 </LinearLayout>
