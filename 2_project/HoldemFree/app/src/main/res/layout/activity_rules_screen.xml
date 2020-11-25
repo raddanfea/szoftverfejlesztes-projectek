@@ -35,5 +35,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="\u00abBACK"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:backgroundTint="#F8EDE1"
+        android:background="@drawable/rounded_corner_btn"/>
 </LinearLayout>

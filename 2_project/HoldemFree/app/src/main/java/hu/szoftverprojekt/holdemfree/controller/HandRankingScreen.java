@@ -19,5 +19,6 @@ public class HandRankingScreen extends AppCompatActivity {
         WebView webView = (WebView) findViewById(R.id.handranking);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/" + "handranking.html");
+        webView.setBackgroundColor(0);
     }
 }

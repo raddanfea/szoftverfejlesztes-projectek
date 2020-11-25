@@ -22,7 +22,7 @@
 
     <WebView
         android:id="@+id/handranking"
-        android:layout_width="350dp"
+        android:layout_width="355dp"
         android:layout_height="564dp"
         android:layout_marginBottom="8sp"
         android:layout_gravity="center"
@@ -30,9 +30,11 @@
 
     <Button
         android:id="@+id/back_button"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_btn"
+        android:backgroundTint="#F8EDE1"
         android:text="\u00ab BACK"
         android:textAlignment="center" />
 
