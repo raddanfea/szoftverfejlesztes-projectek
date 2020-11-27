@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
 import hu.szoftverprojekt.holdemfree.model.PlaySound;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,22 @@ public class SettingsScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openBackScreen();
+            }
+        });
+
+        Button themes_button = (Button)findViewById(R.id.themes_button);
+        themes_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openThemesScreen();
+            }
+        });
+
+        Button game_button = (Button)findViewById(R.id.game_button);
+        game_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGameScreen();
             }
         });
 
@@ -110,4 +127,13 @@ public class SettingsScreen extends AppCompatActivity {
         System.exit(0);
     }
 
+    void openThemesScreen() {
+        Intent target_themes = new Intent(this, ThemesScreen.class);
+        startActivity(target_themes);
+    }
+
+    void openGameScreen() {
+        Intent target_game = new Intent(this, GameScreen.class);
+        startActivity(target_game);
+    }
 }
