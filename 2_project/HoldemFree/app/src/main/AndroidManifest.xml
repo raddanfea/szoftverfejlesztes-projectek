@@ -14,6 +14,7 @@
         <activity android:name=".controller.GameScreen" />
         <activity android:name=".controller.DeckScreen" />
         <activity android:name=".controller.SettingsScreen" />
+        <activity android:name=".controller.ThemesScreen" />
         <activity android:name=".controller.Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
