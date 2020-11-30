@@ -30,6 +30,10 @@ public class AppData {
     this.context = context;
   }
   
+  public SharedPreferences getSharedPreferences() {
+    return pref;
+  }
+  
   public void setDefIntValue(int defIntValue) {
     this.defIntValue = defIntValue;
   }

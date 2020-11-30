@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import hu.szoftverprojekt.holdemfree.R;
+import hu.szoftverprojekt.holdemfree.data.AppData;
 import hu.szoftverprojekt.holdemfree.model.PlaySound;
 
 public class Menu extends AppCompatActivity {
@@ -77,6 +80,7 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        initAppDataWhenUnset();
     }
 
 
@@ -126,7 +130,21 @@ public class Menu extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
-
-
+  
+  /**
+   * Initializes stored values on the first run
+   */
+  private void initAppDataWhenUnset() {
+        AppData data = new AppData(this);
+        HashMap<String, Integer> firstValues = new HashMap<>();
+        firstValues.put("difficulty", 1);
+        firstValues.put("pot_size", 500);
+        firstValues.put("volume", 50);
+        
+        for (String key : firstValues.keySet()) {
+          if (!data.getSharedPreferences().contains(key))
+            data.save(key, firstValues.get(key));
+        }
+    }
 
 }
