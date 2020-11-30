@@ -62,6 +62,8 @@ public class SettingsScreen extends AppCompatActivity {
         potBar=(SeekBar)findViewById(R.id.potBar);
         potBar.setMax(1200);//ezt később eldöntjük mennyi legyen csak írtam valamit xd
         potBar.setMin(500);
+        potBar.setProgress(data.getInt("pot_size"));
+        potSize.setText(""+potBar.getProgress());
 
         difficultyValue=(TextView)findViewById(R.id.difficultyValue);
         difficultyBar=(SeekBar)findViewById(R.id.difficultyBar);
@@ -105,7 +107,7 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                data.save("pot_size", seekBar.getProgress());
             }
         });
 
