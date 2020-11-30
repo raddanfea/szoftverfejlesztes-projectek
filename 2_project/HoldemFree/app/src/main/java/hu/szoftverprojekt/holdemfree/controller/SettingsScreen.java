@@ -5,6 +5,7 @@ package hu.szoftverprojekt.holdemfree.controller;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
+import hu.szoftverprojekt.holdemfree.data.AppData;
 import hu.szoftverprojekt.holdemfree.model.PlaySound;
 
 import android.content.Intent;
@@ -19,12 +20,16 @@ import android.widget.Toast;
 
 
 public class SettingsScreen extends AppCompatActivity {
+    
+    private AppData data;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_screen);
+    
+        data = new AppData(this);
 
         Button back_button = (Button)findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +67,8 @@ public class SettingsScreen extends AppCompatActivity {
         difficultyBar=(SeekBar)findViewById(R.id.difficultyBar);
         difficultyBar.setMin(1);
         difficultyBar.setMax(3);//ahogy ezt is
+        difficultyBar.setProgress(data.getInt("difficulty"));
+        difficultyValue.setText(""+difficultyBar.getProgress());
 
         volumeValue=(TextView)findViewById(R.id.volumeValue);
         volumeBar=(SeekBar)findViewById(R.id.volumeBar);
@@ -80,7 +87,7 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                data.save("difficulty", seekBar.getProgress());
             }
         });
 
