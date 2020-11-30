@@ -74,6 +74,8 @@ public class SettingsScreen extends AppCompatActivity {
 
         volumeValue=(TextView)findViewById(R.id.volumeValue);
         volumeBar=(SeekBar)findViewById(R.id.volumeBar);
+        volumeBar.setProgress(data.getInt("volume"));
+        volumeValue.setText("" + volumeBar.getProgress());
 
         difficultyBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -126,7 +128,7 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                data.save("volume", seekBar.getProgress());
             }
         });
     }
