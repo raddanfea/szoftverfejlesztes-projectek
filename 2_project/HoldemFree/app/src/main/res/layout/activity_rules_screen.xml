@@ -36,6 +36,6 @@
         android:gravity="center"
         android:text="\u00abBACK"
         android:layout_gravity="center"
-        android:backgroundTint="#F8EDE1"
+        android:backgroundTint="#C6C6C6"
         android:background="@drawable/rounded_corner_btn"/>
 </LinearLayout>

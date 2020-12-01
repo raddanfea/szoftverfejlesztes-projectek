@@ -117,7 +117,9 @@
         app:layout_constraintEnd_toStartOf="@+id/raise"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_card1" />
+        app:layout_constraintTop_toBottomOf="@+id/player_card1"
+        android:backgroundTint="#C6C6C6"
+        android:background="@drawable/rounded_corner_btn"/>
 
     <Button
         android:id="@+id/raise"
@@ -128,7 +130,9 @@
         app:layout_constraintEnd_toStartOf="@+id/fold"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/hold"
-        app:layout_constraintTop_toBottomOf="@+id/player_card1" />
+        app:layout_constraintTop_toBottomOf="@+id/player_card1"
+        android:backgroundTint="#C6C6C6"
+        android:background="@drawable/rounded_corner_btn"/>
 
     <Button
         android:id="@+id/fold"
@@ -139,7 +143,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/raise"
-        app:layout_constraintTop_toBottomOf="@+id/player_card2" />
+        app:layout_constraintTop_toBottomOf="@+id/player_card2"
+        android:background="@drawable/rounded_corner_btn"
+        android:backgroundTint="#C6C6C6"/>
 
     <TextView
         android:id="@+id/player_pot"

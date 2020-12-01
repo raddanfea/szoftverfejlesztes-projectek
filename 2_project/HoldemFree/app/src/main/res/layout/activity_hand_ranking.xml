@@ -33,9 +33,9 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:backgroundTint="#C6C6C6"
         android:background="@drawable/rounded_corner_btn"
-        android:backgroundTint="#F8EDE1"
-        android:text="\u00ab BACK"
+        android:text="BACK"
         android:textAlignment="center" />
 
 
