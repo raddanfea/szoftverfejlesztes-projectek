@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
 import hu.szoftverprojekt.holdemfree.data.AppData;
+import hu.szoftverprojekt.holdemfree.model.MediaVolumeEvent;
 import hu.szoftverprojekt.holdemfree.model.PlaySound;
 
 import android.content.Intent;
@@ -17,6 +18,8 @@ import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
 
 
 public class SettingsScreen extends AppCompatActivity {
@@ -117,8 +120,10 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                startService(new Intent(SettingsScreen.this, PlaySound.class));
                 volumeBar.setProgress(progress);
                 volumeValue.setText(""+progress);
+                EventBus.getDefault().post(new MediaVolumeEvent(progress));
             }
 
             @Override
