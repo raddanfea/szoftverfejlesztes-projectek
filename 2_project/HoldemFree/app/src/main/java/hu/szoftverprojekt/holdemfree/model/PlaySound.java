@@ -12,8 +12,10 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import hu.szoftverprojekt.holdemfree.R;
+import hu.szoftverprojekt.holdemfree.data.AppData;
 
 public class PlaySound extends Service {
+    AppData data;
     MediaPlayer musicPlayer;
     Binder mBind = new Binder();
     @Override
@@ -25,6 +27,10 @@ public class PlaySound extends Service {
         super.onCreate();
         musicPlayer = MediaPlayer.create(this, R.raw.dreams);
         musicPlayer.setLooping(false);
+        data = new AppData(this);
+        float maxVolume=100;
+        float volume =  (float) (1 - (Math.log(maxVolume - data.getInt("volume")) / Math.log(maxVolume)));
+        musicPlayer.setVolume(volume, volume);
         EventBus.getDefault().register(this);
     }
     @Override
