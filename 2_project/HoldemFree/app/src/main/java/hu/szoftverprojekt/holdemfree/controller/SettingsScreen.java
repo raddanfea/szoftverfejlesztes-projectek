@@ -134,6 +134,7 @@ public class SettingsScreen extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 data.save("volume", seekBar.getProgress());
+                stopService(new Intent(SettingsScreen.this, PlaySound.class));
             }
         });
     }
