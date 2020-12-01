@@ -37,7 +37,6 @@ public class GameScreen extends AppCompatActivity {
     private Button foldButton;
     private Button holdButton;
     private Button raiseButton;
-    private PlaySound music = new PlaySound();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +96,6 @@ public class GameScreen extends AppCompatActivity {
         game.start();
 
 
-        music.play(this,"dreams", true);
     }
     
     private void initGame() {
@@ -206,18 +204,6 @@ public class GameScreen extends AppCompatActivity {
             debugBotCards[i].setImageResource(
                 getResId("k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        music.resume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        music.stop(true);
     }
 
 }
