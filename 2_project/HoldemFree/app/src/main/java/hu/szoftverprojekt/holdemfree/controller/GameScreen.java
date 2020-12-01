@@ -2,14 +2,17 @@ package hu.szoftverprojekt.holdemfree.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
+import hu.szoftverprojekt.holdemfree.data.AppData;
 import hu.szoftverprojekt.holdemfree.model.Bot;
 import hu.szoftverprojekt.holdemfree.model.GameLogic;
+import hu.szoftverprojekt.holdemfree.model.MediaVolumeEvent;
 import hu.szoftverprojekt.holdemfree.model.PlaySound;
 import hu.szoftverprojekt.holdemfree.model.Player;
 import hu.szoftverprojekt.holdemfree.model.ScreenUpdater;
 import hu.szoftverprojekt.holdemfree.model.ScreenUpdaterEventArgs;
 import hu.szoftverprojekt.holdemfree.model.actions.Actions;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -19,6 +22,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Field;
 
@@ -37,7 +42,6 @@ public class GameScreen extends AppCompatActivity {
     private Button foldButton;
     private Button holdButton;
     private Button raiseButton;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +53,9 @@ public class GameScreen extends AppCompatActivity {
         foldButton = findViewById(R.id.fold);
         holdButton = findViewById(R.id.hold);
         raiseButton = findViewById(R.id.raise);
-        
+
+        startService(new Intent(GameScreen.this, PlaySound.class));
+
         for (int i = 0; i < 5; i++){
             cardsOnBoard[i] = findViewById(getResId("card"+(i+1), R.id.class));
         }
@@ -204,6 +210,13 @@ public class GameScreen extends AppCompatActivity {
             debugBotCards[i].setImageResource(
                 getResId("k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(GameScreen.this, PlaySound.class));
+
     }
 
 }
