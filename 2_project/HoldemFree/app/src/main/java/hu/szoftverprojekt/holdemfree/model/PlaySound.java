@@ -1,73 +1,48 @@
 package hu.szoftverprojekt.holdemfree.model;
 
-import android.content.Context;
+import android.app.Service;
+import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Handler;
-import java.lang.reflect.Field;
+import android.os.Binder;
+import android.os.IBinder;
+import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import hu.szoftverprojekt.holdemfree.R;
 
-
-/*
-A class to call for sounds using filename, such as "test".
-Takes a bool to enable looping.
-RUN ONLY ONE LOOP AT A TIME!!!
-*/
-public class PlaySound {
-
-    private final static int MAX_VOLUME = 100;
-    MediaPlayer mp;
-    Handler handler = new Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            mp.seekTo(0);
-        }
-    };
-
-    public final void play(Context cont, String name, Boolean loop){
-
-        mp = MediaPlayer.create(cont, getResId(name, R.raw.class));
-        mp.start();
-
-        if (loop){
-            handler.postDelayed(runnable,mp.getDuration()-80);
-        }
+public class PlaySound extends Service {
+    MediaPlayer musicPlayer;
+    Binder mBind = new Binder();
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mBind;
     }
-
-    public final void setVolume(int setVolume){
-        final float volume = (float) (1 - (Math.log(MAX_VOLUME - setVolume) / Math.log(MAX_VOLUME)));
-        mp.setVolume(volume, volume);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        musicPlayer = MediaPlayer.create(this, R.raw.dreams);
+        musicPlayer.setLooping(false);
+        EventBus.getDefault().register(this);
     }
-
-    public final void seekTo(int startTime){
-        mp.seekTo(startTime);
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        musicPlayer.start();
+        return START_STICKY;
     }
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
 
-    //stops currently running audio. Use true to kill loop safely!
-    public final void stop(boolean loop){
-        if(loop){
-            handler.removeCallbacks(runnable);
-        }
-        mp.release();
-
-    }
-
-    public final void resume(){
-        mp.start();
-        handler.postDelayed(runnable,mp.getDuration()-80);
-    }
-
-    private static int getResId(String resName, Class<R.raw> c) {
-
-        try {
-            Field idField = c.getDeclaredField(resName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
+        musicPlayer.stop();
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MediaVolumeEvent event){
+        musicPlayer.setVolume(event.getVolume(), event.getVolume());
+    }
 }
