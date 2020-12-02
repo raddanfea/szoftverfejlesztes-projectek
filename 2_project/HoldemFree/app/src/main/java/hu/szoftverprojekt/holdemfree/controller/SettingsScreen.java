@@ -120,7 +120,6 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                startService(new Intent(SettingsScreen.this, PlaySound.class));
                 volumeBar.setProgress(progress);
                 volumeValue.setText(""+progress);
                 EventBus.getDefault().post(new MediaVolumeEvent(progress));
@@ -128,7 +127,7 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                startService(new Intent(SettingsScreen.this, PlaySound.class));
             }
 
             @Override
