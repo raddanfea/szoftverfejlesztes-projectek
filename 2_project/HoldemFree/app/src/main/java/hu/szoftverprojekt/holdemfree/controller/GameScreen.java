@@ -215,8 +215,35 @@ public class GameScreen extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopService(new Intent(GameScreen.this, PlaySound.class));
+        try {
+            stopService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            stopService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            stopService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
