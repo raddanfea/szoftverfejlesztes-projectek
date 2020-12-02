@@ -26,7 +26,7 @@ public class PlaySound extends Service {
     public void onCreate() {
         super.onCreate();
         musicPlayer = MediaPlayer.create(this, R.raw.dreams);
-        musicPlayer.setLooping(false);
+        musicPlayer.setLooping(true);
         data = new AppData(this);
         float maxVolume=100;
         float volume =  (float) (1 - (Math.log(maxVolume - data.getInt("volume")) / Math.log(maxVolume)));
@@ -45,7 +45,6 @@ public class PlaySound extends Service {
 
         musicPlayer.stop();
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(MediaVolumeEvent event){
