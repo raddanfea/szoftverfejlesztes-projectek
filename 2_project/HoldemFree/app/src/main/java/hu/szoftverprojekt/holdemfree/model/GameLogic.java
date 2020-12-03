@@ -190,8 +190,7 @@ public class GameLogic {
     switch (getCurrentPlayer().getNextAction().name) {
       case "Fold":
         getCurrentPlayer().folded = true;
-        break;
-      case "Hold":
+        break; case "Hold":
         if((round == 0) && (getCurrentPlayerIndex() == calcPlayerIndex(dealerOffset+1))) {
           // pay the second half of small blind
           moneyOnBoard += getCurrentPlayer().pay(calcMinBet()/2);
@@ -250,7 +249,15 @@ public class GameLogic {
    * @return  the index of the winner in the players list
    */
   private static int calculateWinner(ArrayList<Player> players, ArrayList<Card> board) {
-    return 0;
+      int index = 0;
+      int winner = 0;
+      int highest = 0;
+      for (Player player: players) {
+          int score = calcScoreOfHand(player.getHand(),board);
+          if (score > highest) {highest = score; winner = index;}
+          index++;
+      }
+      return winner;
   }
   
   /**
@@ -284,15 +291,15 @@ public class GameLogic {
     //getting flush value
     Pair<Integer, Integer> flush = findFlush(new ArrayList<>(allCards));
 
-      //getting full house value
-      Pair<Integer, Integer> fullHouse = findFull(new ArrayList<>(allCards), new ArrayList(cardList), drills.second);
+    //getting full house value
+    Pair<Integer, Integer> fullHouse = findFull(new ArrayList<>(allCards), new ArrayList(cardList), drills.second);
 
     Integer cumValue = 0;
 
     // comparing results and giving points
     if (false) { return 0; }
     else if((straightF.first > 0) & straightF.second == 53) {
-                                    cumValue += (2500); }                     //royal flush
+                                    cumValue += (2500);     }                     //royal flush
     else if(straightF.first > 0) {  cumValue += (2000 + straightF.second); }  //straight flush// else if miatt
     else if(drills.first == 2) { cumValue += (1500 + drills.second); }        //poker
     else if(fullHouse.first > 0) { cumValue += (1300 + fullHouse.second); }   //full
@@ -705,14 +712,14 @@ public class GameLogic {
 
 
     ////////////////FOR TESTS AND DEBUG///////////////
-    out.set(0, new Card(1, 0));
-    out.set(1, new Card(2, 0));
+    //out.set(0, new Card(1, 0));
+    //out.set(1, new Card(2, 0));
 
-    out.set(4, new Card(3, 0));
-    out.set(5, new Card(17, 0));
-    out.set(6, new Card(18, 0));
-    out.set(7, new Card(19, 0));
-    out.set(8, new Card(49, 0));
+    //out.set(4, new Card(3, 0));
+    //out.set(5, new Card(17, 0));
+    //out.set(6, new Card(18, 0));
+    //out.set(7, new Card(19, 0));
+    //out.set(8, new Card(49, 0));
     //////////////////////////////////////////////////
 
 
