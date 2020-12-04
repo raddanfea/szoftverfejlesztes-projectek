@@ -27,7 +27,7 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs 'src/main/res', 'src/main/res/drawables/wooden', 'src/main/res/drawables/golden', 'src/main/res/drawables/leafiron', 'src/main/res/drawables/diamond'
+                srcDirs 'src/main/res', 'src/main/res/drawables/wooden', 'src/main/res/drawables/golden', 'src/main/res/drawables/leafiron', 'src/main/res/drawables/diamond', 'src/main/res/drawables/muteswitch'
             }
         }
     }
