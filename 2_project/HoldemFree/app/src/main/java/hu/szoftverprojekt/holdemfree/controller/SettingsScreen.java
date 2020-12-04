@@ -37,7 +37,7 @@ public class SettingsScreen extends AppCompatActivity {
     
         data = new AppData(this);
 
-        data.save("playmusic", true);
+        //data.save("playmusic", true);
         muteSwitch = (Switch)findViewById(R.id.muteSwitch);
         if(!data.getBoolean("playmusic")) {
             muteSwitch.setChecked(true);
@@ -184,6 +184,7 @@ public class SettingsScreen extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        data.save("playmusic", data.getBoolean("playmusic"));
         if(data.getBoolean("playmusic")) {
             muteSwitch.setChecked(false);
         }
