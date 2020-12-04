@@ -276,4 +276,16 @@ public class GameScreen extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            startService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
