@@ -14,8 +14,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.MediaController;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import org.greenrobot.eventbus.EventBus;
 public class SettingsScreen extends AppCompatActivity {
     
     private AppData data;
+    private Switch muteSwitch;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -33,6 +36,21 @@ public class SettingsScreen extends AppCompatActivity {
         setContentView(R.layout.activity_settings_screen);
     
         data = new AppData(this);
+
+        data.save("playmusic", true);
+        muteSwitch = (Switch)findViewById(R.id.muteSwitch);
+        if(!data.getBoolean("playmusic")) {
+            muteSwitch.setChecked(true);
+        }
+        else {
+            muteSwitch.setChecked(false);
+        }
+        muteSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                switchSound();
+            }
+        });
 
         Button back_button = (Button)findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +145,7 @@ public class SettingsScreen extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+                muteSwitch.setChecked(false);
                 startService(new Intent(SettingsScreen.this, PlaySound.class));
             }
 
@@ -143,13 +162,32 @@ public class SettingsScreen extends AppCompatActivity {
         System.exit(0);
     }
 
-    void openThemesScreen() {
+    private void openThemesScreen() {
         Intent target_themes = new Intent(this, ThemesScreen.class);
         startActivity(target_themes);
     }
 
-    void openGameScreen() {
+    private void openGameScreen() {
         Intent target_game = new Intent(this, GameScreen.class);
         startActivity(target_game);
+    }
+
+    private void switchSound() {
+        if(muteSwitch.isChecked()) {
+            data.save("playmusic", false);
+        }
+        else {
+            data.save("playmusic", true);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(data.getBoolean("playmusic")) {
+            muteSwitch.setChecked(false);
+        }
+        else
+            muteSwitch.setChecked(true);
     }
 }
