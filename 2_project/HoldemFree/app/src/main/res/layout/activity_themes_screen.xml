@@ -155,4 +155,18 @@
         app:layout_constraintTop_toBottomOf="@+id/button3"
         android:backgroundTint="#C6C6C6"
         android:background="@drawable/rounded_corner_btn"/>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="59dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/rounded_corner_btn"
+        android:backgroundTint="#C6C6C6"
+        android:text="Set"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/open_game" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
