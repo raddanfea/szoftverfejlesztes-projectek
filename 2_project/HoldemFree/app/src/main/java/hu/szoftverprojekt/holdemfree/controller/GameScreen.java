@@ -1,6 +1,8 @@
 package hu.szoftverprojekt.holdemfree.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import hu.szoftverprojekt.holdemfree.R;
 import hu.szoftverprojekt.holdemfree.data.AppData;
 import hu.szoftverprojekt.holdemfree.model.Bot;
@@ -32,7 +34,8 @@ import java.lang.reflect.Field;
 public class GameScreen extends AppCompatActivity {
     
     private static final String TAG = "testtest";
-    
+
+    private ConstraintLayout constraintLayout;
     private boolean canInteract;
     private GameLogic game;
     private ImageView[] cardsOnBoard = new ImageView[5];
@@ -52,6 +55,7 @@ public class GameScreen extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         data = new AppData(this);
+        constraintLayout = (ConstraintLayout)findViewById(R.id.constraintLayout);
         muteSwitch = (Switch)findViewById(R.id.muteSwitch);
         aiPot = findViewById(R.id.ai_pot);
         currentPot = findViewById(R.id.current_pot);
@@ -59,6 +63,27 @@ public class GameScreen extends AppCompatActivity {
         foldButton = findViewById(R.id.fold);
         holdButton = findViewById(R.id.hold);
         raiseButton = findViewById(R.id.raise);
+
+        switch (data.getInt("bgId")) {
+            case 0:
+                constraintLayout.setBackgroundResource(R.drawable.bg);
+                break;
+            case 1:
+                constraintLayout.setBackgroundResource(R.drawable.bg2);
+                break;
+            case 2:
+                constraintLayout.setBackgroundResource(R.drawable.bg3);
+                break;
+            case 3:
+                constraintLayout.setBackgroundResource(R.drawable.bg4);
+                break;
+            case 4:
+                constraintLayout.setBackgroundResource(R.drawable.bg5);
+                break;
+
+            default:
+                constraintLayout.setBackgroundResource(R.drawable.bg);
+        }
 
         if(!data.getBoolean("playmusic")) {
             muteSwitch.setChecked(true);
@@ -279,11 +304,12 @@ public class GameScreen extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        try {
-            startService(new Intent(GameScreen.this, PlaySound.class));
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        if(data.getBoolean("playmusic")) {
+            try {
+                startService(new Intent(GameScreen.this, PlaySound.class));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
