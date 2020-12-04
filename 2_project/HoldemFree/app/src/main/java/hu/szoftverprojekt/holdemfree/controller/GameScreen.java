@@ -19,7 +19,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,11 +44,15 @@ public class GameScreen extends AppCompatActivity {
     private Button foldButton;
     private Button holdButton;
     private Button raiseButton;
+    private AppData data;
+    private Switch muteSwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
-        
+
+        data = new AppData(this);
+        muteSwitch = (Switch)findViewById(R.id.muteSwitch);
         aiPot = findViewById(R.id.ai_pot);
         currentPot = findViewById(R.id.current_pot);
         playerPot = findViewById(R.id.player_pot);
@@ -54,7 +60,20 @@ public class GameScreen extends AppCompatActivity {
         holdButton = findViewById(R.id.hold);
         raiseButton = findViewById(R.id.raise);
 
-        startService(new Intent(GameScreen.this, PlaySound.class));
+        if(!data.getBoolean("playmusic")) {
+            muteSwitch.setChecked(true);
+            stopService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        else {
+            muteSwitch.setChecked(false);
+            startService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        muteSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                switchSound();
+            }
+        });
 
         for (int i = 0; i < 5; i++){
             cardsOnBoard[i] = findViewById(getResId("card"+(i+1), R.id.class));
@@ -209,6 +228,17 @@ public class GameScreen extends AppCompatActivity {
         for (int i = 0; i < 2; i++) {
             debugBotCards[i].setImageResource(
                 getResId("k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
+        }
+    }
+
+    private void switchSound() {
+        if(muteSwitch.isChecked()) {
+            data.save("playmusic", false);
+            stopService(new Intent(GameScreen.this, PlaySound.class));
+        }
+        else {
+            data.save("playmusic", true);
+            startService(new Intent(GameScreen.this, PlaySound.class));
         }
     }
 
