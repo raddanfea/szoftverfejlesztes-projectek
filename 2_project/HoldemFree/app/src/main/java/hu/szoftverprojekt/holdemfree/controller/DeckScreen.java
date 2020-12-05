@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class DeckScreen extends AppCompatActivity {
@@ -184,6 +185,34 @@ public class DeckScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openSettings();
+            }
+        });
+
+        woodenInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "You have to win "+(10-data.getInt("wincount"))+" more games to unlock this skin!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        ironInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "You have to win 5 games in a row to unlock this skin!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        goldenInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "You have to win "+(25-data.getInt("wincount"))+" more games to unlock this skin!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        diamondInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "You have to win "+(50-data.getInt("wincount"))+" more games to unlock this skin!", Toast.LENGTH_LONG).show();
             }
         });
     }
