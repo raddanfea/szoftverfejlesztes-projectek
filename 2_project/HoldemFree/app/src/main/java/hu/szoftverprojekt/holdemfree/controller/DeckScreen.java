@@ -60,6 +60,39 @@ public class DeckScreen extends AppCompatActivity {
         back_button = (Button) findViewById(R.id.back_button);
         resetButton = (Button)findViewById(R.id.resetButton);
 
+
+        //KÁRTYÁK TESZTELÉSÉHEZ
+        //DE RESET GOMBHOZ KI KELL VENNI
+        /*
+        data.save("skinId", 0);
+        data.save("ironEnabled", false);
+        data.save("wincount", 27);
+        */
+        winCount.setText("Number of wins: " + data.getInt("wincount"));
+        switch (data.getInt("skinId")) {
+            case 0:
+                setDefault.setEnabled(false);
+                setDefault.setText("In use");
+                break;
+            case 1:
+                setWooden.setEnabled(false);
+                setWooden.setText("In use");
+                break;
+            case 2:
+                setIron.setEnabled(false);
+                setIron.setText("In use");
+                break;
+            case 3:
+                setGolden.setEnabled(false);
+                setGolden.setText("In use");
+                break;
+            case 4:
+                setDiamond.setEnabled(false);
+                setDiamond.setText("In use");
+                break;
+        }
+
+
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
