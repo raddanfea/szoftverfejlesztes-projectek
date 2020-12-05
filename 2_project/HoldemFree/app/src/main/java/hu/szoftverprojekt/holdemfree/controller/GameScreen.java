@@ -34,6 +34,8 @@ import java.lang.reflect.Field;
 public class GameScreen extends AppCompatActivity {
     
     private static final String TAG = "testtest";
+    
+    private final String[] skinNames = {"", "wooden_", "leafiron_", "golden_", "diamond_"};
 
     private ConstraintLayout constraintLayout;
     private boolean canInteract;
@@ -106,7 +108,7 @@ public class GameScreen extends AppCompatActivity {
         
         for (int i = 0; i < 2; i++){
             playerCards[i] = findViewById(getResId("player_card"+(i+1), R.id.class));
-            playerCards[i].setColorFilter(0xB3FFD700, PorterDuff.Mode.SRC_ATOP);
+//            playerCards[i].setColorFilter(0xB3FFD700, PorterDuff.Mode.SRC_ATOP);
         }
         
         /////////////////////////////// DEBUG /////////////////////////////////
@@ -164,13 +166,13 @@ public class GameScreen extends AppCompatActivity {
                 } else {
                     for (int i = 0; i < gameData.board.size(); i++) {
                         cardsOnBoard[i].setImageResource(
-                            getResId("k"+gameData.board.get(i).getId(), R.drawable.class));
+                            getResId(skinNames[data.getInt("skinId")] + "k"+gameData.board.get(i).getId(), R.drawable.class));
                     }
                 }
                 
                 for (int i = 0; i < 2; i++) {
                     playerCards[i].setImageResource(
-                        getResId("k"+player.getHand().get(i).getId(), R.drawable.class));
+                        getResId(skinNames[data.getInt("skinId")] + "k"+player.getHand().get(i).getId(), R.drawable.class));
                 }
                 /////////////////////////////// DEBUG /////////////////////////////////
 
@@ -252,7 +254,7 @@ public class GameScreen extends AppCompatActivity {
     private void debugSetImageForBotCards(ScreenUpdaterEventArgs e) {
         for (int i = 0; i < 2; i++) {
             debugBotCards[i].setImageResource(
-                getResId("k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
+                getResId(skinNames[data.getInt("skinId")] + "k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
         }
     }
 
