@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
 import hu.szoftverprojekt.holdemfree.data.AppData;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,18 +60,40 @@ public class DeckScreen extends AppCompatActivity {
         back_button = (Button) findViewById(R.id.back_button);
         resetButton = (Button)findViewById(R.id.resetButton);
 
-        Button back_button = (Button)findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openBackScreen();
             }
         });
+
+        gameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGame();
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSettings();
+            }
+        });
     }
 
-    void openBackScreen() {
+    private void openBackScreen() {
         finish();
-        System.exit(0);
+    }
+
+    private void openSettings() {
+        Intent target_settings = new Intent(this, SettingsScreen.class);
+        startActivity(target_settings);
+    }
+
+    private void openGame() {
+        Intent target_game = new Intent(this, GameScreen.class);
+        startActivity(target_game);
     }
 
 }
