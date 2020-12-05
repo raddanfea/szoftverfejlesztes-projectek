@@ -37,6 +37,7 @@ public class GameScreen extends AppCompatActivity {
     
     private final String[] skinNames = {"", "wooden_", "leafiron_", "golden_", "diamond_"};
 
+    private int winstreak;
     private ConstraintLayout constraintLayout;
     private boolean canInteract;
     private GameLogic game;
@@ -144,6 +145,7 @@ public class GameScreen extends AppCompatActivity {
             }
         });
         
+        winstreak = 0;
         initGame();
         game.start();
 
@@ -195,6 +197,14 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void invoke(ScreenUpdaterEventArgs gameData) {
                 Log.d(TAG, "onGameOver");
+                if (gameData.winnerIndex == 0) {
+                    winstreak += 1;
+                    data.save("wincount", data.getInt("wincount") +1 );
+                    checkForUnlocks();
+                } else {
+                    winstreak = 0;
+                }
+                
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
@@ -224,6 +234,12 @@ public class GameScreen extends AppCompatActivity {
         } else {
             log("///////////////////////////////////////////////\nUsers turn ......................");
             canInteract = true;
+        }
+    }
+    
+    private void checkForUnlocks() {
+        if (winstreak >= 5) {
+            data.save("ironEnabled", true);
         }
     }
     
