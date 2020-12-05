@@ -93,6 +93,39 @@ public class DeckScreen extends AppCompatActivity {
         }
 
 
+        if (data.getInt("wincount") >= 10) {
+            setWooden.setEnabled(true);
+            woodenInfo.setVisibility(View.GONE);
+        } else {
+            setWooden.setEnabled(false);
+            woodenInfo.setVisibility(View.VISIBLE);
+        }
+
+        if (data.getBoolean("ironEnabled")) {
+            setIron.setEnabled(true);
+            ironInfo.setVisibility(View.GONE);
+        } else {
+            setIron.setEnabled(false);
+            ironInfo.setVisibility(View.VISIBLE);
+        }
+
+        if (data.getInt("wincount") >= 25) {
+            setGolden.setEnabled(true);
+            goldenInfo.setVisibility(View.GONE);
+        } else {
+            setGolden.setEnabled(false);
+            goldenInfo.setVisibility(View.VISIBLE);
+        }
+
+        if (data.getInt("wincount") >= 50) {
+            setDiamond.setEnabled(true);
+            diamondInfo.setVisibility(View.GONE);
+        } else {
+            setDiamond.setEnabled(false);
+            diamondInfo.setVisibility(View.VISIBLE);
+        }
+
+
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
