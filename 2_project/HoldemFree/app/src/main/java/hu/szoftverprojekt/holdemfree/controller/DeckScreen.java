@@ -125,6 +125,46 @@ public class DeckScreen extends AppCompatActivity {
             diamondInfo.setVisibility(View.VISIBLE);
         }
 
+        setDefault.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data.save("skinId", 0);
+                changeButtons(0);
+            }
+        });
+
+        setWooden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data.save("skinId", 1);
+                changeButtons(1);
+            }
+        });
+
+        setIron.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data.save("skinId", 2);
+                changeButtons(2);
+            }
+        });
+
+        setGolden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data.save("skinId", 3);
+                changeButtons(3);
+            }
+        });
+
+        setDiamond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data.save("skinId", 4);
+                changeButtons(4);
+            }
+        });
+
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +186,134 @@ public class DeckScreen extends AppCompatActivity {
                 openSettings();
             }
         });
+    }
+
+    private void changeButtons(int buttonId) {
+        for(int i=0; i < buttons.length; i++) {
+            if(data.getInt("wincount")>=50 && data.getBoolean("ironEnabled")) {
+                if(i==buttonId) {
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if(data.getInt("wincount")>=50 && !data.getBoolean("ironEnabled")) {
+                if(i == 2) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId) {
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if(data.getInt("wincount")>=25 && data.getInt("wincount ")<50 && data.getBoolean("ironEnabled")) {
+                if(i == 4) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId) {
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if (data.getInt("wincount")>=25 && data.getInt("wincount ")<50 && !data.getBoolean("ironEnabled")) {
+                if(i == 2 || i == 4) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId) {
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if (data.getInt("wincount")>=10 && data.getInt("wincount")<25 && data.getBoolean("ironEnabled")) {
+                if(i == 3 || i == 4) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId){
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if (data.getInt("wincount")>=10 && data.getInt("wincount")<25 && !data.getBoolean("ironEnabled")) {
+                if(i == 2 || i == 3 || i == 4 ) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId){
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if(data.getInt("wincount")<10 && data.getBoolean("ironEnabled")) {
+                if(i == 1 || i == 3 || i == 4) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId){
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+            else
+            if(data.getInt("wincount")<10 && !data.getBoolean("ironEnabled")) {
+                if(i == 1 || i == 2 || i == 3 || i == 4) {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(false);
+                }
+                else
+                if (i == buttonId){
+                    buttons[i].setText("In use");
+                    buttons[i].setEnabled(false);
+                }
+                else {
+                    buttons[i].setText("Set");
+                    buttons[i].setEnabled(true);
+                }
+            }
+
+        }
     }
 
     private void openBackScreen() {
