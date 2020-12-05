@@ -2,10 +2,12 @@ package hu.szoftverprojekt.holdemfree.controller;
 
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import hu.szoftverprojekt.holdemfree.R;
 import hu.szoftverprojekt.holdemfree.data.AppData;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -188,6 +190,13 @@ public class DeckScreen extends AppCompatActivity {
             }
         });
 
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetGame();
+            }
+        });
+
         woodenInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -343,6 +352,28 @@ public class DeckScreen extends AppCompatActivity {
             }
 
         }
+    }
+
+    private void resetGame() {
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("WARNING!").setMessage("Do you really want to reset the game?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        data.save("wincount", 0);
+                        data.save("skinId", 0);
+                        data.save("ironEnabled", false);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
     }
 
     private void openBackScreen() {
