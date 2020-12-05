@@ -150,7 +150,7 @@ public class GameScreen extends AppCompatActivity {
     
     private void initGame() {
         player = new Player("asd", 500);
-        game = new GameLogic(player);
+        game = new GameLogic(data.getInt("difficulty"), player);
         game.onChange = new ScreenUpdater() {
             @Override
             public void invoke(ScreenUpdaterEventArgs gameData) {
