@@ -1,5 +1,6 @@
 package hu.szoftverprojekt.holdemfree.controller;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -12,8 +13,11 @@ import hu.szoftverprojekt.holdemfree.model.PlaySound;
 import hu.szoftverprojekt.holdemfree.model.Player;
 import hu.szoftverprojekt.holdemfree.model.ScreenUpdater;
 import hu.szoftverprojekt.holdemfree.model.ScreenUpdaterEventArgs;
+import hu.szoftverprojekt.holdemfree.model.actions.Action;
 import hu.szoftverprojekt.holdemfree.model.actions.Actions;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -34,13 +38,16 @@ import java.lang.reflect.Field;
 public class GameScreen extends AppCompatActivity {
     
     private static final String TAG = "testtest";
+    private Toast toast;
     
     private final String[] skinNames = {"", "wooden_", "leafiron_", "golden_", "diamond_"};
+    private Thread nextTurnThread;
+    private Thread startGameThread;
+    private GameLogic game;
 
     private int winstreak;
     private ConstraintLayout constraintLayout;
     private boolean canInteract;
-    private GameLogic game;
     private ImageView[] cardsOnBoard = new ImageView[5];
     private ImageView[] playerCards = new ImageView[2];
     private TextView aiPot;
@@ -52,6 +59,46 @@ public class GameScreen extends AppCompatActivity {
     private Button raiseButton;
     private AppData data;
     private Switch muteSwitch;
+    
+    public static class StartGameTask implements Runnable {
+        
+        private GameLogic game;
+        private Player player;
+        
+        // The object member variable can be shared between multiple threads if the same object instance is passed to MyTask executing in multiple threads
+        public StartGameTask() {
+        }
+        
+        public StartGameTask(GameLogic object, Player player) {
+            this.game = object;
+            this.player = player;
+        }
+        
+        @Override
+        public void run() {
+            this.game.start();
+        }
+    }
+    public static class NextTurnTask implements Runnable {
+        
+        private GameLogic game;
+        private Player player;
+        
+        // The object member variable can be shared between multiple threads if the same object instance is passed to MyTask executing in multiple threads
+        public NextTurnTask() {
+        }
+        
+        public NextTurnTask(GameLogic object, Player player) {
+            this.game = object;
+            this.player = player;
+        }
+        
+        @Override
+        public void run() {
+            this.game.nextTurn();
+        }
+    }
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +113,8 @@ public class GameScreen extends AppCompatActivity {
         foldButton = findViewById(R.id.fold);
         holdButton = findViewById(R.id.hold);
         raiseButton = findViewById(R.id.raise);
+        
+        toast = new Toast(this);
 
         switch (data.getInt("bgId")) {
             case 0:
@@ -112,10 +161,7 @@ public class GameScreen extends AppCompatActivity {
 //            playerCards[i].setColorFilter(0xB3FFD700, PorterDuff.Mode.SRC_ATOP);
         }
         
-        /////////////////////////////// DEBUG /////////////////////////////////
-        debugBindBotCards();
-        ///////////////////////////////////////////////////////////////////////
-        
+        BindBotCards();
         
         holdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +169,10 @@ public class GameScreen extends AppCompatActivity {
                 if (!canInteract)
                     return;
                 player.setNextAction(Actions.HOLD);
-                game.nextTurn();
+                showAction();
+//                game.nextTurn();
+                nextTurnThread = new Thread(new NextTurnTask(game, player));
+                nextTurnThread.start();
             }
         });
         foldButton.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +181,10 @@ public class GameScreen extends AppCompatActivity {
                 if (!canInteract)
                     return;
                 player.setNextAction(Actions.FOLD);
-                game.nextTurn();
+                showAction();
+//                game.nextTurn();
+                nextTurnThread = new Thread(new NextTurnTask(game, player));
+                nextTurnThread.start();
             }
         });
         raiseButton.setOnClickListener(new View.OnClickListener() {
@@ -141,19 +193,29 @@ public class GameScreen extends AppCompatActivity {
                 if (!canInteract)
                     return;
                 player.setNextAction(Actions.RAISE_BY(50));
-                game.nextTurn();
+                showAction();
+//                game.nextTurn();
+                nextTurnThread = new Thread(new NextTurnTask(game, player));
+                nextTurnThread.start();
             }
         });
         
+        newGame();
+    }
+    
+    private void newGame() {
+        for (int i = 0; i < 2; i++) {
+            debugBotCards[i].setImageResource(R.drawable.cb);
+        }
         winstreak = 0;
         initGame();
-        game.start();
-
-
+//        game.start();
+        startGameThread = new Thread(new StartGameTask(game, player));
+        startGameThread.start();
     }
     
     private void initGame() {
-        player = new Player("asd", 500);
+        player = new Player("Bob", 500);
         game = new GameLogic(data.getInt("difficulty"), player);
         game.onChange = new ScreenUpdater() {
             @Override
@@ -162,31 +224,52 @@ public class GameScreen extends AppCompatActivity {
     
                 if(gameData.board.size() == 0) {
                     // clear images
-                    for (int i = 0; i < 5; i++) {
-                        cardsOnBoard[i].setImageResource(R.drawable.cb);
-                    }
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            for (int i = 0; i < 5; i++) {
+                                cardsOnBoard[i].setImageResource(R.drawable.cb);
+                                cardsOnBoard[i].invalidate();
+                            }
+                        }
+                    });
+                    
                 } else {
-                    for (int i = 0; i < gameData.board.size(); i++) {
-                        cardsOnBoard[i].setImageResource(
-                            getResId(skinNames[data.getInt("skinId")] + "k"+gameData.board.get(i).getId(), R.drawable.class));
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            for (int i = 0; i < gameData.board.size(); i++) {
+                                cardsOnBoard[i].setImageResource(
+                                    getResId(skinNames[data.getInt("skinId")] + "k"+gameData.board.get(i).getId(), R.drawable.class));
+                                cardsOnBoard[i].invalidate();
+                            }
+                        }
+                    });
+                    
+                }
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        for (int i = 0; i < 2; i++) {
+                            playerCards[i].setImageResource(
+                                getResId(skinNames[data.getInt("skinId")] + "k"+player.getHand().get(i).getId(), R.drawable.class));
+                            playerCards[i].invalidate();
+                        }
                     }
-                }
+                });
                 
-                for (int i = 0; i < 2; i++) {
-                    playerCards[i].setImageResource(
-                        getResId(skinNames[data.getInt("skinId")] + "k"+player.getHand().get(i).getId(), R.drawable.class));
-                }
                 /////////////////////////////// DEBUG /////////////////////////////////
 
                 Integer text = GameLogic.calcScoreOfHand(gameData.board, player.getHand());
                 log("cumValue: " + String.valueOf(text));
-
-                debugSetImageForBotCards(gameData);
+    
+//                SetImageForBotCards(gameData);
                 ///////////////////////////////////////////////////////////////////////
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        aiPot.setText("ai pot: " + Integer.toString(gameData.players.get(1).getMoney()));
+                        currentPot.setText(Integer.toString(gameData.moneyOnBoard));
+                        playerPot.setText(Integer.toString(player.getMoney()));
+                    }
+                });
                 
-                aiPot.setText("ai pot: " + Integer.toString(gameData.players.get(1).getMoney()));
-                currentPot.setText(Integer.toString(gameData.moneyOnBoard));
-                playerPot.setText(Integer.toString(player.getMoney()));
 
                 // this will start the next turn
                 if (gameData.roundsEnded < 4)
@@ -205,6 +288,8 @@ public class GameScreen extends AppCompatActivity {
                     winstreak = 0;
                 }
                 
+                SetImageForBotCards(gameData);
+                
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
@@ -218,8 +303,32 @@ public class GameScreen extends AppCompatActivity {
                     }
                 }
     
-                if (playersLeft > 1)
+                if (playersLeft > 1) {
+                    ResetImageForBotCards();
                     game.start();
+                }
+                else {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            String winnerMessage = gameData.winnerIndex == 0 ? "Congratulations! You won!" : "I'm sorry. You lost.";
+                            AlertDialog dialog = new AlertDialog.Builder(GameScreen.this)
+                                .setTitle("Game Over!").setMessage(winnerMessage + "\nDo you want to play again?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        newGame();
+                                    }
+                                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        finish();
+                                    }
+                                })
+                                
+                                .show();
+                        }
+                    });
+                    
+                }
             }
         };
         
@@ -230,6 +339,7 @@ public class GameScreen extends AppCompatActivity {
             log("///////////////////////////////////////////////\nBots turn ......................");
             canInteract = false;
             ((Bot) game.getCurrentPlayer()).think(e.board);
+            showAction();
             game.nextTurn();
         } else {
             log("///////////////////////////////////////////////\nUsers turn ......................");
@@ -254,25 +364,63 @@ public class GameScreen extends AppCompatActivity {
         }
     }
     
+    private void showAction() {
+        if (game.getCurrentPlayer().getNextAction() == null)
+            return;
+        String playerText = game.getCurrentPlayerIndex() == 0 ? "You " : "The enemy ";
+        String actionText = game.getCurrentPlayer().getNextAction().name + "ed";
+        if (game.getCurrentPlayer().getNextAction().name.equals("Raise"))
+            actionText += " by 30";
+        
+        showToast(playerText + actionText);
+    }
+    
+    private void showToast(String s) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                toast.makeText(GameScreen.this, s, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    
     private void log(String s) {
         System.out.println(s);
     }
     
     
-    // --------------------- DEBUG ---------------------------
+    // --------------------- DEBUG? ---------------------------
     private ImageView[] debugBotCards = new ImageView[2];
     
-    private void debugBindBotCards() {
+    private void BindBotCards() {
         for (int i = 0; i < 2; i++)
             debugBotCards[i] = findViewById(getResId("debug_bot_card_"+(i+1), R.id.class));
     }
     
-    private void debugSetImageForBotCards(ScreenUpdaterEventArgs e) {
-        for (int i = 0; i < 2; i++) {
-            debugBotCards[i].setImageResource(
-                getResId(skinNames[data.getInt("skinId")] + "k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
-        }
+    private void SetImageForBotCards(ScreenUpdaterEventArgs e) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                for (int i = 0; i < 2; i++) {
+                    debugBotCards[i].setImageResource(
+                        getResId(skinNames[data.getInt("skinId")] + "k"+e.players.get(1).getHand().get(i).getId(), R.drawable.class));
+                    debugBotCards[i].invalidate();
+                }
+            }
+        });
+        
     }
+    
+    private void ResetImageForBotCards() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                for (int i = 0; i < 2; i++) {
+                    debugBotCards[i].setImageResource(R.drawable.cb);
+                    debugBotCards[i].invalidate();
+                }
+            }
+        });
+        
+    }
+    // -------------------------------------------------------
 
     private void switchSound() {
         if(muteSwitch.isChecked()) {
