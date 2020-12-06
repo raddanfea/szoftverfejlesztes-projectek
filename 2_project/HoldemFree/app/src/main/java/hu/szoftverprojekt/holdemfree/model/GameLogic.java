@@ -637,8 +637,8 @@ public class GameLogic {
    * Higher score means you have better cards.
    */
   private static Pair<Integer,Integer> findPairs(ArrayList<Card> allCards, List<Integer> cardList) {
-    Integer pair = 0;
-    Integer highestPair = 0;
+    int pair = 0;
+    int highestPair = 0;
     List<Integer> localCardList = cardList;
 
     List<Integer> list = new ArrayList<Integer>(Collections.nCopies(20, 0));
@@ -647,7 +647,7 @@ public class GameLogic {
         list.set(getCardTypeValue(localCardList.get(i)), list.get(i)+1);
     }
     for (int item:list) {
-        if (item>1) pair = item;
+        if (item>1) pair += 1;
         if (item>highestPair) highestPair = item;
     }
 
