@@ -334,11 +334,16 @@ public class GameScreen extends AppCompatActivity {
         
     }
     
-    private void handlePlayers(ScreenUpdaterEventArgs e) {
+    private void handlePlayers(ScreenUpdaterEventArgs args) {
         if (game.getCurrentPlayerIndex() != 0) {
             log("///////////////////////////////////////////////\nBots turn ......................");
             canInteract = false;
-            ((Bot) game.getCurrentPlayer()).think(e.board);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ((Bot) game.getCurrentPlayer()).think(args.board);
             showAction();
             game.nextTurn();
         } else {
