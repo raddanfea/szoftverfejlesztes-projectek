@@ -651,7 +651,7 @@ public class GameLogic {
         if (item>highestPair) highestPair = item;
     }
 
-    if (pair != 0) {pair = 2;}
+    if (pair >= 2) {pair = 2;}
     if ((highestPair < 5) & (highestPair > 0)) { highestPair = 53; }
     Pair< Integer, Integer > p = new Pair(pair, highestPair);
     return p;
