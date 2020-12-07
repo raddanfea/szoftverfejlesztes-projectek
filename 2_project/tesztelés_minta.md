@@ -1,4 +1,5 @@
 # Tesztelési Jegyzőkönyv
+## Követelmények
 
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
@@ -13,6 +14,17 @@
 |Rádi Dániel|2020.12.06| K07 Képfájlok jpg/png formátumúak legyenek. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikertelen. | .wav helyett mp3 fájl volt jelen. |
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
+
+## Egyéni feladatok
+
+ Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
+|:-:|:-:|:-:|:-:|-|
+| Rádi Dániel | 2020.10.7 13:21 | CalculateWinner logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 13:21 | calcScoreOfHand logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 13:21 | Kártyaértékek logikái. (8) )| Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 13:21 | Kártyaértékek segédlogikái. (5) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 13:21 | Kártyakeverés logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 13:21 | Kártyakiosztás/húzás logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
 
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
