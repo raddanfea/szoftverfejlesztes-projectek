@@ -11,7 +11,7 @@
 |Rádi Dániel|2020.12.06| K05 Az UI megvalósításához xml-t kell használni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 ||| K06 A mentéseket titkosítva kell lokálisan tárolni. |||
 |Rádi Dániel|2020.12.06| K07 Képfájlok jpg/png formátumúak legyenek. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
-|Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikertelen. | .wav helyett mp3 fájl volt jelen. |
+|Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikertelen | .wav helyett mp3 fájl volt jelen. |
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 
 ## Egyéni feladatok
@@ -20,12 +20,12 @@
 |:-:|:-:|:-:|:-:|-|
 | Rádi Dániel | 2020.10.5| Tesztelési jegyzőkönyv minta tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
 | Rádi Dániel | 2020.12.7| Tesztelési jegyzőkönyv tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.12.7 | CalculateWinner logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.12.7 | calcScoreOfHand logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.12.7 | Kártyaértékek logikái. (8) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.12.7 | Kártyaértékek segédlogikái. (5) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.12.7| Kártyakeverés logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.12.7 | Kártyakiosztás/húzás logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | CalculateWinner logika | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | calcScoreOfHand logika | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | Kártyaértékek logikái. (8) | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | Kártyaértékek segédlogikái. (5) | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7| Kártyakeverés logika. | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | Kártyakiosztás/húzás logika. | Sikeres | A tesztelés folyamán nem merült fel probléma. |
 
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
