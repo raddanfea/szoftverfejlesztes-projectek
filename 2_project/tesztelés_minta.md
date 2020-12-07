@@ -3,7 +3,7 @@
 
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
-| Rádi Dániel | 2020.10.5 13:21 | Tesztelési jegyzőkönyv tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.5| Tesztelési jegyzőkönyv tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
 |Rádi Dániel|2020.12.06| K01 A játék kövesse a hivatalos nemzetközi Texas Hold'Em játékszabályokat. | Sikeres |A tesztelés folyamán nem merült fel probléma.|
 |Rádi Dániel|2020.12.06| K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást. | Sikeres |A tesztelés folyamán nem merült fel probléma.|
 |Rádi Dániel|2020.12.06| K03 A program legalább az android rendszerek 95%-án működjön. | Sikertelen | Hibás minimum API lett megadva.|
@@ -19,12 +19,12 @@
 
  Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
-| Rádi Dániel | 2020.10.7 13:21 | CalculateWinner logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 13:21 | calcScoreOfHand logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 13:21 | Kártyaértékek logikái. (8) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 13:21 | Kártyaértékek segédlogikái. (5) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 13:21 | Kártyakeverés logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 13:21 | Kártyakiosztás/húzás logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 | CalculateWinner logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 | calcScoreOfHand logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 | Kártyaértékek logikái. (8) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 | Kártyaértékek segédlogikái. (5) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7| Kártyakeverés logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.7 | Kártyakiosztás/húzás logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
 
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
