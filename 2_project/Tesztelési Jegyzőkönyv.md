@@ -40,3 +40,32 @@
 | Simion Tamás | 2020.12.06 | Hand Ranking képernyőn Back gomb tesztelése | Sikertelen | A tesztelés során a gomb lenyomására nem történt semmi |
 | Simion Tamás | 2020.12.07 | Hand Ranking képernyőn Back gomb tesztelése | Sikeres | A tesztelés során a gomb lenyomására visszalépett az előző oldalra |
 | Simion Tamás | 2020.12.07 | Játék tesztelése Android 8.0, Android 8.1, illetve Android 9.0 rendszeren | Sikeres | Minden rendben ment |
+
+| Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
+|:-:|:-:|:-:|:-:|-|
+| Puskás Máté | 2020.12.06 | Settings Screen gomb a főképernyőn | Sikeres | A gombra kattintva a beállítások ablak fogad |
+| Puskás Máté | 2020.12.06 | Settings Screen csúszkák tesztelése | Sikeres | A csúszkákat mozgatva a melletük lévő érték változik, az adott értéket mutatja. |
+| Puskás Máté | 2020.12.06 | Settings Screen hangerő csúszka tesztelése | Sikeres | A csúszkát mozgatva a elindul a háttérzene, az értéket változtatva tájékoztatást ad a beállítani kívánt hangerőről, mozgatás hatására dinamikusan változik a hangerő, elengedve a csúszkát elhallgat. |
+| Puskás Máté | 2020.12.06 | Settings Screen Pot Size csúszka tesztelés | Sikeres | A pot mérete a csúszka elengedése utáni érték lesz. |
+| Puskás Máté | 2020.12.06 | Settings Screen Difficulty csúszka tesztelés | Sikeres | A nehézség a csúszka elengedése utáni érték lesz. |
+| Puskás Máté | 2020.12.06 | Settings Screen némító gomb tesztelés | Sikeres | A némító gomb hatására nem indul el a játék közben a zene, a kapcsoló értéke kommunikálva lesz a játék képernyőjén lévő kapcsolónak. Ha a kapcsoló be van kapcsolva van és a hangerő változtatva lesz, a kapcsoló ismét kikapcsol. |
+| Puskás Máté | 2020.12.06 | Settings screen back gomb tesztelés | Sikeres | A gombra kattintva az előző képernyő jelenik meg. |
+| Puskás Máté | 2020.12.06 | Settings screen themes gomb tesztelés | Sikeres | A gombra kattintva a választható témák képernyője jelenik meg. |
+| Puskás Máté | 2020.12.06 | Settings game gomb tesztelés | Sikeres | A gombra kattintva elindul a játék |
+| Puskás Máté | 2020.12.06 | Themes screen back gomb tesztelés | Sikeres | A gombra kattintva az előző képernyő jelenik meg |
+| Puskás Máté | 2020.12.06 | Themes screen game gomb tesztelés | Sikeres | A gombra kattintva elindul a játék |
+| Puskás Máté | 2020.12.06 | Themes screen in use gomb teszt | Sikeres | A használatban lévő téma lesz in use feliratú, és kattinthatatlan |
+| Puskás Máté | 2020.12.06 | Themes screen set gomb teszt | Sikeres | A beállítani kívánt téma kerül beállításra, megjelenik az in use felirat és kattinthatatlanná válik |
+| Puskás Máté | 2020.12.06 | Game Screen háttérzene teszt | Sikeres | A beállításokban beállított hangerővel játszódik a zene, némítás esetén nem indul el |
+| Puskás Máté | 2020.12.06 | Game Screen némítógomb teszt | Sikeres | A zene elindul/elnémul, és ezt jelzi a beállításokban lévő kapcsolónak is. |
+| Puskás Máté | 2020.12.06 | Game Screen beállított téma teszt | Sikeres | A játék képernyőjén a beállítások themes fülében beállított téma jelenik meg. |
+| Puskás Máté | 2020.12.06 | Change Deck gomb tesztelése a főképernyőn | Sikeres | Gond nélkül megjelenik a skin választó ablak |
+| Puskás Máté | 2020.12.06 | Change Deck back gomb tesztelés | Sikeres | Az előző ablak jelenik meg |
+| Puskás Máté | 2020.12.06 | Change Deck reset gomb tesztelés | Sikeres | A győzelmek száma 0-ra ugrik, az elérhető skinek 1-re redukálódnak, és az alap skin kerül használatba. |
+| Puskás Máté | 2020.12.06 | Change Deck settings gomb tesztelés | Sikeres | A beállítások ablak jelenik meg |
+| Puskás Máté | 2020.12.06 | Change Deck game gomb tesztelés | Sikeres | A játék elinditásra kerül. |
+| Puskás Máté | 2020.12.06 | Change Deck Set gomb tesztelés | Sikeres | A gomb megnyomására a használatban lévő skin módosításra kerül, és az In Use felirat jelenik meg a gombon, ami kattinthatatlanná válik. |
+| Puskás Máté | 2020.12.06 | Change Deck In Use gomb tesztelés | Sikertelen | Az ablak megnyitásakor az In Use feliratú gomb kattintható. |
+| Puskás Máté | 2020.12.07 | Change Deck In Use gomb tesztelés | Sikeres | Az ablak megnyitásakor az In Use feliratú gomb kattinthatatlan. |
+| Puskás Máté | 2020.12.07 | Change Deck információs gombok tesztelése | Sikeres | Az információs gomb csak az elérhetetlen skineknél jelenik meg (használatban lévőnél nem, ami szintén kívánt eredmény) |
+| Puskás Máté | 2020.12.07 | Change Deck információs gombok tesztelése | Sikeres | A gombra kattintva megjelenik, mi szükséges a skin feloldásához. |
