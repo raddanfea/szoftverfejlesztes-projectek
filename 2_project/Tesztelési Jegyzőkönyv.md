@@ -18,13 +18,14 @@
 
  Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
-| Rádi Dániel | 2020.10.5| Tesztelési jegyzőkönyv tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 | CalculateWinner logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 | calcScoreOfHand logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 | Kártyaértékek logikái. (8) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 | Kártyaértékek segédlogikái. (5) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7| Kártyakeverés logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
-| Rádi Dániel | 2020.10.7 | Kártyakiosztás/húzás logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.10.5| Tesztelési jegyzőkönyv minta tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7| Tesztelési jegyzőkönyv tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | CalculateWinner logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | calcScoreOfHand logika | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | Kártyaértékek logikái. (8) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | Kártyaértékek segédlogikái. (5) | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7| Kártyakeverés logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
+| Rádi Dániel | 2020.12.7 | Kártyakiosztás/húzás logika. | Sikeres. | A tesztelés folyamán nem merült fel probléma. |
 
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
