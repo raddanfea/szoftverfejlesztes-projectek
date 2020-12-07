@@ -3,15 +3,19 @@
 | Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
 | Rádi Dániel | 2020.10.5 13:21 | Tesztelési jegyzőkönyv tesztelése | Sikeres | A tesztelés folyamán nem merült fel probléma. |
-|Rádi Dániel|| K01 A játék kövesse a hivatalos nemzetközi Texas Hold'Em játékszabályokat. | Sikeres ||
-|Rádi Dániel|| K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást. | Sikeres ||
-|Rádi Dániel|| K03 A program legalább az android rendszerek 95%-án működjön. | Sikeres ||
-|Rádi Dániel|| K04 A szoftver megvalósítása Java programozási nyelvben kell hogy történjen. | Sikeres ||
-|Rádi Dániel|| K05 Az UI megvalósításához xml-t kell használni. | Sikeres ||
+|Rádi Dániel|2020.12.06| K01 A játék kövesse a hivatalos nemzetközi Texas Hold'Em játékszabályokat. | Sikeres |A tesztelés folyamán nem merült fel probléma.|
+|Rádi Dániel|2020.12.06| K02 A játéknak jutalmaznia kell a győzelmet és jeleznie az előrehaladást. | Sikeres |A tesztelés folyamán nem merült fel probléma.|
+|Rádi Dániel|2020.12.06| K03 A program legalább az android rendszerek 95%-án működjön. | Sikertelen | Hibás minimum API lett megadva.|
+|Rádi Dániel|2020.12.06| K03 A program legalább az android rendszerek 95%-án működjön. | Sikeres | A program az android rendszerek 98.1%-án működik|
+|Rádi Dániel|2020.12.06| K04 A szoftver megvalósítása Java programozási nyelvben kell hogy történjen. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
+|Rádi Dániel|2020.12.06| K05 Az UI megvalósításához xml-t kell használni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 ||| K06 A mentéseket titkosítva kell lokálisan tárolni. |||
-|Rádi Dániel|| K07 Képfájlok jpg/png formátumúak legyenek. | Sikeres ||
-|Rádi Dániel|| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikeres ||
-|||Saját feladatok és részfeladatok ellenőrzése:|||
+|Rádi Dániel|2020.12.06| K07 Képfájlok jpg/png formátumúak legyenek. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
+|Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikertelen. | .wav helyett mp3 fájl volt jelen. |
+|Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
+
+| Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
+|:-:|:-:|:-:|:-:|-|
 | Simion Tamás | 2020.12.06 | Menu dizájn megjelenés tesztelése két külömböző eszközön | Sikeres | A tesztelés folyamán nem merült fel probléma |
 | Simion Tamás | 2020.12.06 | Game dizájn megjelenés tesztelése két külömböző eszközön | Sikeres | A tesztelés folyamán nem merült fel probléma |
 | Simion Tamás | 2020.12.06 | Rules dizájn megjelenés tesztelése két külömböző eszközön | Sikeres | A tesztelés folyamán nem merült fel probléma |
