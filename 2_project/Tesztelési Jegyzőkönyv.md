@@ -9,7 +9,7 @@
 |Rádi Dániel|2020.12.06| K03 A program legalább az android rendszerek 95%-án működjön. | Sikeres | A program az android rendszerek 98.1%-án működik|
 |Rádi Dániel|2020.12.06| K04 A szoftver megvalósítása Java programozási nyelvben kell hogy történjen. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 |Rádi Dániel|2020.12.06| K05 Az UI megvalósításához xml-t kell használni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
-||| K06 A mentéseket titkosítva kell lokálisan tárolni. |||
+|Nagy Kristián|2020.11.30| K06 A mentéseket titkosítva kell lokálisan tárolni. |Sikeres|A tesztelés folyamán nem merült fel probléma.|
 |Rádi Dániel|2020.12.06| K07 Képfájlok jpg/png formátumúak legyenek. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikertelen | .wav helyett mp3 fájl volt jelen. |
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
