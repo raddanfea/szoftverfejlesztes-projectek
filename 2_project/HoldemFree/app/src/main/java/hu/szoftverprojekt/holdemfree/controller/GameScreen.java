@@ -282,7 +282,6 @@ public class GameScreen extends AppCompatActivity {
                 Log.d(TAG, "onGameOver");
                 if (gameData.winnerIndex == 0) {
                     winstreak += 1;
-                    data.save("wincount", data.getInt("wincount") +1 );
                     checkForUnlocks();
                 } else {
                     winstreak = 0;
@@ -308,6 +307,9 @@ public class GameScreen extends AppCompatActivity {
                     game.start();
                 }
                 else {
+                    if (gameData.winnerIndex == 0) {
+                        data.save("wincount", data.getInt("wincount") +1 );
+                    }
                     runOnUiThread(new Runnable() {
                         public void run() {
                             String winnerMessage = gameData.winnerIndex == 0 ? "Congratulations! You won!" : "I'm sorry. You lost.";
