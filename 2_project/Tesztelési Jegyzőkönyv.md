@@ -14,7 +14,7 @@
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikertelen | .wav helyett mp3 fájl volt jelen. |
 |Rádi Dániel|2020.12.06| K08 A hangfájlokat wav kiterjesztéssel kell kezeléni. | Sikeres | A tesztelés folyamán nem merült fel probléma.|
 
-## Egyéni feladatok
+## Részfeladatok
 
  Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
 |:-:|:-:|:-:|:-:|-|
