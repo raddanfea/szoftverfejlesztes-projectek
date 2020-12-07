@@ -72,28 +72,7 @@ public class DeckScreen extends AppCompatActivity {
         data.save("wincount", 27);
         */
         winCount.setText("Number of wins: " + data.getInt("wincount"));
-        switch (data.getInt("skinId")) {
-            case 0:
-                setDefault.setEnabled(false);
-                setDefault.setText("In use");
-                break;
-            case 1:
-                setWooden.setEnabled(false);
-                setWooden.setText("In use");
-                break;
-            case 2:
-                setIron.setEnabled(false);
-                setIron.setText("In use");
-                break;
-            case 3:
-                setGolden.setEnabled(false);
-                setGolden.setText("In use");
-                break;
-            case 4:
-                setDiamond.setEnabled(false);
-                setDiamond.setText("In use");
-                break;
-        }
+
 
 
         if (data.getInt("wincount") >= 10) {
@@ -126,6 +105,29 @@ public class DeckScreen extends AppCompatActivity {
         } else {
             setDiamond.setEnabled(false);
             diamondInfo.setVisibility(View.VISIBLE);
+        }
+
+        switch (data.getInt("skinId")) {
+            case 0:
+                setDefault.setEnabled(false);
+                setDefault.setText("In use");
+                break;
+            case 1:
+                setWooden.setEnabled(false);
+                setWooden.setText("In use");
+                break;
+            case 2:
+                setIron.setEnabled(false);
+                setIron.setText("In use");
+                break;
+            case 3:
+                setGolden.setEnabled(false);
+                setGolden.setText("In use");
+                break;
+            case 4:
+                setDiamond.setEnabled(false);
+                setDiamond.setText("In use");
+                break;
         }
 
         setDefault.setOnClickListener(new View.OnClickListener() {
