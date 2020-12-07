@@ -215,8 +215,8 @@ public class GameScreen extends AppCompatActivity {
     }
     
     private void initGame() {
-        player = new Player("Bob", 500);
-        game = new GameLogic(data.getInt("difficulty"), player);
+        player = new Player("Bob", data.getInt("pot_size"));
+        game = new GameLogic(data.getInt("difficulty"), player, data.getInt("pot_size"));
         game.onChange = new ScreenUpdater() {
             @Override
             public void invoke(ScreenUpdaterEventArgs gameData) {

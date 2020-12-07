@@ -59,11 +59,11 @@ public class GameLogic {
    * Init the dealerOffset
    * @param user  a Player instance initialized with name and money
    */
-  public GameLogic(int difficulty, Player user) {
+  public GameLogic(int difficulty, Player user, int botMoney) {
     this.difficulty = difficulty;
     players = new ArrayList<>();
     players.add(user);
-    players.add(new Bot("bot", BOT_STARTING_MONEY, difficulty));
+    players.add(new Bot("bot", botMoney, difficulty));
     dealerOffset = -1;
   }
   
