@@ -75,3 +75,17 @@
 | Puskás Máté | 2020.12.07 | Change Deck In Use gomb tesztelés | Sikeres | Az ablak megnyitásakor az In Use feliratú gomb kattinthatatlan. |
 | Puskás Máté | 2020.12.07 | Change Deck információs gombok tesztelése | Sikeres | Az információs gomb csak az elérhetetlen skineknél jelenik meg (használatban lévőnél nem, ami szintén kívánt eredmény) |
 | Puskás Máté | 2020.12.07 | Change Deck információs gombok tesztelése | Sikeres | A gombra kattintva megjelenik, mi szükséges a skin feloldásához. |
+
+| Tesztelő | Mikor tesztelt | Teszt megnevezése | Sikeres vagy sikertelen? | Tesztelés Leírása |
+|:-:|:-:|:-:|:-:|-|
+|Nagy Kristián| 2020.11.30 |Beállítások mentése és beolvasása|Sikeres|Az applikáció adatainak mentésére létrehozott osztály tesztelése a beállításokkal, amely sikeresen végződött|
+|Nagy Kristián| 2020.12.4 |Gombok tesztelése a GameScreen-en|Sikeres|Bár a gombok helyesen működtek, de mivel ez hívja meg a játéklogikát, így a UI thread blokkolva van és nem történik meg a kirajzoltatás|
+|Nagy Kristián| 2020.12.5 |Kevés pénz esetén ne indoljon új játék|Sikeres|Nem indul új játék ha valamelyik játékos nem tudja megadni a kezdő tétet|
+|Nagy Kristián| 2020.12.5 |Teljes játékmenet tesztelése|Sikeres|Pénzhiány esetén is lehet emelni, amit javítani kell|
+|Nagy Kristián| 2020.12.5 |A Bot AI tesztelése|Sikeres|Nem hibás, de a játékélmény érdekében lehet rajta javítani|
+|Nagy Kristián| 2020.12.5 |A Bot osztályban újonnan implementált nehézség tesztelése|Sikeres|Az elvárt módon okozott meglepetéseket|
+|Nagy Kristián| 2020.12.5 |A beállított skin megjelenítése a kártyáknak|Sikeres|Az egyik kártya a fa skinek közül (wooden_k36) hibás, ez nem programhiba|
+|Nagy Kristián| 2020.12.6 |Nyertes játékos megjelenítése|Sikeres|A tesztelés folyamán nem merült fel probléma.|
+|Nagy Kristián| 2020.12.6 |Mérföldkő rendszer implementálása|Sikeres|A tesztelés folyamán nem merült fel probléma.|
+|Nagy Kristián| 2020.12.6 23:00 |A játéklogika és a UI párhuzamosítása|Sikertelen|A szálak nem tudtak kommunikálni egymással|
+|Nagy Kristián| 2020.12.7 00:30 |A játéklogika és a UI párhuzamosítása|Sikeres|Kívül inicializált objektum referenciáját használva sikeresen lefutott|
